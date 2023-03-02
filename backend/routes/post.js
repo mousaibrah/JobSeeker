@@ -1,10 +1,17 @@
-const express = require('express');
-const appRouter = express.Router()
-const {getFunc,postFunc,putFunc,deleteFunc} = require('../controllers/app')
+const express = require("express");
+const postRouter = express.Router();
+const {
+  createPost,
+  getPosts,
+  getPostById,
+  updatePost,
+  deletePost,
+} = require("../controllers/post");
 
-appRouter.get('/',getFunc)
-appRouter.post('/',postFunc)
-appRouter.put('/',putFunc)
-appRouter.delete('/',deleteFunc)
+postRouter.post("/", createPost);
+postRouter.get("/", getPosts);
+postRouter.get("/:id", getPostById);
+postRouter.put("/:id", updatePost);
+postRouter.delete("/:id", deletePost);
 
-module.exports = appRouter
+module.exports = postRouter;

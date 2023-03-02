@@ -5,13 +5,11 @@ const createRole = async (req, res) => {
   const newRole = new roleSchema({ role, permissions });
   try {
     const result = newRole.save();
-    res
-      .status(201)
-      .json({
-        success: true,
-        message: "The Role Has Been Created Successfully",
-        result:newRole,
-      });
+    res.status(201).json({
+      success: true,
+      message: "The Role Has Been Created Successfully",
+      result: newRole,
+    });
   } catch (error) {
     res
       .status(500)
