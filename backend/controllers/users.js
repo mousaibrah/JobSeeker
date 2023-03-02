@@ -23,7 +23,6 @@ const register = async (req, res) => {
   });
   try {
     const result = await newUser.save();
-    console.log(result);
     res.status(201).json({
       success: true,
       message: `Account Created Successfully`,
