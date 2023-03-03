@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Alert from "react-bootstrap/Alert";
 import NavLinks from "../navbar/NavLinks";
 import { Nav, NavDropdown } from "react-bootstrap";
+import { MDBIcon } from "mdbreact";
 import {
   MDBBtn,
   MDBContainer,
@@ -12,8 +13,8 @@ import {
   MDBCardBody,
   MDBInput,
   MDBCheckbox,
-  MDBIcon,
   MDBValidation,
+  MDBCardImage,
 } from "mdb-react-ui-kit";
 import axios from "axios";
 const Register = () => {
@@ -58,7 +59,7 @@ const Register = () => {
 
         setPassword("");
         setIsRegistered(false);
-        navigate("/");
+        navigate("/login");
       }, 3000);
     } catch (error) {
       setResult(error.response.data.message);
@@ -72,20 +73,13 @@ const Register = () => {
   return (
     <div className="Register">
       <Top />
-      <MDBContainer className="p-4">
+      <MDBContainer className="p-3 my-5 h-custom">
         <MDBRow>
           <MDBCol
-            style={{
-              backgroundImage: `url(${"https://www.tidio.com/_next/image/?url=https%3A%2F%2Fwww.tidio.com%2Fwp-content%2Fuploads%2Fwelcome-message-upadte.png&w=1920&q=75"})`,
-            }}
             md="6"
             className="text-center text-md-start d-flex flex-column justify-content-center"
           >
-            <h1 className="my-5 text-primary">Join Job Seekers Now</h1>
-
-            <p className="px-3" style={{ color: "hsl(217, 10%, 50.8%)" }}>
-              You Looking For Work On Your
-            </p>
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg" />
           </MDBCol>
 
           <MDBCol md="6">
@@ -103,19 +97,21 @@ const Register = () => {
                         wrapperClass="mb-4"
                         label="First name"
                         type="text"
+                        autocomplete="off"
                       />
                     </MDBCol>
 
                     <MDBCol col="6">
                       <MDBInput
                         className="form-control"
-                        id="validationDefault02"
+                        id="formControlLg"
                         required
                         value={lastName}
                         onChange={(e) => setLastName(e.target.value)}
                         wrapperClass="mb-4"
                         label="Last name"
                         type="text"
+                        autocomplete="off"
                       />
                     </MDBCol>
                   </MDBRow>
@@ -123,55 +119,63 @@ const Register = () => {
                     <MDBCol col="6">
                       <MDBInput
                         className="form-control"
-                        id="validationDefault03"
+                        id="formControlLg"
                         required
                         value={dateOfBirth}
                         onChange={(e) => setDateOfBirth(e.target.value)}
                         wrapperClass="mb-4"
                         label="Date Of Birth"
                         type="date"
+                        autocomplete="off"
                       />
                     </MDBCol>
 
                     <MDBCol col="6">
                       <MDBInput
                         className="form-control"
-                        id="validationDefault04"
+                        id="formControlLg"
                         required
                         value={phoneNumber}
                         onChange={(e) => setPhoneNumber(e.target.value)}
                         wrapperClass="mb-4"
                         label="Phone Number"
                         type="tel"
-                        autoComplete="false"
+                        autocomplete="off"
                       />
                     </MDBCol>
                   </MDBRow>
 
                   <MDBInput
                     className="form-control"
-                    id="validationDefault05"
+                    id="formControlLg"
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     wrapperClass="mb-4"
                     label="Email"
                     type="email"
-                  />
+                    title='Email Must Contain "@" And ".com"'
+            
+
+                    autocomplete="off"
+                    />
+                   
                   <MDBInput
                     className="form-control"
-                    id="validationDefault06"
+                    id="formControlLg"
                     required
+                   
                     value={password}
-                    onFocus={e=>
-                    console.log(e)
-                    }
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={(e) => {
+                      setPassword(e.target.value)
+                     
+                    }}
+                    title='Password Must Contain 8 Letter At Least'
                     wrapperClass="mb-4"
                     label="Password"
                     type="password"
                   />
-                  
+                   
                   <MDBCheckbox
                     value="s"
                     label="COMPANY"
@@ -219,7 +223,11 @@ const Register = () => {
 
                     <MDBBtn className="w-20 mb-4">
                       <MDBIcon fab icon="google" size="2xl" />
-                      Google
+                      <b>
+                        <> </>
+                        <> </>
+                        <> </>Google
+                      </b>
                     </MDBBtn>
                   </div>
                 </MDBValidation>
