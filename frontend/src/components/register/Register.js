@@ -2,14 +2,21 @@
 import React, { useState, createContext } from "react";
 import { useNavigate } from "react-router-dom";
 //  Import Bootstrap Components
-import {MDBContainer,MDBRow,MDBCol,MDBCard,MDBCardBody,MDBValidation,} from "mdb-react-ui-kit";
+import {
+  MDBContainer,
+  MDBRow,
+  MDBCol,
+  MDBCard,
+  MDBCardBody,
+  MDBValidation,
+} from "mdb-react-ui-kit";
 //  Import Axios
 import axios from "axios";
 // Import Components From Other Files
 import ImgComponent from "./ImgComponent";
 import FirstNameComponent from "./FirstNameComponent";
 import LastNameComponent from "./LastNameComponent";
-import DateOfBirthComponent from "./DateOfBirthComponent";
+import DateOfBirth from "./DateOfBirth";
 import PhoneNumberComponent from "./PhoneNumberComponent";
 import EmailComponent from "./EmailComponent";
 import PasswordComponent from "./PasswordComponent";
@@ -21,45 +28,76 @@ import RegisterNav from "./RegisterNav";
 export const registerContext = createContext();
 const Register = () => {
   const navigate = useNavigate();
-  const [role, setRole] = useState("6400ff849df16b07a6ccc511");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [dateOfBirth, setDateOfBirth] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [newUserData, setNewUserData] = useState({
+    firstName: "",
+    lastName: "",
+    dateOfBirth: "",
+    phoneNumber: "",
+    email: "",
+    password: "",
+    role: "6400ff849df16b07a6ccc511",
+  });
+  const [error, setError] = useState({
+    firstName: {
+      isError: false,
+      errorMessage: "First Name Is Required",
+      isRequired: true,
+      regex:/^[a-zA-Z]+ [a-zA-Z]+$/
+    },
+    lastName: {
+      isError: false,
+      errorMessage: "Last Name Is Required",
+      isRequired: true,
+      regex:/^[a-zA-Z]+ [a-zA-Z]+$/
+    },
+    dateOfBirth: {
+      isError: false,
+      errorMessage: "Date Of Birth Is Required",
+      isRequired: true,
+      regex:/^((0?[1-9]|1[012])[- /.](0?[1-9]|[12][0-9]|3[01])[- /.](19|20)?[0-9]{2})*$/
+    },
+    phoneNumber: {
+      isError: false,
+      errorMessage: "Phone Number Is Required",
+      isRequired: true,
+      regex:/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
+    },
+    email: {
+      isError: false,
+      errorMessage: "Email Is Required And Must Contain '@' ,'.com'",
+
+      isRequired: true,
+      regex:/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+    },
+    password: {
+      isError: false,
+      errorMessage: "password Is Required And Contain More Then 8 Letters",
+      isRequired: true,
+      regex:/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/
+    },
+    role: {
+      isError: false,
+      errorMessage: "role Is Required",
+      isRequired: true,
+      regex:/^[A-Za-z0-9]*$/
+    },
+  });
   const [result, setResult] = useState("");
   const [isChecked, setIsChecked] = useState(false);
   const [err, setErr] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
   const register = async () => {
-    const newUser = {
-      firstName,
-      lastName,
-      dateOfBirth,
-      phoneNumber,
-      email,
-      password,
-      role,
-    };
-
     try {
+      console.log(newUserData);
       const res = await axios.post(
         "http://localhost:5000/users/register",
-        newUser
+        newUserData
       );
 
       setResult(res.data.message);
       setIsRegistered(true);
       setTimeout(() => {
-        setFirstName("");
-        setLastName("");
-        setDateOfBirth("");
-        setPhoneNumber("");
-        setEmail("");
         setErr(false);
-
-        setPassword("");
         setIsRegistered(false);
         navigate("/login");
       }, 3000);
@@ -69,29 +107,17 @@ const Register = () => {
       setErr(true);
     }
   };
-  const setRoles = (roleName) => {
-    return setRole(roleName);
-  };
   const value = {
     isChecked,
     setIsChecked,
-    setRoles,
     register,
     isRegistered,
     err,
     result,
-    setPhoneNumber,
-    phoneNumber,
-    password,
-    setPassword,
-    lastName,
-    setLastName,
-    setEmail,
-    email,
-    setFirstName,
-    firstName,
-    dateOfBirth,
-    setDateOfBirth,
+    newUserData,
+    setNewUserData,
+    error,
+    setError,
   };
   return (
     <div className="Register">
@@ -102,14 +128,15 @@ const Register = () => {
           <MDBCol md="6">
             <MDBCard className="my-5">
               <MDBCardBody className="p-5">
-                <MDBValidation className="row g-3" isValidated>
+                {/* <MDBValidation isValidated> */}
                   <registerContext.Provider value={value}>
                     <MDBRow>
                       <FirstNameComponent />
+
                       <LastNameComponent />
                     </MDBRow>
                     <MDBRow>
-                      <DateOfBirthComponent />
+                      <DateOfBirth />
                       <PhoneNumberComponent />
                     </MDBRow>
                     <EmailComponent />
@@ -118,7 +145,7 @@ const Register = () => {
                     <SubmitBtnComponent />
                     <SignUpWithGoogle />
                   </registerContext.Provider>
-                </MDBValidation>
+                {/* </MDBValidation> */}
               </MDBCardBody>
             </MDBCard>
           </MDBCol>

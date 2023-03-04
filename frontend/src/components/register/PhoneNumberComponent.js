@@ -2,15 +2,15 @@ import { MDBInput, MDBCol } from "mdb-react-ui-kit";
 import React, { useContext } from "react";
 import {registerContext} from "./Register";
 const PhoneNumberComponent = () => {
-  const { setPhoneNumber, phoneNumber } = useContext(registerContext);
+  const { newUserData, setNewUserData } = useContext(registerContext);
   return (
     <MDBCol col="6">
       <MDBInput
         className="form-control"
         id="formControlLg"
         required
-        value={phoneNumber}
-        onChange={(e) => setPhoneNumber(e.target.value)}
+        value={newUserData.phoneNumber}
+        onChange={(e) => setNewUserData({...newUserData,phoneNumber: e.target.value})}
         wrapperClass="mb-4"
         label="Phone Number"
         type="tel"

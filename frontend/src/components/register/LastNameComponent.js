@@ -2,17 +2,18 @@ import { MDBCol, MDBInput } from "mdb-react-ui-kit";
 import React, { useContext } from "react";
 import { registerContext } from "./Register";
 const LastNameComponent = () => {
-  const { lastName, setLastName } = useContext(registerContext);
+  const { newUserData, setNewUserData } = useContext(registerContext);
   return (
     <MDBCol col="6">
+      <p>Last name</p>
       <MDBInput
+      // label="Last name"
         className="form-control"
         id="formControlLg"
         required
-        value={lastName}
-        onChange={(e) => setLastName(e.target.value)}
+        value={newUserData.lastName}
+        onChange={(e) => setNewUserData({...newUserData,lastName:e.target.value})}
         wrapperClass="mb-4"
-        label="Last name"
         type="text"
         autoComplete="off"
       />

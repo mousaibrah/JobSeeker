@@ -2,24 +2,24 @@ import { MDBCheckbox } from "mdb-react-ui-kit";
 import React, { useContext } from "react";
 import {registerContext} from './Register'
 const RoleCheckBoxComponent = () => {
-    const {isChecked,setIsChecked,setRoles} = useContext(registerContext)
+    const {isChecked,setIsChecked,setNewUserData,newUserData} = useContext(registerContext)
   return (
     <>
       <MDBCheckbox
-        value="s"
+        value="6400ff7b9df16b07a6ccc50f"
         label="COMPANY"
         checked={isChecked}
-        onChange={() => {
+        onChange={(e) => {
           setIsChecked(true);
-          setRoles("6400ff7b9df16b07a6ccc50f");
+          setNewUserData({...newUserData,role:e.target.value});
         }}
       />
       <MDBCheckbox
-        value="ss"
+        value="6400ff849df16b07a6ccc511"
         checked={!isChecked}
-        onChange={() => {
+        onChange={(e) => {
           setIsChecked(false);
-          setRoles("6400ff849df16b07a6ccc511");
+          setNewUserData({...newUserData,role:e.target.value});
         }}
         label="USER"
       />

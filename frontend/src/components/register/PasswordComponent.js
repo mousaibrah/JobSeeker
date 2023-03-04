@@ -1,23 +1,15 @@
 import { MDBInput } from "mdb-react-ui-kit";
 import React, { useContext } from "react";
+import Input from "../Input/Input";
 import {registerContext} from "./Register";
 const PasswordComponent = () => {
-  const { password, setPassword } = useContext(registerContext);
+  const { newUserData, setNewUserData,error } = useContext(registerContext);
+  const setDataFunc = (value)=>{
+    setNewUserData({ ...newUserData, password:value })
+  }
   return (
     <>
-      <MDBInput
-        className="form-control"
-        id="formControlLg"
-        required
-        value={password}
-        onChange={(e) => {
-          setPassword(e.target.value);
-        }}
-        title="Password Must Contain 8 Letter At Least"
-        wrapperClass="mb-4"
-        label="Password"
-        type="password"
-      />
+    <Input compName={'password'} isRequired={error.password.isRequired} func={setDataFunc} label={"Password"} type={"password"}/>
     </>
   );
 };
