@@ -1,22 +1,24 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import Alert from "react-bootstrap/Alert";
-import NavLinks from "../navbar/NavLinks";
-import { Nav, NavDropdown } from "react-bootstrap";
-import { MDBIcon } from "mdbreact";
-import {
-  MDBBtn,
-  MDBContainer,
-  MDBRow,
-  MDBCol,
-  MDBCard,
-  MDBCardBody,
-  MDBInput,
-  MDBCheckbox,
-  MDBValidation,
-  MDBCardImage,
-} from "mdb-react-ui-kit";
+// Import React & React Router
+import React, { useState, createContext } from "react";
+import { useNavigate } from "react-router-dom";
+//  Import Bootstrap Components
+import {MDBContainer,MDBRow,MDBCol,MDBCard,MDBCardBody,MDBValidation,} from "mdb-react-ui-kit";
+//  Import Axios
 import axios from "axios";
+// Import Components From Other Files
+import ImgComponent from "./ImgComponent";
+import FirstNameComponent from "./FirstNameComponent";
+import LastNameComponent from "./LastNameComponent";
+import DateOfBirthComponent from "./DateOfBirthComponent";
+import PhoneNumberComponent from "./PhoneNumberComponent";
+import EmailComponent from "./EmailComponent";
+import PasswordComponent from "./PasswordComponent";
+import RoleCheckBoxComponent from "./RoleCheckBoxComponent";
+import SubmitBtnComponent from "./SubmitBtnComponent";
+import SignUpWithGoogle from "./SignUpWithGoogle";
+import RegisterNav from "./RegisterNav";
+//  Export Context
+export const registerContext = createContext();
 const Register = () => {
   const navigate = useNavigate();
   const [role, setRole] = useState("6400ff849df16b07a6ccc511");
@@ -70,166 +72,52 @@ const Register = () => {
   const setRoles = (roleName) => {
     return setRole(roleName);
   };
+  const value = {
+    isChecked,
+    setIsChecked,
+    setRoles,
+    register,
+    isRegistered,
+    err,
+    result,
+    setPhoneNumber,
+    phoneNumber,
+    password,
+    setPassword,
+    lastName,
+    setLastName,
+    setEmail,
+    email,
+    setFirstName,
+    firstName,
+    dateOfBirth,
+    setDateOfBirth,
+  };
   return (
     <div className="Register">
-      <Top />
+      <RegisterNav />
       <MDBContainer className="p-3 my-5 h-custom">
         <MDBRow>
-          <MDBCol
-            md="6"
-            className="text-center text-md-start d-flex flex-column justify-content-center"
-          >
-            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg" />
-          </MDBCol>
-
+          <ImgComponent />
           <MDBCol md="6">
             <MDBCard className="my-5">
               <MDBCardBody className="p-5">
                 <MDBValidation className="row g-3" isValidated>
-                  <MDBRow>
-                    <MDBCol col="6">
-                      <MDBInput
-                        className="form-control"
-                        id="validationDefault01"
-                        required
-                        value={firstName}
-                        onChange={(e) => setFirstName(e.target.value)}
-                        wrapperClass="mb-4"
-                        label="First name"
-                        type="text"
-                        autocomplete="off"
-                      />
-                    </MDBCol>
-
-                    <MDBCol col="6">
-                      <MDBInput
-                        className="form-control"
-                        id="formControlLg"
-                        required
-                        value={lastName}
-                        onChange={(e) => setLastName(e.target.value)}
-                        wrapperClass="mb-4"
-                        label="Last name"
-                        type="text"
-                        autocomplete="off"
-                      />
-                    </MDBCol>
-                  </MDBRow>
-                  <MDBRow>
-                    <MDBCol col="6">
-                      <MDBInput
-                        className="form-control"
-                        id="formControlLg"
-                        required
-                        value={dateOfBirth}
-                        onChange={(e) => setDateOfBirth(e.target.value)}
-                        wrapperClass="mb-4"
-                        label="Date Of Birth"
-                        type="date"
-                        autocomplete="off"
-                      />
-                    </MDBCol>
-
-                    <MDBCol col="6">
-                      <MDBInput
-                        className="form-control"
-                        id="formControlLg"
-                        required
-                        value={phoneNumber}
-                        onChange={(e) => setPhoneNumber(e.target.value)}
-                        wrapperClass="mb-4"
-                        label="Phone Number"
-                        type="tel"
-                        autocomplete="off"
-                      />
-                    </MDBCol>
-                  </MDBRow>
-
-                  <MDBInput
-                    className="form-control"
-                    id="formControlLg"
-                    required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    wrapperClass="mb-4"
-                    label="Email"
-                    type="email"
-                    title='Email Must Contain "@" And ".com"'
-            
-
-                    autocomplete="off"
-                    />
-                   
-                  <MDBInput
-                    className="form-control"
-                    id="formControlLg"
-                    required
-                   
-                    value={password}
-                    onChange={(e) => {
-                      setPassword(e.target.value)
-                     
-                    }}
-                    title='Password Must Contain 8 Letter At Least'
-                    wrapperClass="mb-4"
-                    label="Password"
-                    type="password"
-                  />
-                   
-                  <MDBCheckbox
-                    value="s"
-                    label="COMPANY"
-                    checked={isChecked}
-                    onClick={() => {
-                      setIsChecked(true);
-                      setRoles("6400ff7b9df16b07a6ccc50f");
-                    }}
-                  />
-                  <MDBCheckbox
-                    value="ss"
-                    checked={!isChecked}
-                    onClick={() => {
-                      setIsChecked(false);
-                      setRoles("6400ff849df16b07a6ccc511");
-                    }}
-                    label="USER"
-                  />
-
-                  <MDBBtn
-                    type="submit"
-                    onClick={register}
-                    className="w-100 mb-4"
-                    size="md"
-                  >
-                    sign up
-                  </MDBBtn>
-                  {isRegistered && (
-                    <Alert key={"success"} variant={"success"}>
-                      Account Created Successfully
-                    </Alert>
-                  )}
-                  {err && (
-                    <Alert key={"danger"} variant={"danger"}>
-                      {result}
-                    </Alert>
-                  )}
-
-                  <div className="text-center">
-                    <p>
-                      Already Have An Account : <Link to="/login">Login</Link>
-                    </p>
-                    <br />
-                    <p>or sign up with:</p>
-
-                    <MDBBtn className="w-20 mb-4">
-                      <MDBIcon fab icon="google" size="2xl" />
-                      <b>
-                        <> </>
-                        <> </>
-                        <> </>Google
-                      </b>
-                    </MDBBtn>
-                  </div>
+                  <registerContext.Provider value={value}>
+                    <MDBRow>
+                      <FirstNameComponent />
+                      <LastNameComponent />
+                    </MDBRow>
+                    <MDBRow>
+                      <DateOfBirthComponent />
+                      <PhoneNumberComponent />
+                    </MDBRow>
+                    <EmailComponent />
+                    <PasswordComponent />
+                    <RoleCheckBoxComponent />
+                    <SubmitBtnComponent />
+                    <SignUpWithGoogle />
+                  </registerContext.Provider>
                 </MDBValidation>
               </MDBCardBody>
             </MDBCard>
@@ -239,29 +127,5 @@ const Register = () => {
     </div>
   );
 };
-const Top = () => {
-  const navigate = useNavigate();
-  const loginL = (
-    <NavDropdown.Item href="#action/3.4">
-      <Nav.Link onClick={() => navigate("/login")}>Login</Nav.Link>
-    </NavDropdown.Item>
-  );
-  const registerL = (
-    <NavDropdown.Item href="#action/3.3">
-      <Nav.Link onClick={() => navigate("/register")}>Register</Nav.Link>
-    </NavDropdown.Item>
-  );
-  const profileL = (
-    <NavDropdown.Item href="#action/3.1">
-      <Nav.Link onClick={() => navigate("/profile")}>Profile</Nav.Link>
-    </NavDropdown.Item>
-  );
-  const dashboardL = (
-    <NavDropdown.Item href="#action/3.4">
-      <Nav.Link onClick={() => navigate("/dashboard")}>Dashboard</Nav.Link>
-    </NavDropdown.Item>
-  );
 
-  return <NavLinks home={{ loginL, registerL, profileL, dashboardL }} />;
-};
 export default Register;

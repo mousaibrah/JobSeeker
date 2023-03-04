@@ -1,14 +1,16 @@
 import React from "react";
 import Carousel from "react-bootstrap/Carousel";
-import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
-import NavLinks from "../navbar/NavLinks";
+import { Container,} from "react-bootstrap";
+import HomeNav from "./HomeNav";
 
 
 const Home = () => {
   return (
     <Container fluid className="Home">
-      <Top />{" "}
+     <HomeNav/>
+     
+     
+     {" "}
       <Carousel>
         <Carousel.Item>
           <img
@@ -37,30 +39,6 @@ const Home = () => {
     </Container>
   );
 };
-const Top = () => {
-  const navigate = useNavigate();
-  const loginL = (
-    <NavDropdown.Item href="#action/3.4">
-      <Nav.Link onClick={() => navigate("/login")}>Login</Nav.Link>
-    </NavDropdown.Item>
-  );
-  const registerL = (
-    <NavDropdown.Item href="#action/3.3">
-      <Nav.Link onClick={() => navigate("/register")}>Register</Nav.Link>
-    </NavDropdown.Item>
-  );
-  const profileL = (
-    <NavDropdown.Item href="#action/3.1">
-      <Nav.Link onClick={() => navigate("/profile")}>Profile</Nav.Link>
-    </NavDropdown.Item>
-  );
-  const dashboardL = (
-    <NavDropdown.Item href="#action/3.4">
-      <Nav.Link onClick={() => navigate("/dashboard")}>Dashboard</Nav.Link>
-    </NavDropdown.Item>
-  );
 
-  return <NavLinks home={{ loginL, registerL, profileL, dashboardL }} />;
-};
 
 export default Home;
