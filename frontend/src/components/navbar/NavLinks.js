@@ -7,7 +7,7 @@ const NavLinks = ({ home }) => {
   return (
     <Navbar bg="dark">
       <Container>
-      <Navbar.Brand  href="http://localhost:3000/" style={{fontWeight:'500',fontSize:'30px',color:'#fff'}}>JOB<span style={{backgroundImage:'linear-gradient(to left , #2700b2,#000)',borderRadius:'14px'}}>SEEKER</span> </Navbar.Brand>
+      <Navbar.Brand  href="http://localhost:3000/" style={{fontWeight:'500',fontSize:'30px',color:'#fff'}}>JOB<span className="text-primary">SEEKER</span> </Navbar.Brand>
      <NavDropdown style={{color:'#fff'}} title="Options" id="basic-nav-dropdown">
               {home?.dashboardL}
               {home?.profileL}

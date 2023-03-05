@@ -14,6 +14,7 @@ import {
 import ProfileNav from "./ProfileNav";
 
 export default function ProfilePage() {
+  
   return (
     <section style={{ backgroundColor: "#eee" }}>
       <ProfileNav />
