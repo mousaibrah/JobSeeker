@@ -30,7 +30,6 @@ const Password = () => {
   return (
     <>
       <Input
-      
         compName={"password"}
         isRequired={error.password.isRequired}
         func={setDataFunc}

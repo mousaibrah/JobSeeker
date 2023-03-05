@@ -23,7 +23,7 @@ const SignUpWithGoogle = () => {
             onSuccess={(credentialResponse) => {
               setToken(credentialResponse.credential);
               console.log(decodedToken);
-              console.log('isExpired :>> ', isExpired);
+              console.log("isExpired :>> ", isExpired);
             }}
             onError={() => {
               console.log("Login Failed");

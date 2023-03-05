@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import NavLinks from "../navbar/NavLinks";
-import {  Nav, NavDropdown } from "react-bootstrap";
+import { Nav, NavDropdown } from "react-bootstrap";
 
 const HomeNav = () => {
   const navigate = useNavigate();

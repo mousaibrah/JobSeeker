@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { MDBInput } from "mdb-react-ui-kit";
 const ProfileInput = () => {
-    const [someValue, setSomeValue] = useState('')
+  const [someValue, setSomeValue] = useState("");
   return (
     <MDBInput
       className="form-control"

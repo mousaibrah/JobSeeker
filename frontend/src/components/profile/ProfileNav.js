@@ -10,7 +10,7 @@ const ProfileNav = () => {
       <Nav.Link onClick={() => navigate("/register")}>Register</Nav.Link>
     </NavDropdown.Item>
   );
- 
+
   const dashboardL = (
     <NavDropdown.Item href="#action/3.4">
       <Nav.Link onClick={() => navigate("/dashboard")}>Dashboard</Nav.Link>
