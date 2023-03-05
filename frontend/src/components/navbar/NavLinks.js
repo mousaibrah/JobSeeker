@@ -14,7 +14,7 @@ const NavLinks = ({ home }) => {
               
       {home?.loginL}
       {home?.registerL}
-             
+             {home?.Logout}
             </NavDropdown>
       </Container>
     </Navbar>

@@ -1,7 +1,16 @@
 const profileSchema = require("../models/profile");
 const createProfile = async (req, res) => {
-  const { expertise, interests, userId } = req.body;
-  const newProfile = new profileSchema({ expertise, interests, userId });
+  const { userImg, UserName, about, expertise, skills, education, userId } =
+    req.body;
+  const newProfile = new profileSchema({
+    userImg,
+    UserName,
+    about,
+    expertise,
+    skills,
+    education,
+    userId,
+  });
   try {
     const result = await newProfile.save();
     res.status(200).json({ success: true, result: newProfile });
@@ -11,11 +20,12 @@ const createProfile = async (req, res) => {
 };
 const updateProfile = async (req, res) => {
   const _id = req.params.id;
-  const { expertise, interests, userId } = req.body;
+  const { userImg, UserName, about, expertise, skills, education, userId } =
+    req.body;
   try {
     const result = await profileSchema.findByIdAndUpdate(
       { _id },
-      { expertise, interests, userId },
+      { userImg, UserName, about, expertise, skills, education, userId },
       { new: true }
     );
     res.status(201).json({ success: true, result });

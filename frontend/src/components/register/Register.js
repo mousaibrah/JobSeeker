@@ -10,16 +10,17 @@ import {
   MDBCardBody,
   MDBValidation,
 } from "mdb-react-ui-kit";
+import Swal from "sweetalert2";
 //  Import Axios
 import axios from "axios";
 // Import Components From Other Files
 import ImgComponent from "./ImgComponent";
-import FirstNameComponent from "./FirstNameComponent";
-import LastNameComponent from "./LastNameComponent";
+import FirstName from "./FirstName";
+import LastName from "./LastName";
 import DateOfBirth from "./DateOfBirth";
-import PhoneNumberComponent from "./PhoneNumberComponent";
-import EmailComponent from "./EmailComponent";
-import PasswordComponent from "./PasswordComponent";
+import PhoneNumber from "./PhoneNumber";
+import Email from "./Email";
+import Password from "./Password";
 import RoleCheckBoxComponent from "./RoleCheckBoxComponent";
 import SubmitBtnComponent from "./SubmitBtnComponent";
 import SignUpWithGoogle from "./SignUpWithGoogle";
@@ -28,6 +29,7 @@ import RegisterNav from "./RegisterNav";
 export const registerContext = createContext();
 const Register = () => {
   const navigate = useNavigate();
+  const [showMessage, setShowMessage] = useState(false);
   const [newUserData, setNewUserData] = useState({
     firstName: "",
     lastName: "",
@@ -42,50 +44,53 @@ const Register = () => {
       isError: false,
       errorMessage: "First Name Is Required",
       isRequired: true,
-      regex:/^[a-zA-Z]+ [a-zA-Z]+$/
+      regex: /[a-zA-Z]/g,
     },
     lastName: {
       isError: false,
       errorMessage: "Last Name Is Required",
       isRequired: true,
-      regex:/^[a-zA-Z]+ [a-zA-Z]+$/
+      regex: /[a-zA-Z]/g,
     },
     dateOfBirth: {
       isError: false,
       errorMessage: "Date Of Birth Is Required",
       isRequired: true,
-      regex:/^((0?[1-9]|1[012])[- /.](0?[1-9]|[12][0-9]|3[01])[- /.](19|20)?[0-9]{2})*$/
+      regex:
+        /^((0?[1-9]|1[012])[- /.](0?[1-9]|[12][0-9]|3[01])[- /.](19|20)?[0-9]{2})*$/gs,
     },
     phoneNumber: {
       isError: false,
       errorMessage: "Phone Number Is Required",
       isRequired: true,
-      regex:/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
+      regex: /([0-9]{10})$/gs,
     },
     email: {
       isError: false,
       errorMessage: "Email Is Required And Must Contain '@' ,'.com'",
 
       isRequired: true,
-      regex:/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+      regex:
+        /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/gs,
     },
     password: {
       isError: false,
       errorMessage: "password Is Required And Contain More Then 8 Letters",
       isRequired: true,
-      regex:/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/
+      regex: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/gs,
     },
     role: {
-      isError: false,
+      isError: true,
       errorMessage: "role Is Required",
       isRequired: true,
-      regex:/^[A-Za-z0-9]*$/
+      regex: "",
     },
   });
   const [result, setResult] = useState("");
   const [isChecked, setIsChecked] = useState(false);
   const [err, setErr] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
+  const [checkEveryForm, setCheckEveryForm] = useState(false);
   const register = async () => {
     try {
       console.log(newUserData);
@@ -107,6 +112,26 @@ const Register = () => {
       setErr(true);
     }
   };
+  const checkSubmit = () => {
+    let count = 0;
+    for (const elem in error) {
+      if (error[elem].isError) {
+        count++;
+      }
+    }
+    if (count == 6) {
+      setCheckEveryForm(false);
+      return register();
+    } else {
+      console.log("count :>> ", count);
+      setCheckEveryForm(true);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "It's Seems You Missed A few Fields",
+      });
+    }
+  };
   const value = {
     isChecked,
     setIsChecked,
@@ -118,6 +143,10 @@ const Register = () => {
     setNewUserData,
     error,
     setError,
+    checkSubmit,
+    checkEveryForm,
+    showMessage,
+    setShowMessage,
   };
   return (
     <div className="Register">
@@ -128,24 +157,24 @@ const Register = () => {
           <MDBCol md="6">
             <MDBCard className="my-5">
               <MDBCardBody className="p-5">
-                {/* <MDBValidation isValidated> */}
+                <MDBValidation isValidated={checkEveryForm}>
                   <registerContext.Provider value={value}>
                     <MDBRow>
-                      <FirstNameComponent />
+                      <FirstName />
 
-                      <LastNameComponent />
+                      <LastName />
                     </MDBRow>
                     <MDBRow>
                       <DateOfBirth />
-                      <PhoneNumberComponent />
+                      <PhoneNumber />
                     </MDBRow>
-                    <EmailComponent />
-                    <PasswordComponent />
+                    <Email />
+                    <Password />
                     <RoleCheckBoxComponent />
                     <SubmitBtnComponent />
                     <SignUpWithGoogle />
                   </registerContext.Provider>
-                {/* </MDBValidation> */}
+                </MDBValidation>
               </MDBCardBody>
             </MDBCard>
           </MDBCol>

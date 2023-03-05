@@ -15,6 +15,7 @@ import Register from "./components/register/Register";
 import Home from "./components/Home/Home";
 import Error from "./components/404/Error";
 import Footer from "./components/Footer/Footer";
+import ProfilePage from "./components/profile/ProfilePage";
 // Export Context
 export const userContext = createContext();
 function App() {
@@ -38,6 +39,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/profile/1" element={<ProfilePage />} />
+
           <Route path="/dashboard" element={<DashBoard />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
