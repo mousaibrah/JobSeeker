@@ -19,7 +19,7 @@ import ProfilePage from "./components/profile/ProfilePage";
 // Export Context
 export const userContext = createContext();
 function App() {
-  const [userId, setUserId] = useState(null);
+  const [userId, setUserId] = useState(localStorage.getItem("userId")||null);
   const [token, setToken] = useState(
     JSON.parse(localStorage.getItem("token")) || null
   );
@@ -38,9 +38,7 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/profile/1" element={<ProfilePage />} />
-
+          <Route path="/profile" element={<ProfilePage />} />
           <Route path="/dashboard" element={<DashBoard />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
