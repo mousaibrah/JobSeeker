@@ -10,7 +10,6 @@ import { Routes, Route } from "react-router-dom";
 // Import Components
 import DashBoard from "./components/dashboard/DashBoard";
 import Login from "./components/login/Login";
-import Profile from "./components/profile/Profile";
 import Register from "./components/register/Register";
 import Home from "./components/Home/Home";
 import Error from "./components/404/Error";

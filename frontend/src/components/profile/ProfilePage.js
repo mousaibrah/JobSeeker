@@ -17,6 +17,7 @@ import ProfileNav from "./ProfileNav";
 import ProfileInput from "./ProfileInput";
 import { userContext } from "../../App";
 import ProfileSkills from "./ProfileSkills";
+import UpdateProfile from "./UpdateProfile";
 export default function ProfilePage() {
   const { userId } = useContext(userContext);
 
@@ -38,6 +39,7 @@ export default function ProfilePage() {
     // Meraki Academy BootCamp
     userId,
   });
+  const [modalShow, setModalShow] = useState(false);
   const {
     userImg,
     UserName,
@@ -59,6 +61,7 @@ export default function ProfilePage() {
       );
       const { userImg, about, expertise, skills, education } = result.data.data;
       const { firstName, lastName, email, phoneNumber } = result.data.userData;
+
       setProfileData({
         ...profileData,
         userImg,
@@ -82,6 +85,7 @@ export default function ProfilePage() {
   return (
     <section style={{ backgroundColor: "#eee" }}>
       <ProfileNav />
+
       <MDBContainer className="py-5">
         <MDBRow>
           <MDBCol lg="4">
@@ -105,7 +109,13 @@ export default function ProfilePage() {
                     <MDBCardText>{education}</MDBCardText>
                   </MDBListGroupItem>
 
-                  <MDBBtn>Edit</MDBBtn>
+                  <button onClick={() => setModalShow(true)}>Edit</button>
+
+                  {modalShow && (
+                    <UpdateProfile
+                      modalFunctions={{ modalShow, setModalShow }}
+                    />
+                  )}
                 </MDBListGroup>
               </MDBCardBody>
             </MDBCard>
