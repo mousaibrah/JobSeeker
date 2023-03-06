@@ -1,4 +1,5 @@
 const userSchema = require("../models/users");
+const roleSchema = require("../models/role");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
@@ -12,16 +13,18 @@ const register = async (req, res) => {
     dateOfBirth,
     role,
   } = req.body;
-  const newUser = new userSchema({
-    firstName,
-    lastName,
-    phoneNumber,
-    email,
-    password,
-    dateOfBirth,
-    role,
-  });
+  
   try {
+    const findRole = await roleSchema.findOne({role})
+    const newUser = new userSchema({
+      firstName,
+      lastName,
+      phoneNumber,
+      email,
+      password,
+      dateOfBirth,
+      role:findRole._id,
+    });
     const result = await newUser.save();
     res.status(201).json({
       success: true,

@@ -15,19 +15,20 @@ import ProfileNav from "./ProfileNav";
 import { userContext } from "../../App";
 import ProfileSkills from "./ProfileSkills";
 import UpdateProfile from "./UpdateProfile";
-import { Button } from "react-bootstrap";
+import { Button, Modal } from "react-bootstrap";
 export const profileContext = createContext();
 export default function ProfilePage() {
   const { userId } = useContext(userContext);
+  const [showProfileImg, setShowProfileImg] = useState(false)
   const [profileData, setProfileData] = useState({
-    userImg: "",
-    UserName: "",
-    email: "",
-    mobile: "",
-    about: "",
-    expertise: "",
+    userImg: null,
+    UserName: null,
+    email: null,
+    mobile: null,
+    about: null,
+    expertise: null,
     skills: [],
-    education: "",
+    education: null,
     userId,
   });
   const [modalShow, setModalShow] = useState(false);
@@ -75,7 +76,14 @@ export default function ProfilePage() {
       console.log("error :>> ", error);
     }
   };
-  const updateProfile = async () => {};
+  const updateProfile = async () => {
+    try {
+      const update = await axios.put(`http://localhost:5000/profile/${JSON.parse(userId)}`,profileData)
+      console.log('update :>> ', update);
+    } catch (error) {
+      console.log('error :>> ', error);
+    }
+  };
   const value = {
     modalShow,
     setModalShow,
@@ -97,7 +105,25 @@ export default function ProfilePage() {
                   className="rounded-circle"
                   style={{ width: "150px" }}
                   fluid
+                  onClick={(e)=>{
+                    setShowProfileImg(true)
+                  
+                  }}
                 />
+                {showProfileImg&&(<Modal  onHide={() => {
+                      setShowProfileImg(false);
+                    }}
+                    show={showProfileImg}
+                    size="md"
+                    aria-labelledby="contained-modal-title-vcenter"
+                    centered>
+                      <Modal.Body>
+                      <MDBCardImage
+                  src={userImg}
+                  style={{ width: "500px" }}
+                  />
+                      </Modal.Body>
+                    </Modal>)}
                 <MDBListGroup flush className="rounded-3">
                   <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
                     <MDBCardText className="text-dark">

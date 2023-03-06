@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 const NavLinks = ({ home }) => {
   const navigate = useNavigate();
+  
   return (
     <Navbar bg="dark">
       <Container>

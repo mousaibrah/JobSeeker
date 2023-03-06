@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, } from "react";
 import { MDBInput } from "mdb-react-ui-kit";
-const ProfileInput = () => {
+const ProfileInput = ({input}) => {
   const [someValue, setSomeValue] = useState("");
   return (
     <MDBInput

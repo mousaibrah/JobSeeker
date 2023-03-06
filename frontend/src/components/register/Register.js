@@ -37,7 +37,7 @@ const Register = () => {
     phoneNumber: "",
     email: "",
     password: "",
-    role: "6406145235344dfc42dc98d2",
+    role: "USER",
   });
   const [error, setError] = useState({
     firstName: {
@@ -93,15 +93,14 @@ const Register = () => {
   const [checkEveryForm, setCheckEveryForm] = useState(false);
   const register = async () => {
     try {
-      console.log(newUserData);
       const res = await axios.post(
         "http://localhost:5000/users/register",
         newUserData
       );
 
       setResult(res.data.message);
-      
-      // const profile = await axios.post()
+      const profile = await axios.post(`http://localhost:5000/profile/${res.data.result._id}`,newUserData);
+      console.log('profile :>> ', profile);
       setIsRegistered(true);
       setTimeout(() => {
         setErr(false);

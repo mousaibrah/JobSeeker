@@ -7,7 +7,7 @@ const RoleCheckBoxComponent = () => {
   return (
     <>
       <MDBCheckbox
-        value="6406145235344dfc42dc98d1"
+        value="COMPANY"
         label="COMPANY"
         checked={isChecked}
         onChange={(e) => {
@@ -16,7 +16,7 @@ const RoleCheckBoxComponent = () => {
         }}
       />
       <MDBCheckbox
-        value="6406145235344dfc42dc98d2"
+        value="USER"
         checked={!isChecked}
         onChange={(e) => {
           setIsChecked(false);

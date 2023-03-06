@@ -52,6 +52,7 @@ const createAdmin = async (req, res) => {
       role: roleId._id,
     });
     const userData = await admin.save();
+    const createProfile = await axios.post(`http://localhost:5000/profile/${admin._id}`,admin)
     res.status(200).json({ Roles, Admin: admin });
   } catch (error) {
     res.json(error);
