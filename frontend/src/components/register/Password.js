@@ -28,7 +28,7 @@ const Password = () => {
     }
   };
   return (
-    <>
+    <div>
       <Input
         compName={"password"}
         isRequired={error.password.isRequired}
@@ -56,7 +56,7 @@ const Password = () => {
           )}
         </>
       )}
-    </>
+    </div>
   );
 };
 

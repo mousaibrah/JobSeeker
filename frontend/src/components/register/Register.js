@@ -124,7 +124,7 @@ const Register = () => {
       setCheckEveryForm(false);
       return register();
     } else {
-      console.log("count :>> ", count);
+     
       setCheckEveryForm(true);
       Swal.fire({
         icon: "error",

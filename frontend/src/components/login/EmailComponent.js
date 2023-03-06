@@ -11,7 +11,7 @@ const EmailComponent = () => {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         required
-        id="formControlLg"
+        id="formControlLg 7"
         type="email"
         size="lg"
       />

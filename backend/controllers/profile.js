@@ -52,7 +52,7 @@ const addSkillToProfile = async(req,res)=>{
 const userId = req.params.id
 const {skill} = req.body
 try {
-  const addSkills = await profileSchema.findOneAndUpdate({userId},{$push:{skills:{$each:skill}}},{new:true})
+  const addSkills = await profileSchema.findOneAndUpdate({userId},{$addToSet:{skills:{$each:skill}}},{new:true})
 res.json(addSkills)
 } catch (error) {
   res.json(error)

@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 const NavLinks = ({ home }) => {
@@ -8,12 +8,9 @@ const NavLinks = ({ home }) => {
   return (
     <Navbar bg="dark">
       <Container>
-        <Navbar.Brand
-          href="http://localhost:3000/"
-          style={{ fontWeight: "500", fontSize: "30px", color: "#fff" }}
-        >
-          JOB<span className="text-primary">SEEKER</span>{" "}
-        </Navbar.Brand>
+       
+          <Link to='/'  style={{ fontWeight: "500", fontSize: "30px", color: "#fff" }}>JOB<span className="text-primary">SEEKER</span>{" "}</Link>
+           
         <NavDropdown
           style={{ color: "#fff" }}
           title="Options"

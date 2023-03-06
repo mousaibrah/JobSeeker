@@ -7,7 +7,7 @@ const Email = () => {
     setNewUserData({ ...newUserData, email: value });
   };
   return (
-    <>
+    <div>
       <Input
         compName={"email"}
         isRequired={error.email.isRequired}
@@ -15,7 +15,7 @@ const Email = () => {
         label={"Email Address"}
         type={"email"}
       />
-    </>
+    </div>
   );
 };
 
