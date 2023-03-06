@@ -37,7 +37,7 @@ const Register = () => {
     phoneNumber: "",
     email: "",
     password: "",
-    role: "6400ff849df16b07a6ccc511",
+    role: "6406145235344dfc42dc98d2",
   });
   const [error, setError] = useState({
     firstName: {
@@ -100,6 +100,8 @@ const Register = () => {
       );
 
       setResult(res.data.message);
+      
+      // const profile = await axios.post()
       setIsRegistered(true);
       setTimeout(() => {
         setErr(false);

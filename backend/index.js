@@ -8,9 +8,11 @@ const roleRouter = require("./routes/role");
 const userRouter = require("./routes/users");
 const postRouter = require("./routes/post");
 const profileRouter = require("./routes/profile");
+const Admin = require('./routes/createAdmin')
 app.use(cors());
 app.use(express.json());
 app.use("/roles", roleRouter);
+app.use("/admin", Admin);
 app.use("/users", userRouter);
 app.use("/posts", postRouter);
 app.use("/profile", profileRouter);
