@@ -1,20 +1,20 @@
 import { MDBBtn } from "mdb-react-ui-kit";
 import React, { useContext } from "react";
-import { Alert } from "react-bootstrap";
+import { Alert, Button } from "react-bootstrap";
 import { registerContext } from "./Register";
 const SubmitBtnComponent = () => {
   const { isRegistered, err, result, checkSubmit } =
     useContext(registerContext);
   return (
     <>
-      <MDBBtn
+      <Button
         type="submit"
         onClick={checkSubmit}
         className="w-100 mb-4"
         size="md"
       >
         sign up
-      </MDBBtn>
+      </Button>
       {isRegistered && (
         <Alert key={"success"} variant={"success"}>
           Account Created Successfully

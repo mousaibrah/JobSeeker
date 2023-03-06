@@ -1,21 +1,15 @@
 import React, { useContext } from "react";
-import {
-  MDBCard,
-  MDBCardBody,
-  MDBCardText,
-  MDBCol,
-  MDBInput,
-  MDBRow,
-} from "mdb-react-ui-kit";
+import { MDBCardText, MDBCol, MDBRow } from "mdb-react-ui-kit";
+import ProfileInput from "./ProfileInput";
 
-const ModalRow = ({text}) => {
+const ModalRow = ({ text }) => {
   return (
     <MDBRow>
       <MDBCol col="6">
         <MDBCardText>{text}</MDBCardText>
       </MDBCol>
       <MDBCol col="6">
-        <MDBInput />
+        <ProfileInput />
       </MDBCol>
     </MDBRow>
   );

@@ -1,6 +1,6 @@
 import React from "react";
 import Carousel from "react-bootstrap/Carousel";
-import { Container } from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
 import HomeNav from "./HomeNav";
 import { MDBCol, MDBRow, MDBCard, MDBCardBody, MDBBtn } from "mdb-react-ui-kit";
 import { useNavigate } from "react-router-dom";
@@ -72,13 +72,13 @@ const Home = () => {
             <h2 className="text-primary">
               Hi, are you looking for a job right now?
             </h2>
-            <MDBBtn
+            <Button
               onClick={() => {
                 navigate("/register");
               }}
             >
               Join Us Now
-            </MDBBtn>
+            </Button>
           </MDBCard>
         </MDBCol>
       </MDBRow>

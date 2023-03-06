@@ -1,34 +1,33 @@
 const profileSchema = require("../models/profile");
 const userSchema = require("../models/users");
+
 const getProfileByUserId = async (req, res) => {
   const userId = req.params.id;
   try {
     const data = await profileSchema.findOne({ userId });
-    const userData = await userSchema.findById({ _id: userId });
-    if (!data) {
-      res.json({ userData });
-    } else {
-      res.json({ data, userData });
-    }
+
+    res.json({ data });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }
 };
 const createProfile = async (req, res) => {
-  const { userImg, UserName, about, expertise, skills, education, userId } =
-    req.body;
-  const newProfile = new profileSchema({
-    userImg,
-    UserName,
-    about,
-    expertise,
-    skills,
-    education,
-    userId,
-  });
+  const userId = req.params.id;
+  const { userImg, about, expertise, skills, education } = req.body;
+
   try {
     const data = await userSchema.findById({ _id: userId });
-    console.log("data :>> ", data);
+    const newProfile = new profileSchema({
+      userImg,
+      UserName: `${data.firstName} ${data.lastName}`,
+      about,
+      email: `${data.email}`,
+      expertise,
+      mobile: `${data.phoneNumber}`,
+      skills,
+      education,
+      userId,
+    });
     const result = await newProfile.save();
     res.status(200).json({ success: true, result: newProfile });
   } catch (error) {
@@ -37,11 +36,11 @@ const createProfile = async (req, res) => {
 };
 const updateProfile = async (req, res) => {
   const userId = req.params.id;
-  const { userImg, UserName, about, expertise, skills, education } = req.body;
+  const { userImg, UserName, about, expertise, education } = req.body;
   try {
     const result = await profileSchema.findOneAndUpdate(
       { userId },
-      { userImg, UserName, about, expertise, skills, education, userId },
+      { userImg, UserName, about, expertise, education, userId },
       { new: true }
     );
     res.status(201).json({ success: true, result });

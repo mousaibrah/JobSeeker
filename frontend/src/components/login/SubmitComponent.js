@@ -3,13 +3,14 @@ import { MDBBtn } from "mdb-react-ui-kit";
 import Alert from "react-bootstrap/Alert";
 import { Link, useNavigate } from "react-router-dom";
 import { loginContext } from "./Login";
+import { Button } from "react-bootstrap";
 const SubmitComponent = () => {
   const { result, err, isLoggedIn, login } = useContext(loginContext);
   return (
     <div className="text-center text-md-start mt-4 pt-2">
-      <MDBBtn onClick={login} className="mb-0 px-5" size="lg">
+      <Button onClick={login} className="mb-0 px-5" size="lg">
         Login
-      </MDBBtn>
+      </Button>
       {isLoggedIn && (
         <Alert key={"success"} variant="success">
           Logged In Successfully

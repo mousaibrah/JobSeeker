@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, createContext } from "react";
 import axios from "axios";
 import {
   MDBCol,
@@ -8,35 +8,26 @@ import {
   MDBCardText,
   MDBCardBody,
   MDBCardImage,
-  MDBBtn,
   MDBListGroup,
   MDBListGroupItem,
-  MDBInput,
 } from "mdb-react-ui-kit";
 import ProfileNav from "./ProfileNav";
-import ProfileInput from "./ProfileInput";
 import { userContext } from "../../App";
 import ProfileSkills from "./ProfileSkills";
 import UpdateProfile from "./UpdateProfile";
+import { Button } from "react-bootstrap";
+export const profileContext = createContext();
 export default function ProfilePage() {
   const { userId } = useContext(userContext);
-
   const [profileData, setProfileData] = useState({
     userImg: "",
-    // https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png
     UserName: "",
-    // Mousa Ibrahim
-    Email: "",
-    // Admin@job.com
+    email: "",
     mobile: "",
-    // 07886037753
     about: "",
     expertise: "",
-    // Full-Stack Dev
     skills: [],
-    // "mongoDB", "Node Js", "React", "Express"
     education: "",
-    // Meraki Academy BootCamp
     userId,
   });
   const [modalShow, setModalShow] = useState(false);
@@ -47,41 +38,51 @@ export default function ProfilePage() {
     expertise,
     skills,
     education,
-    Email,
+    email,
     mobile,
   } = profileData;
   useEffect(() => {
     getProfileInfo();
   }, []);
   const getProfileInfo = async () => {
-    const keyName = ["userImg", "about", "expertise", "skills", "education"];
     try {
       const result = await axios.get(
         `http://localhost:5000/profile/${JSON.parse(userId)}`
       );
-      const { userImg, about, expertise, skills, education } = result.data.data;
-      const { firstName, lastName, email, phoneNumber } = result.data.userData;
+      const {
+        userImg,
+        UserName,
+        about,
+        expertise,
+        skills,
+        education,
+        email,
+        mobile,
+      } = result.data.data;
 
       setProfileData({
         ...profileData,
         userImg,
-        UserName: `${firstName} ${lastName}`,
-        Email: email,
-        mobile: phoneNumber,
+        UserName,
+        email,
+        mobile,
         about,
         expertise,
         skills,
         education,
       });
-
-      setTimeout(() => {
-        console.log("profileData :>> ", profileData);
-      }, 3000);
     } catch (error) {
       console.log("error :>> ", error);
     }
   };
-
+  const updateProfile = async () => {};
+  const value = {
+    modalShow,
+    setModalShow,
+    updateProfile,
+    profileData,
+    setProfileData,
+  };
   return (
     <section style={{ backgroundColor: "#eee" }}>
       <ProfileNav />
@@ -109,13 +110,10 @@ export default function ProfilePage() {
                     <MDBCardText>{education}</MDBCardText>
                   </MDBListGroupItem>
 
-                  <button onClick={() => setModalShow(true)}>Edit</button>
-
-                  {modalShow && (
-                    <UpdateProfile
-                      modalFunctions={{ modalShow, setModalShow }}
-                    />
-                  )}
+                  <Button onClick={() => setModalShow(true)}>Edit</Button>
+                  <profileContext.Provider value={value}>
+                    {modalShow && <UpdateProfile />}
+                  </profileContext.Provider>
                 </MDBListGroup>
               </MDBCardBody>
             </MDBCard>
@@ -126,7 +124,7 @@ export default function ProfilePage() {
                   <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
                     <MDBCardText className="text-dark">Skills</MDBCardText>
 
-                    <MDBBtn size="md">Add</MDBBtn>
+                    <Button size="md">Add</Button>
                   </MDBListGroupItem>
                   {skills.length ? <ProfileSkills data={skills} /> : ""}
                 </MDBListGroup>
@@ -150,7 +148,7 @@ export default function ProfilePage() {
                     <MDBCardText className="text-dark">Email</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted">{Email}</MDBCardText>
+                    <MDBCardText className="text-muted">{email}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
                 <hr />

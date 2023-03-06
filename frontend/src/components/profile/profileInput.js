@@ -4,14 +4,13 @@ const ProfileInput = () => {
   const [someValue, setSomeValue] = useState("");
   return (
     <MDBInput
-      className="form-control"
+      className="border-primary border border-3"
       id="formControlDisabled"
       value={someValue}
       onChange={(e) => {
         setSomeValue(e.target.value);
       }}
-      wrapperClass="mb-4"
-      type=""
+      type="text"
       disabled={true}
     />
   );

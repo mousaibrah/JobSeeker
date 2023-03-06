@@ -5,8 +5,9 @@ const {
   updateProfile,
   getProfileByUserId,
 } = require("../controllers/profile");
-profileRouter.post("/", createProfile);
+profileRouter.post("/:id", createProfile);
 profileRouter.get("/:id", getProfileByUserId);
 profileRouter.put("/:id", updateProfile);
+profileRouter.put("/:id/skills", updateProfile);
 
 module.exports = profileRouter;
