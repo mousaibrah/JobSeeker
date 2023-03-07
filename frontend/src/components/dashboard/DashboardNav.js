@@ -3,13 +3,14 @@ import { useNavigate, Link } from "react-router-dom";
 import { Nav, NavDropdown } from "react-bootstrap";
 import NavLinks from "../navbar/NavLinks";
 import { userContext } from "../../App";
-const ProfileNav = () => {
+const DashboardNav = () => {
   const navigate = useNavigate();
   const { setUserId, setToken, setIsLoggedIn } = useContext(userContext);
-
-  const dashboardL = (
-      <Nav.Link onClick={()=>navigate("/dashboard")}>Dashboard</Nav.Link>
+  const profileL = (
+      <Nav.Link onClick={()=>navigate("/profile")}>Profile</Nav.Link>
   );
+
+ 
   const Logout = (
       <Nav.Link
         onClick={() => {
@@ -23,7 +24,7 @@ const ProfileNav = () => {
       </Nav.Link>
   );
 
-  return <NavLinks home={{ Logout, dashboardL }} />;
+  return <NavLinks home={{ profileL, Logout }} />;
 };
 
-export default ProfileNav;
+export default DashboardNav;
