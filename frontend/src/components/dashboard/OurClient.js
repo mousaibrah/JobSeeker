@@ -14,14 +14,14 @@ const OurClient = () => {
         <MDBCol lg="2"></MDBCol>
         <MDBCol lg="10">
           <MDBRow>
-            <MDBCol lg='3'></MDBCol>
+            <MDBCol lg="3"></MDBCol>
             <MDBCol>
-            <MDBListGroupItem style={{ fontSize: "22px", fontWeight: "500" }}>
-              OUR CLIENT
-            </MDBListGroupItem>
+              <MDBListGroupItem style={{ fontSize: "22px", fontWeight: "500" }}>
+                OUR CLIENT
+              </MDBListGroupItem>
             </MDBCol>
           </MDBRow>
-          <hr/>
+          <hr />
           <MDBRow>
             <MDBCol>
               <MDBCardImage

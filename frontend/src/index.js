@@ -9,7 +9,7 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       {/* <GoogleOAuthProvider clientId="512075297135-v59ngdh1l4i3fn6gtfjgdtv4dnj4tsum.apps.googleusercontent.com"> */}
-        <App />
+      <App />
       {/* </GoogleOAuthProvider> */}
     </BrowserRouter>
   </React.StrictMode>

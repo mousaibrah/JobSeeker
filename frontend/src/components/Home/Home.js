@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 const Home = () => {
   const navigate = useNavigate();
   return (
-    <Container fluid >
+    <Container fluid>
       <HomeNav />{" "}
       <MDBRow>
         <MDBCol col="6" className="home-img">

@@ -99,8 +99,11 @@ const Register = () => {
       );
 
       setResult(res.data.message);
-      const profile = await axios.post(`http://localhost:5000/profile/${res.data.result._id}`,newUserData);
-      console.log('profile :>> ', profile);
+      const profile = await axios.post(
+        `http://localhost:5000/profile/${res.data.result._id}`,
+        newUserData
+      );
+      console.log("profile :>> ", profile);
       setIsRegistered(true);
       setTimeout(() => {
         setErr(false);
@@ -124,7 +127,6 @@ const Register = () => {
       setCheckEveryForm(false);
       return register();
     } else {
-     
       setCheckEveryForm(true);
       Swal.fire({
         icon: "error",

@@ -6,7 +6,7 @@ const PasswordComponent = () => {
 
   return (
     <>
-    <p>Password</p>
+      <p>Password</p>
       <MDBInput
         wrapperClass="mb-4"
         value={password}

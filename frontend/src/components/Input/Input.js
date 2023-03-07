@@ -1,14 +1,13 @@
 import { MDBInput, MDBValidation } from "mdb-react-ui-kit";
 import React, { useContext } from "react";
 import { registerContext } from "../register/Register";
-import {v4} from 'uuid'
+import { v4 } from "uuid";
 const Input = ({ compName, isRequired, func, label, type }) => {
   const { error, setError, newUserData, checkEveryForm } =
     useContext(registerContext);
 
   return (
     <>
-    {/* <MDBValidation isValidated={error[compName].isError}> */}
       <p>{label}</p>
       <MDBInput
         className="form-control"
@@ -36,7 +35,6 @@ const Input = ({ compName, isRequired, func, label, type }) => {
       ) : (
         ""
       )}
-    {/* </MDBValidation> */}
     </>
   );
 };

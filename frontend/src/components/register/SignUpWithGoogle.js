@@ -17,19 +17,17 @@ const SignUpWithGoogle = () => {
         <br />
         <p>or sign in with:</p>
 
-       
-          <GoogleLogin
-            className="text-center"
-            onSuccess={(credentialResponse) => {
-              setToken(credentialResponse.credential);
-              console.log(decodedToken);
-              console.log("isExpired :>> ", isExpired);
-            }}
-            onError={() => {
-              console.log("Login Failed");
-            }}
-          />
-        
+        <GoogleLogin
+          className="text-center"
+          onSuccess={(credentialResponse) => {
+            setToken(credentialResponse.credential);
+            console.log(decodedToken);
+            console.log("isExpired :>> ", isExpired);
+          }}
+          onError={() => {
+            console.log("Login Failed");
+          }}
+        />
       </div>
     </>
   );

@@ -9,22 +9,23 @@ const Catagories = () => {
           Catagories
         </MDBListGroupItem>
         <Row>
-         <Col lg='2'>
-          
-         </Col>
-         <Col lg='10'>
-
-          <hr />
-          <MDBListGroupItem className="catagories">Doctor's</MDBListGroupItem>
-          <hr />
-          <MDBListGroupItem className="catagories">Engineer's</MDBListGroupItem>
-          <hr />
-          <MDBListGroupItem className="catagories">Nurse's</MDBListGroupItem>
-          <hr />
-          <MDBListGroupItem className="catagories">Lawyer's</MDBListGroupItem>
-          <hr />
-          <MDBListGroupItem className="catagories">Builder's</MDBListGroupItem>
-          <hr />
+          <Col lg="2"></Col>
+          <Col lg="10">
+            <hr />
+            <MDBListGroupItem className="catagories">Doctor's</MDBListGroupItem>
+            <hr />
+            <MDBListGroupItem className="catagories">
+              Engineer's
+            </MDBListGroupItem>
+            <hr />
+            <MDBListGroupItem className="catagories">Nurse's</MDBListGroupItem>
+            <hr />
+            <MDBListGroupItem className="catagories">Lawyer's</MDBListGroupItem>
+            <hr />
+            <MDBListGroupItem className="catagories">
+              Builder's
+            </MDBListGroupItem>
+            <hr />
           </Col>
         </Row>
       </MDBCard>

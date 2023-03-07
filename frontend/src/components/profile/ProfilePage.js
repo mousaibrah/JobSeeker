@@ -88,7 +88,6 @@ const ProfilePage = () => {
       const skillAdded = await axios.put(
         `http://localhost:5000/profile/${JSON.parse(userId)}/skills`,
         { skill: skills }
-       
       );
       // console.log('skillAdded :>> ', skillAdded);
     } catch (error) {
