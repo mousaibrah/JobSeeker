@@ -6,9 +6,9 @@ const PasswordComponent = () => {
 
   return (
     <>
+    <p>Password</p>
       <MDBInput
         wrapperClass="mb-4"
-        label="Password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         required

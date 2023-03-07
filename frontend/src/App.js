@@ -34,7 +34,7 @@ function App() {
   };
   return (
     <userContext.Provider value={value}>
-      <div className="App">
+      {/* <div className="App"> */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/profile" element={<ProfilePage />} />
@@ -43,7 +43,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="*" element={<Error />} />
         </Routes>
-      </div>
+      {/* </div> */}
       <Container fluid>
         <Footer />
       </Container>

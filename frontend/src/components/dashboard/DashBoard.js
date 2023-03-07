@@ -1,12 +1,13 @@
 import React from "react";
-
+import {Container} from 'react-bootstrap'
+import PostBox from "./PostBox";
 const DashBoard = () => {
   
   return  (
-    <div className="DashBoard">
-      <h1>DashBoard
-      </h1>
-    </div>
+    <Container >
+    <PostBox/>
+
+    </Container>
     )
 };
 

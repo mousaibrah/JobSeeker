@@ -1,20 +1,17 @@
 import React, { useState, useContext } from "react";
-import axios from "axios";
 import { Modal, Button } from "react-bootstrap";
 import { userContext } from "../../App";
 import {
   MDBCard,
-  MDBCardBody,
-  MDBCardImage,
   MDBCardText,
   MDBCol,
   MDBInput,
   MDBRow,
 } from "mdb-react-ui-kit";
-import ModalRow from "./ModalRow";
+
 import { profileContext } from "./ProfilePage";
+import ProfileInput from "./input/ProfileInput";
 const UpdateProfile = () => {
-  const { userId } = useContext(userContext);
   const {
     modalShow,
     setModalShow,
@@ -22,7 +19,25 @@ const UpdateProfile = () => {
     profileData,
     setProfileData,
   } = useContext(profileContext);
-  const { userImg, UserName,email,mobile,about,expertise,skills,education,} = profileData;
+  const { UserName, email, mobile, about, expertise, education } = profileData;
+  const setEmail = (value) => {
+    setProfileData({ ...profileData, email: value });
+  };
+  const setUserName = (value) => {
+    setProfileData({ ...profileData, userName: value });
+  };
+  const setMobile = (value) => {
+    setProfileData({ ...profileData, mobile: value });
+  };
+  const setAbout = (value) => {
+    setProfileData({ ...profileData, about: value });
+  };
+  const setEducation = (value) => {
+    setProfileData({ ...profileData, education: value });
+  };
+  const setExpertise = (value) => {
+    setProfileData({ ...profileData, expertise: value });
+  };
   return (
     <>
       <Modal
@@ -39,153 +54,47 @@ const UpdateProfile = () => {
         </Modal.Header>
         <MDBCard>
           <Modal.Body>
-            {/* <MDBCardImage
-              src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
-              className="rounded-circle"
-              style={{ width: "100px" }}
-              fluid
-            /> */}
-            <MDBRow>
-              <MDBCol col="6">
-                <MDBCardText>UserName</MDBCardText>
-              </MDBCol>
-              <MDBCol col="6">
-                <MDBInput
-                  className="border-primary border border-3"
-                  id="formControlDisabled"
-                  value={UserName}
-                  onChange={(e) => {
-                    setProfileData({
-                      ...profileData,
-                      userName: e.target.value,
-                    });
-                  }}
-                  type="text"
-                  disabled={false}
-                />
-              </MDBCol>
-            </MDBRow>
+            <ProfileInput
+              onFunction={setUserName}
+              input={{
+                title: "UserName",
+                initValue: UserName,
+                isDisable: false,
+              }}
+            />
             <hr />
-            <MDBRow>
-              <MDBCol col="6">
-                <MDBCardText>email</MDBCardText>
-              </MDBCol>
-              <MDBCol col="6">
-                <MDBInput
-                  className="border-primary border border-3"
-                  id="formControlDisabled"
-                  value={email}
-                  onChange={(e) => {
-                    setProfileData({
-                      ...profileData,
-                      email: e.target.value,
-                    });
-                  }}
-                  type="text"
-                  disabled={true}
-                />
-              </MDBCol>
-            </MDBRow>
+            <ProfileInput
+              onFunction={setEmail}
+              input={{ title: "Email", initValue: email, isDisable: true }}
+            />
             <hr />
-
-            <MDBRow>
-              <MDBCol col="6">
-                <MDBCardText>mobile</MDBCardText>
-              </MDBCol>
-              <MDBCol col="6">
-                <MDBInput
-                  className="border-primary border border-3"
-                  id="formControlDisabled"
-                  value={mobile}
-                  onChange={(e) => {
-                    setProfileData({
-                      ...profileData,
-                      mobile: e.target.value,
-                    });
-                  }}
-                  type="text"
-                  disabled={false}
-                />
-              </MDBCol>
-            </MDBRow>
+            <ProfileInput
+              onFunction={setMobile}
+              input={{ title: "Mobile", initValue: mobile, isDisable: false }}
+            />
             <hr />
-
-            <MDBRow>
-              <MDBCol col="6">
-                <MDBCardText>education</MDBCardText>
-              </MDBCol>
-              <MDBCol col="6">
-                <MDBInput
-                  className="border-primary border border-3"
-                  id="formControlDisabled"
-                  value={education}
-                  onChange={(e) => {
-                    setProfileData({
-                      ...profileData,
-                      education: e.target.value,
-                    });
-                  }}
-                  type="text"
-                  disabled={false}
-                />
-              </MDBCol>
-            </MDBRow>
+            <ProfileInput
+              onFunction={setEducation}
+              input={{
+                title: "Education",
+                initValue: education,
+                isDisable: false,
+              }}
+            />
             <hr />
-
-            <MDBRow>
-              <MDBCol col="6">
-                <MDBCardText>expertise</MDBCardText>
-              </MDBCol>
-              <MDBCol col="6">
-                <MDBInput
-                  className="border-primary border border-3"
-                  id="formControlDisabled"
-                  value={expertise}
-                  onChange={(e) => {
-                    setProfileData({
-                      ...profileData,
-                      expertise: e.target.value,
-                    });
-                  }}
-                  type="text"
-                  disabled={false}
-                />
-              </MDBCol>
-            </MDBRow>
+            <ProfileInput
+              onFunction={setExpertise}
+              input={{
+                title: "Expertise",
+                initValue: expertise,
+                isDisable: false,
+              }}
+            />
             <hr />
-
-            <MDBRow>
-              <MDBCol col="6">
-                <MDBCardText>about</MDBCardText>
-              </MDBCol>
-              <MDBCol col="6">
-                <MDBInput
-                  className="border-primary border border-3"
-                  id="formControlDisabled"
-                  value={about}
-                  onChange={(e) => {
-                    setProfileData({
-                      ...profileData,
-                      about: e.target.value,
-                    });
-                  }}
-                  type="text"
-                  disabled={false}
-                />
-              </MDBCol>
-            </MDBRow>
-            {/* <hr />
-            <ModalRow text={"Aria Of EXPERTISE :"}/>
-            <hr />
-            <ModalRow text={"EDUCATION :"} input={''}/>
-            <hr />
-            <ModalRow text={"Full Name"} input={''}/>
-            <hr />
-            <ModalRow text={"Email"} input={''}/>
-            <hr />
-            <ModalRow text={"Mobile"} input={''}/>
-            <hr />
-            <ModalRow text={"About"} input={''}/> */}
+            <ProfileInput
+              onFunction={setAbout}
+              input={{ title: "About", initValue: about, isDisable: false }}
+            />
           </Modal.Body>
         </MDBCard>
         <Modal.Footer>

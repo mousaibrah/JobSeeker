@@ -1,5 +1,5 @@
 import { MDBCardText, MDBListGroupItem } from "mdb-react-ui-kit";
-import {v4} from 'uuid'
+import { v4 } from "uuid";
 import React from "react";
 
 const ProfileSkills = ({ data }) => {

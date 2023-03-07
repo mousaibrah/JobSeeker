@@ -17,7 +17,7 @@ const SignUpWithGoogle = () => {
         <br />
         <p>or sign in with:</p>
 
-        <MDBBtn className="w-10 mb-4">
+       
           <GoogleLogin
             className="text-center"
             onSuccess={(credentialResponse) => {
@@ -29,7 +29,7 @@ const SignUpWithGoogle = () => {
               console.log("Login Failed");
             }}
           />
-        </MDBBtn>
+        
       </div>
     </>
   );

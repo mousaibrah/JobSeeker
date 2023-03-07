@@ -5,9 +5,10 @@ const EmailComponent = () => {
   const { setEmail, email } = useContext(loginContext);
   return (
     <>
+    <p>Email address</p>
       <MDBInput
         wrapperclass="mb-4"
-        label="Email address"
+        
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         required
