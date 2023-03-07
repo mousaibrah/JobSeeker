@@ -7,15 +7,11 @@ const createPost = async (req, res) => {
     title,
     userId,
     company,
-    postId:1,
     description,
     responsibility,
   });
   try {
-   const test =  postSchema.setNext('postCounter',(err,postId)=>
-   console.log(postId)
-   )
-console.log(test)
+
     const result = await newPost.save();
     res.status(201).json(newPost);
   } catch (error) {
