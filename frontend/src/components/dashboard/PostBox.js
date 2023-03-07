@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button,Nav } from "react-bootstrap";
+import { Button, Nav } from "react-bootstrap";
 import {
   MDBCard,
   MDBCardImage,
@@ -10,9 +10,11 @@ import {
   MDBRow,
 } from "mdb-react-ui-kit";
 const PostBox = () => {
-  const [description, setDescription] = useState('s nostrum? Lorem ipsum dolor sit amet, consectetur adipisicingelit. Assumenda nisi culpa sunt voluptate aperiam facilis, aspernatur exlibero earum ab quos rerum, officia corrupti quisquam iusto mollitia et vero vitae! Lorem ipsum dolor sit, amet consectetur adipisicing elit.Doloremque suscipit neque distinctio ullam? Omnis veniam ipsa error numquam! Deleniti quidem autem odit, facere sit repellendus amet sequiexcepturi? Quod, praesentium? lorem orrupti quisquam iusto mollitia et vero vitae! Lorem ipsum dolor sit, amet consectetur adipisicing elit.Doloremque suscipit neque distinctio ullam? Omnis veniam ipsa error numquam! Deleniti quidem autem odit, facere sit repellendus amet sequiexcepturi? Quod, praesentium? loremorrupti quisquam iusto mollitia et vero vitae! Lorem ipsum dolor sit, amet consectetur adipisicing elit.Doloremque suscipit neque distinctio ullam? Omnis veniam ipsa error numquam! Deleniti quidem autem odit, facere sit repellendus amet sequiexcepturi? Quod, praesentium? loremorrupti quisquam iusto mollitia et vero vitae! Lorem ipsum dolor sit, amet consectetur adipisicing elit.Doloremque suscipit neque distinctio ullam? Omnis veniam ipsa error numquam! Deleniti quidem autem odit, facere sit repellendus amet sequiexcepturi? Quod, praesentium? loremorrupti quisquam iusto mollitia et vero vitae! Lorem ipsum dolor sit, amet consectetur adipisicing elit.Doloremque suscipit neque distinctio ullam? Omnis veniam ipsa error numquam! Deleniti quidem autem odit, facere sit repellendus amet sequiexcepturi? Quod, praesentium? loremorrupti quisquam iusto mollitia et vero vitae! Lorem ipsum dolor sit, amet consectetur adipisicing elit.Doloremque suscipit neque distinctio ullam? Omnis veniam ipsa error numquam! Deleniti quidem autem odit, facere sit repellendus amet sequiexcepturi? Quod, praesentium? loremorrupti quisquam iusto mollitia et vero vitae! Lorem ipsum dolor sit, amet consectetur adipisicing elit.Doloremque suscipit neque distinctio ullam? Omnis veniam ipsa error numquam! Deleniti quidem autem odit, facere sit repellendus amet sequiexcepturi? Quod, praesentium? loremorrupti quisquam iusto mollitia et vero vitae! Lorem ipsum dolor sit, amet consectetur adipisicing elit.Doloremque suscipit neque distinctio ullam? Omnis veniam ipsa error numquam! Deleniti quidem autem odit, facere sit repellendus amet sequiexcepturi? Quod, praesentium? lorem')
-  const [maxLength, setMaxLength] = useState(250)
-  const [isCollaps, setIsCollaps] = useState(false)
+  const [description, setDescription] = useState(
+    "s nostrum? Lorem ipsum dolor sit amet, consectetur adipisicingelit. Assumenda nisi culpa sunt voluptate aperiam facilis, aspernatur exlibero earum ab quos rerum, officia corrupti quisquam iusto mollitia et vero vitae! Lorem ipsum dolor sit, amet consectetur adipisicing elit.Doloremque suscipit neque distinctio ullam? Omnis veniam ipsa error numquam! Deleniti quidem autem odit, facere sit repellendus amet sequiexcepturi? Quod, praesentium? lorem orrupti quisquam iusto mollitia et vero vitae! Lorem ipsum dolor sit, amet consectetur adipisicing elit.Doloremque suscipit neque distinctio ullam? Omnis veniam ipsa error numquam! Deleniti quidem autem odit, facere sit repellendus amet sequiexcepturi? Quod, praesentium? loremorrupti quisquam iusto mollitia et vero vitae! Lorem ipsum dolor sit, amet consectetur adipisicing elit.Doloremque suscipit neque distinctio ullam? Omnis veniam ipsa error numquam! Deleniti quidem autem odit, facere sit repellendus amet sequiexcepturi? Quod, praesentium? loremorrupti quisquam iusto mollitia et vero vitae! Lorem ipsum dolor sit, amet consectetur adipisicing elit.Doloremque suscipit neque distinctio ullam? Omnis veniam ipsa error numquam! Deleniti quidem autem odit, facere sit repellendus amet sequiexcepturi? Quod, praesentium? loremorrupti quisquam iusto mollitia et vero vitae! Lorem ipsum dolor sit, amet consectetur adipisicing elit.Doloremque suscipit neque distinctio ullam? Omnis veniam ipsa error numquam! Deleniti quidem autem odit, facere sit repellendus amet sequiexcepturi? Quod, praesentium? loremorrupti quisquam iusto mollitia et vero vitae! Lorem ipsum dolor sit, amet consectetur adipisicing elit.Doloremque suscipit neque distinctio ullam? Omnis veniam ipsa error numquam! Deleniti quidem autem odit, facere sit repellendus amet sequiexcepturi? Quod, praesentium? loremorrupti quisquam iusto mollitia et vero vitae! Lorem ipsum dolor sit, amet consectetur adipisicing elit.Doloremque suscipit neque distinctio ullam? Omnis veniam ipsa error numquam! Deleniti quidem autem odit, facere sit repellendus amet sequiexcepturi? Quod, praesentium? loremorrupti quisquam iusto mollitia et vero vitae! Lorem ipsum dolor sit, amet consectetur adipisicing elit.Doloremque suscipit neque distinctio ullam? Omnis veniam ipsa error numquam! Deleniti quidem autem odit, facere sit repellendus amet sequiexcepturi? Quod, praesentium? lorem"
+  );
+  const [maxLength, setMaxLength] = useState(250);
+  const [isCollaps, setIsCollaps] = useState(false);
   return (
     <MDBCard>
       <MDBRow>
@@ -29,17 +31,22 @@ const PostBox = () => {
         </MDBCol>
       </MDBRow>
       <MDBCardBody>
-      {description.length <= maxLength ? description : description.substring(0, maxLength)}
-      <Nav.Link onClick={()=>{
-        if (isCollaps) {
-          setMaxLength(250)
-          
-        } else {
-          
-          setMaxLength(description.length)
-        }
-      setIsCollaps(!isCollaps)}
-      } className="text-muted">Show {isCollaps?'Less':'More'}</Nav.Link>
+        {description.length <= maxLength
+          ? description
+          : description.substring(0, maxLength)}
+        <Nav.Link
+          onClick={() => {
+            if (isCollaps) {
+              setMaxLength(250);
+            } else {
+              setMaxLength(description.length);
+            }
+            setIsCollaps(!isCollaps);
+          }}
+          className="text-muted"
+        >
+          Show {isCollaps ? "Less" : "More"}
+        </Nav.Link>
       </MDBCardBody>
       <MDBCardFooter>
         <Button>Apply</Button>

@@ -16,8 +16,10 @@ const DashBoard = () => {
         <MDBCol lg='2'>
           <Catagories/>
         </MDBCol>
-        <MDBCol lg='8'>
+        <MDBCol lg='8' className="posts-page">
+          
           <AddPost/>
+          
         <PostBox/>
         </MDBCol>
 

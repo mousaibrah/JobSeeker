@@ -19,3 +19,12 @@ body{
     transform: scale(1.1);
     transition: 0.3s;
 }
+
+.footer{
+    margin-top: auto;
+}
+.posts-page{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}

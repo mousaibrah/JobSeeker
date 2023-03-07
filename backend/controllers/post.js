@@ -8,6 +8,7 @@ const createPost = async (req, res) => {
     company,
     description,
     responsibility,
+   
   });
   try {
     const result = await newPost.save();
