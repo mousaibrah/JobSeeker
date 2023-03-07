@@ -1,16 +1,21 @@
 const postSchema = require("../models/post");
 
 const createPost = async (req, res) => {
-  const { title, userId, company, description, responsibility } = req.body;
+  const { title, userId, company, description, responsibility } =
+    req.body;
   const newPost = new postSchema({
     title,
     userId,
     company,
+    postId:1,
     description,
     responsibility,
-   
   });
   try {
+   const test =  postSchema.setNext('postCounter',(err,postId)=>
+   console.log(postId)
+   )
+console.log(test)
     const result = await newPost.save();
     res.status(201).json(newPost);
   } catch (error) {

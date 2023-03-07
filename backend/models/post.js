@@ -7,7 +7,7 @@ const postSchema = new mongoose.Schema({
     required: true,
   },
   userId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
-  postId:{type:Number},
+  postId:{type:Number,required: true},
   company: {
     type: String,
     required: true,
@@ -24,5 +24,5 @@ const postSchema = new mongoose.Schema({
   ],
 });
 
-//Export the model
+
 module.exports = mongoose.model("Post", postSchema);

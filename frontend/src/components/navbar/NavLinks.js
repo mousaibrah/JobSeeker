@@ -8,7 +8,10 @@ const NavLinks = ({ home }) => {
   return (
     <Navbar bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand onClick={() => navigate("/")}>
+        <Navbar.Brand
+          style={{ cursor: "pointer" }}
+          onClick={() => navigate("/")}
+        >
           JOB<span className="text-primary">SEEKER</span>
         </Navbar.Brand>
         <Nav className="me-auto">
