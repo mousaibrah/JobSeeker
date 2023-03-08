@@ -1,15 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;1,200;1,400;1,600&family=Quicksand:wght@300;400;500;600;700&family=Style+Script&display=swap");
-* {
-  font-family: "Poppins", sans-serif;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  scroll-padding-top: 32px;
-}
 
-body {
-  text-align: center;
-}
 .catagories:hover {
   font-size: larger;
   cursor: pointer;
@@ -31,6 +21,30 @@ body {
   padding-top: 50px;
 }
 /* Post Box */
+.text-social{
+  cursor: pointer;
+  font-size: 22px !important;
+}
+
+.box-text::after{
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #0275d8;
+  transition: width .3s;
+
+}
+hr{
+  color: #0275d8 !important;
+}
+.box-text:hover{
+  cursor: pointer;
+}
+.box-text:hover::after{
+  width: 100%;
+  
+}
 .post {
   width: 100%;
   border-radius: 10px;

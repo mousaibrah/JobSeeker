@@ -13,7 +13,6 @@ border: none;
   color: white;
 &:hover{
     background-color: #0274d891;
-    color: #121212;
     font-weight: 500;
     
 }

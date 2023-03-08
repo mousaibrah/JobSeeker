@@ -18,10 +18,12 @@ import UpdateProfile from "./UpdateProfile";
 import { Button } from "../styled/Button.Styled";
 import SkillsModal from "./SkillsModal";
 import PersonalInfo, { PersonalBox } from "./PersonalInfo";
+import PostBox from "../dashboard/PostBox";
 export const profileContext = createContext();
 const ProfilePage = () => {
   const { userId } = useContext(AppContext);
   const [skillModal, setSkillModal] = useState(false);
+  const [posts, setPosts] = useState([])
   const [profileData, setProfileData] = useState({
     userImg: null,
     UserName: null,
@@ -52,6 +54,9 @@ const ProfilePage = () => {
       const result = await axios.get(
         `http://localhost:5000/profile/${JSON.parse(userId)}`
       );
+      const post = await axios.get(`http://localhost:5000/posts/${JSON.parse(userId)}`)
+      
+      setPosts(post.data.post)
       const {
         userImg,
         UserName,
@@ -108,10 +113,10 @@ const ProfilePage = () => {
     <>
       <ProfileNav />
       <profileContext.Provider value={value}>
-        <MDBContainer className="py-5">
+        <MDBContainer  className="py-5" >
           <MDBRow>
             <MDBCol lg="4">
-              <MDBCard className="mb-4">
+              <MDBCard className="mb-4" style={{backgroundColor:'#1e1e2a',border:'2px solid #fcfeff'}}>
                 <MDBCardBody className="text-center">
                   <MDBCardImage
                     src={userImg}
@@ -119,8 +124,9 @@ const ProfilePage = () => {
                     style={{ width: "150px" }}
                     fluid
                   />
-                  <MDBListGroup className="rounded-3">
+                  <MDBListGroup className="rounded-3" >
                     <PersonalBox
+                    
                       info={{ text: "Aria Of EXPERTISE :", value: expertise }}
                     />
                     <PersonalBox
@@ -131,11 +137,11 @@ const ProfilePage = () => {
                   </MDBListGroup>
                 </MDBCardBody>
               </MDBCard>
-              <MDBCard className="mb-4 mb-lg-0">
-                <MDBCardBody className="p-0">
+              <MDBCard className="mb-4 mb-lg-0" style={{backgroundColor:'#1e1e2a',border:'1px solid #fcfeff'}}>
+                <MDBCardBody className="p-0" >
                   <MDBListGroup className="rounded-3">
-                    <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
-                      <MDBCardText className="text-dark">Skills</MDBCardText>
+                    <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3" style={{backgroundColor:'#1e1e2a',border:'1px solid #fcfeff'}}>
+                      <MDBCardText style={{color:'#fcfeff'}}>Skills</MDBCardText>
                       <Button
                         onClick={() => {
                           setSkillModal(true);
@@ -152,7 +158,7 @@ const ProfilePage = () => {
               </MDBCard>
             </MDBCol>
             <MDBCol lg="8">
-              <MDBCard className="mb-4">
+              <MDBCard className="mb-4" style={{backgroundColor:'#1e1e2a',border:'1px solid #fcfeff'}}>
                 <MDBCardBody>
                   <PersonalInfo info={{ text: "Full Name", item: UserName }} />
                   <hr />
@@ -163,7 +169,9 @@ const ProfilePage = () => {
                   <PersonalInfo info={{ text: "About", item: about }} />
                 </MDBCardBody>
               </MDBCard>
+              <PostBox postsData={posts}/>
             </MDBCol>
+            
           </MDBRow>
         </MDBContainer>
       </profileContext.Provider>

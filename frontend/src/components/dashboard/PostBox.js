@@ -5,6 +5,9 @@ import { v4 } from "uuid";
 const PostBox = ({ postsData }) => {
   const [maxLength, setMaxLength] = useState(250);
   const [isCollapse, setIsCollapse] = useState(false);
+  if (!postsData) {
+    return 
+  }
   const Post = postsData.map((post) => {
     return (
       <div className="post" key={v4()}>

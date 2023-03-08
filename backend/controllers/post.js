@@ -27,9 +27,9 @@ const getPosts = async (req, res) => {
   }
 };
 const getPostById = async (req, res) => {
-  const _id = req.params.id;
+  const userId = req.params.id;
   try {
-    const data = await postSchema.findById({ _id });
+    const data = await postSchema.find({ userId });
     if (!data) {
       res
         .status(404)

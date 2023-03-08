@@ -10,7 +10,7 @@ import {
 const OurClient = () => {
   return (
     <>
-      <MDBCard>
+      <MDBCard style={{backgroundColor:'#1e1e2a',}}>
         <MDBCol lg="2"></MDBCol>
         <MDBCol lg="10">
           <MDBRow>
