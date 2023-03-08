@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
 *{
@@ -23,5 +23,5 @@ html::-webkit-scrollbar-thumb {
     background: #1e1e2a;
   }
 `;
- 
+
 export default GlobalStyle;

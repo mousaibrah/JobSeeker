@@ -1,9 +1,13 @@
-
-import React from "react";
+import React, { useState, useContext } from "react";
 import { Button } from "../styled/Button.Styled";
 import { Input } from "../styled/Input.Styled";
+import { AppContext } from "../State/AppState";
 
 const AddPost = () => {
+  const [desc, setDesc] = useState("");
+  const { posts, setPosts, profileData } = useContext(AppContext);
+
+  const sharePost = async () => {};
   return (
     <div className="share">
       <div className="shareWrapper">
@@ -13,7 +17,13 @@ const AddPost = () => {
             src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
             alt=""
           />
-          <Input mx={'300px'} placeholder="You Have A Job Opining ..." className="shareInput" />
+          <Input
+            mx={"300px"}
+            placeholder="You Have A Job Opining ..."
+            className="shareInput"
+            value={desc}
+            onChange={(e) => setDesc(e.target.value)}
+          />
         </div>
         <hr className="shareHr" />
         <div className="shareBottom">
@@ -23,7 +33,7 @@ const AddPost = () => {
             </div>
           </div>
           <div className="share-btn">
-            <Button >Share</Button>
+            <Button onClick={sharePost}>Share</Button>
           </div>
         </div>
       </div>

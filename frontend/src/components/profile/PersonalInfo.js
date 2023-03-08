@@ -7,8 +7,17 @@ import {
 import React from "react";
 export const PersonalBox = ({ info }) => {
   return (
-    <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3" style={{backgroundColor:'#1e1e2a',borderBottom:'1px solid #0275d8',marginBottom:'4px'}}>
-      <MDBCardText className="box-text" style={{color:'#fcfeff'}}>{info.text}</MDBCardText>
+    <MDBListGroupItem
+      className="d-flex justify-content-between align-items-center p-3"
+      style={{
+        backgroundColor: "#1e1e2a",
+        borderBottom: "1px solid #0275d8",
+        marginBottom: "4px",
+      }}
+    >
+      <MDBCardText className="box-text" style={{ color: "#fcfeff" }}>
+        {info.text}
+      </MDBCardText>
       <MDBCardText className="text-muted">{info.value}</MDBCardText>
     </MDBListGroupItem>
   );
@@ -16,9 +25,9 @@ export const PersonalBox = ({ info }) => {
 const PersonalInfo = ({ info }) => {
   const { text, item } = info;
   return (
-    <MDBRow >
+    <MDBRow>
       <MDBCol sm="3">
-        <MDBCardText style={{color:'#fcfeff'}} >{text}</MDBCardText>
+        <MDBCardText style={{ color: "#fcfeff" }}>{text}</MDBCardText>
       </MDBCol>
       <MDBCol sm="9">
         <MDBCardText className="text-muted">{item}</MDBCardText>

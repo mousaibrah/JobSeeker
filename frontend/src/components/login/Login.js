@@ -19,11 +19,23 @@ const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { setToken, isLoggedIn, setIsLoggedIn, setUserId } =
-    useContext(AppContext);
+  const {
+    setToken,
+    isLoggedIn,
+    setIsLoggedIn,
+    setUserId,
+    setProfileData,
+    profileData,
+    userId,
+  } = useContext(AppContext);
   const [result, setResult] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const [err, setErr] = useState(false);
+  if (isLoggedIn) {
+    setTimeout(() => {
+      navigate("/dashboard");
+    }, 2000);
+  }
   const login = async () => {
     try {
       const res = await axios.post("http://localhost:5000/users/login", {
@@ -31,9 +43,15 @@ const Login = () => {
         password,
       });
       if (res.data.success) {
+        const profile = await axios.get(
+          `http://localhost:5000/profile/${res.data.userId}`
+        );
+
+        setProfileData(profile.data.data);
         setUserId(res.data.userId);
         setToken(res.data.token);
         localStorage.setItem("userId", JSON.stringify(res.data.userId));
+        localStorage.setItem("profile", JSON.stringify(profile.data.data));
 
         localStorage.setItem("token", JSON.stringify(res.data.token));
         if (rememberMe) {
@@ -45,16 +63,12 @@ const Login = () => {
         setErr(false);
       }
     } catch (error) {
-      setResult(error.response.data.message);
-
+      setResult(error?.response?.data?.message);
+      console.log("error :>> ", error);
       setErr(true);
     }
   };
-  if (isLoggedIn) {
-    setTimeout(() => {
-      navigate("/dashboard");
-    }, 3000);
-  }
+
   const value = {
     result,
     err,

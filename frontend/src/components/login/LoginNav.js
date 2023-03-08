@@ -6,12 +6,8 @@ import NavLinks from "../navbar/NavLinks";
 const LoginNav = () => {
   const navigate = useNavigate();
 
-  const registerL = (
-    <Link onClick={() => navigate("/register")}>Register</Link>
-  );
-  const profileL = (
-    <Link onClick={() => navigate("/profile")}>Profile</Link>
-  );
+  const registerL = <Link onClick={() => navigate("/register")}>Register</Link>;
+  const profileL = <Link onClick={() => navigate("/profile")}>Profile</Link>;
   const dashboardL = (
     <Link onClick={() => navigate("/dashboard")}>Dashboard</Link>
   );

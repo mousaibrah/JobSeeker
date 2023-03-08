@@ -21,29 +21,27 @@
   padding-top: 50px;
 }
 /* Post Box */
-.text-social{
+.text-social {
   cursor: pointer;
   font-size: 22px !important;
 }
 
-.box-text::after{
-  content: '';
+.box-text::after {
+  content: "";
   display: block;
   width: 0;
   height: 2px;
   background: #0275d8;
-  transition: width .3s;
-
+  transition: width 0.3s;
 }
-hr{
+hr {
   color: #0275d8 !important;
 }
-.box-text:hover{
+.box-text:hover {
   cursor: pointer;
 }
-.box-text:hover::after{
+.box-text:hover::after {
   width: 100%;
-  
 }
 .post {
   width: 100%;

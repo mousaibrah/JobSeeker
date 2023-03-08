@@ -12,7 +12,7 @@ const NavLinks = ({ home }) => {
         JOB<span>SEEKER</span>
       </div>
       {/* <div className="search-box"> */}
-        <Input mx={"600px"}  placeholder='Search' type='search'/>
+      <Input mx={"600px"} placeholder="Search" type="search" />
       {/* </div> */}
       <div className="Links">
         {home?.dashboardL}

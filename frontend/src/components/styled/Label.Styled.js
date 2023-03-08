@@ -1,7 +1,7 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const Label = styled.label`
-color: #fcfeff;
-font-size: 15px;
-font-weight: 400;
-`
+  color: #fcfeff;
+  font-size: 15px;
+  font-weight: 400;
+`;

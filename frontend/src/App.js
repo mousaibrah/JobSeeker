@@ -2,7 +2,7 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import GlobalStyle from './components/styled/Global.Styled'
+import GlobalStyle from "./components/styled/Global.Styled";
 import "mdbreact/dist/css/mdb.css";
 import { Container } from "react-bootstrap";
 
@@ -21,10 +21,9 @@ import ProfilePage from "./components/profile/ProfilePage";
 
 // Import Styled Container
 function App() {
-
   return (
     <div className="App">
-     <GlobalStyle/>
+      <GlobalStyle />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/profile" element={<ProfilePage />} />

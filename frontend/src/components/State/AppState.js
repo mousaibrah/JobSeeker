@@ -7,7 +7,22 @@ const AppState = () => {
     JSON.parse(localStorage.getItem("token")) || null
   );
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [posts, setPosts] = useState([]);
+  const [profilePosts, setProfilePosts] = useState([]);
 
+  const [profileData, setProfileData] = useState(
+    JSON.parse(localStorage.getItem("profile")) || {
+      userImg: null,
+      UserName: null,
+      email: null,
+      mobile: null,
+      about: null,
+      expertise: null,
+      skills: [],
+      education: null,
+      userId,
+    }
+  );
   const value = {
     userId,
     setUserId,
@@ -15,6 +30,12 @@ const AppState = () => {
     setToken,
     isLoggedIn,
     setIsLoggedIn,
+    profileData,
+    setProfileData,
+    posts,
+    setPosts,
+    profilePosts,
+    setProfilePosts,
   };
   return (
     <AppContext.Provider value={value}>

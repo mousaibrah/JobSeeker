@@ -1,7 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import NavLinks from "../navbar/NavLinks";
-import { Nav, NavDropdown, Container, Button } from "react-bootstrap";
+import { Nav, NavDropdown, Container } from "react-bootstrap";
+import { Button } from "../styled/Button.Styled";
 import { Link } from "../styled/Links";
 const Error = () => {
   const navigate = useNavigate();
@@ -10,8 +11,7 @@ const Error = () => {
       <ErrorNav />
       <img
         src="https://img.freepik.com/free-vector/oops-404-error-with-broken-robot-concept-illustration_114360-5529.jpg?w=2000"
-        width={"720px"}
-        height={"720px"}
+        style={{ width: "100%", height: "75vh" }}
       />
       <Button onClick={() => navigate("/")}>Go Home</Button>
     </Container>

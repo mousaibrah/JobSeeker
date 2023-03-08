@@ -6,9 +6,7 @@ import { AppContext } from "../State/AppState";
 const DashboardNav = () => {
   const navigate = useNavigate();
   const { setUserId, setToken, setIsLoggedIn } = useContext(AppContext);
-  const profileL = (
-    <Link onClick={() => navigate("/profile")}>Profile</Link>
-  );
+  const profileL = <Link onClick={() => navigate("/profile")}>Profile</Link>;
 
   const Logout = (
     <Link

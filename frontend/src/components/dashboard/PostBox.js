@@ -6,7 +6,7 @@ const PostBox = ({ postsData }) => {
   const [maxLength, setMaxLength] = useState(250);
   const [isCollapse, setIsCollapse] = useState(false);
   if (!postsData) {
-    return 
+    return;
   }
   const Post = postsData.map((post) => {
     return (
