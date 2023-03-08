@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Input = styled.input`
   max-width: ${(props=>props.mx?props.mx:'240px')};
   width: 100%;
-  color: #121212;
+  color: #1e1e2a;
   display: flex;
   align-items: center;
   column-gap: 12px;

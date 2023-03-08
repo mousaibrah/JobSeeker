@@ -17,7 +17,7 @@ html::-webkit-scrollbar-thumb {
   background: #0275d8;
 }
   body {
-  text-align: center;
+  /* text-align: center; */
 
    color: #fcfeff;
     background: #1e1e2a;

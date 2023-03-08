@@ -11,33 +11,7 @@ const OurClient = () => {
   return (
     <>
       <MDBCard style={{backgroundColor:'#1e1e2a',}}>
-        <MDBCol lg="2"></MDBCol>
-        <MDBCol lg="10">
-          <MDBRow>
-            <MDBCol lg="3"></MDBCol>
-            <MDBCol>
-              <MDBListGroupItem style={{ fontSize: "22px", fontWeight: "500" }}>
-                OUR CLIENT
-              </MDBListGroupItem>
-            </MDBCol>
-          </MDBRow>
-          <hr />
-          <MDBRow>
-            <MDBCol>
-              <MDBCardImage
-                src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
-                className="rounded-circle"
-                style={{ width: "35px" }}
-                fluid
-              />
-            </MDBCol>
-            <MDBCol>
-              <MDBListGroupItem className="catagories">
-                Doctor's
-              </MDBListGroupItem>
-            </MDBCol>
-          </MDBRow>
-        </MDBCol>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Pariatur sapiente saepe ut praesentium eveniet debitis corrupti voluptas quisquam doloremque officiis, eius necessitatibus sequi voluptates ducimus iure beatae sint molestias quo? Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus similique accusamus totam fugit odio vitae architecto tempore? Quos maxime ullam itaque reiciendis provident vitae? Illo mollitia facilis aliquam. Repellat, est.</p>
       </MDBCard>
     </>
   );
