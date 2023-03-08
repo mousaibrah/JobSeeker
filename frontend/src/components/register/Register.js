@@ -25,6 +25,7 @@ import RoleCheckBoxComponent from "./RoleCheckBoxComponent";
 import SubmitBtnComponent from "./SubmitBtnComponent";
 import SignUpWithGoogle from "./SignUpWithGoogle";
 import RegisterNav from "./RegisterNav";
+// import  {Container}  from "../styled/Container.Styled";
 //  Export Context
 export const registerContext = createContext();
 const Register = () => {
@@ -154,6 +155,7 @@ const Register = () => {
   return (
     <div className="Register">
       <RegisterNav />
+      {/* <Container> */}
       <MDBContainer className="p-3 my-5 h-custom">
         <MDBRow>
           <ImgComponent />
@@ -183,6 +185,7 @@ const Register = () => {
           </MDBCol>
         </MDBRow>
       </MDBContainer>
+      {/* </Container> */}
     </div>
   );
 };

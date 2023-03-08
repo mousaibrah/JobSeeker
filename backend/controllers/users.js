@@ -13,9 +13,9 @@ const register = async (req, res) => {
     dateOfBirth,
     role,
   } = req.body;
-  
+
   try {
-    const findRole = await roleSchema.findOne({role})
+    const findRole = await roleSchema.findOne({ role });
     const newUser = new userSchema({
       firstName,
       lastName,
@@ -23,7 +23,7 @@ const register = async (req, res) => {
       email,
       password,
       dateOfBirth,
-      role:findRole._id,
+      role: findRole._id,
     });
     const result = await newUser.save();
     res.status(201).json({

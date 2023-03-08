@@ -1,8 +1,7 @@
 const postSchema = require("../models/post");
 
 const createPost = async (req, res) => {
-  const { title, userId, company, description, responsibility } =
-    req.body;
+  const { title, userId, company, description, responsibility } = req.body;
   const newPost = new postSchema({
     title,
     userId,
@@ -11,7 +10,6 @@ const createPost = async (req, res) => {
     responsibility,
   });
   try {
-
     const result = await newPost.save();
     res.status(201).json(newPost);
   } catch (error) {

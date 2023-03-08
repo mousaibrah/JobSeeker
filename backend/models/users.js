@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema({
   email: { type: String, unique: true, required: true },
   password: { type: String, required: true },
   dateOfBirth: { type: Date, required: true },
-  role: { type: mongoose.Schema.Types.ObjectId, ref: "Role", },
+  role: { type: mongoose.Schema.Types.ObjectId, ref: "Role" },
 });
 userSchema.pre("save", async function () {
   this.email = this.email.toLowerCase();

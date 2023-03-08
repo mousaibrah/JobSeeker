@@ -48,14 +48,23 @@ const updateProfile = async (req, res) => {
     res.status(500).json({ success: false, message: error.message });
   }
 };
-const addSkillToProfile = async(req,res)=>{
-const userId = req.params.id
-const {skill} = req.body
-try {
-  const addSkills = await profileSchema.findOneAndUpdate({userId},{$addToSet:{skills:{$each:skill}}},{new:true})
-res.json(addSkills)
-} catch (error) {
-  res.json(error)
-}
-}
-module.exports = { createProfile, updateProfile, getProfileByUserId,addSkillToProfile };
+const addSkillToProfile = async (req, res) => {
+  const userId = req.params.id;
+  const { skill } = req.body;
+  try {
+    const addSkills = await profileSchema.findOneAndUpdate(
+      { userId },
+      { $addToSet: { skills: { $each: skill } } },
+      { new: true }
+    );
+    res.json(addSkills);
+  } catch (error) {
+    res.json(error);
+  }
+};
+module.exports = {
+  createProfile,
+  updateProfile,
+  getProfileByUserId,
+  addSkillToProfile,
+};

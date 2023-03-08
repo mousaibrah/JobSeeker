@@ -1,7 +1,6 @@
 const userSchema = require("../models/users");
 const roleSchema = require("../models/role");
-const axios = require('axios');
-
+const axios = require("axios");
 
 const createAdminRole = async (req, res, next) => {
   const newRole = new roleSchema({
@@ -41,7 +40,7 @@ const createRoles = async (req, res, next) => {
 const createAdmin = async (req, res) => {
   try {
     const roleId = await roleSchema.findOne({ role: "ADMIN" });
-    const Roles = await roleSchema.find({})
+    const Roles = await roleSchema.find({});
     const admin = new userSchema({
       firstName: "Admin",
       lastName: "Admin",
@@ -52,11 +51,14 @@ const createAdmin = async (req, res) => {
       role: roleId._id,
     });
     const userData = await admin.save();
-    const createProfile = await axios.post(`http://localhost:5000/profile/${admin._id}`,admin)
+    const createProfile = await axios.post(
+      `http://localhost:5000/profile/${admin._id}`,
+      admin
+    );
     res.status(200).json({ Roles, Admin: admin });
   } catch (error) {
     res.json(error);
   }
 };
 
-module.exports = { createAdmin, createAdminRole,createRoles };
+module.exports = { createAdmin, createAdminRole, createRoles };
