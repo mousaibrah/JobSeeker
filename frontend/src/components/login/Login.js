@@ -8,7 +8,7 @@ import axios from "axios";
 // Import Components From Other Files
 import EmailComponent from "./EmailComponent";
 import PasswordComponent from "./PasswordComponent";
-import { userContext } from "../../App";
+import { AppContext } from "../State/AppState";
 import ImgComponent from "./ImgComponent";
 import SubmitComponent from "./SubmitComponent";
 import RememberMeComponent from "./RememberMeComponent";
@@ -20,7 +20,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { setToken, isLoggedIn, setIsLoggedIn, setUserId } =
-    useContext(userContext);
+    useContext(AppContext);
   const [result, setResult] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const [err, setErr] = useState(false);

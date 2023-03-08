@@ -1,12 +1,14 @@
 import React, { useContext } from "react";
 import { MDBInput } from "mdb-react-ui-kit";
 import { loginContext } from "./Login";
+import { Label } from "../styled/Label.Styled";
+import { Input } from "../styled/Input.Styled";
 const EmailComponent = () => {
   const { setEmail, email } = useContext(loginContext);
   return (
     <>
-      <p>Email address</p>
-      <MDBInput
+      <Label>Email address</Label>
+      <Input
         wrapperclass="mb-4"
         value={email}
         onChange={(e) => setEmail(e.target.value)}

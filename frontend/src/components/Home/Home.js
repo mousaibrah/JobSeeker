@@ -1,6 +1,7 @@
 import React from "react";
 import Carousel from "react-bootstrap/Carousel";
-import { Button, Container } from "react-bootstrap";
+import {  Container } from "react-bootstrap";
+import { Button } from "../styled/Button.Styled";
 import HomeNav from "./HomeNav";
 import { MDBCol, MDBRow, MDBCard, MDBCardBody, MDBBtn } from "mdb-react-ui-kit";
 import { useNavigate } from "react-router-dom";

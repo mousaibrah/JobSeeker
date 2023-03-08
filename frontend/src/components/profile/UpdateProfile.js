@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
-import { Modal, Button } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
+import { Button } from "../styled/Button.Styled";
 import { userContext } from "../../App";
 import {
   MDBCard,

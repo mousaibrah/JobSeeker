@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { MDBCardText, MDBCol, MDBInput, MDBRow } from "mdb-react-ui-kit";
 import { v4 } from "uuid";
+import { Input } from "../../styled/Input.Styled";
 const ProfileInput = ({ input, onFunction }) => {
   const { title, initValue, isDisable } = input;
   return (
@@ -9,7 +10,7 @@ const ProfileInput = ({ input, onFunction }) => {
         <MDBCardText>{title}</MDBCardText>
       </MDBCol>
       <MDBCol col="6">
-        <MDBInput
+        <Input
           className="border-primary border border-3"
           id={`formControlDisabled ${v4()}`}
           value={initValue}

@@ -1,4 +1,4 @@
-import { MDBInput, MDBValidation } from "mdb-react-ui-kit";
+import { Input as InputFelid } from "../styled/Input.Styled";
 import React, { useContext } from "react";
 import { registerContext } from "../register/Register";
 import { v4 } from "uuid";
@@ -9,7 +9,7 @@ const Input = ({ compName, isRequired, func, label, type }) => {
   return (
     <>
       <p>{label}</p>
-      <MDBInput
+      <InputFelid
         className="form-control"
         id={`formControlLg ${v4()}`}
         required={isRequired}

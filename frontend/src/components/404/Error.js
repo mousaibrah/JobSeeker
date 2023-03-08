@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import NavLinks from "../navbar/NavLinks";
 import { Nav, NavDropdown, Container, Button } from "react-bootstrap";
+import { Link } from "../styled/Links";
 const Error = () => {
   const navigate = useNavigate();
   return (
@@ -18,25 +19,11 @@ const Error = () => {
 };
 const ErrorNav = () => {
   const navigate = useNavigate();
-  const loginL = (
-    <NavDropdown.Item href="#action/3.4">
-      <Nav.Link onClick={() => navigate("/login")}>Login</Nav.Link>
-    </NavDropdown.Item>
-  );
-  const registerL = (
-    <NavDropdown.Item href="#action/3.3">
-      <Nav.Link onClick={() => navigate("/register")}>Register</Nav.Link>
-    </NavDropdown.Item>
-  );
-  const profileL = (
-    <NavDropdown.Item href="#action/3.1">
-      <Nav.Link onClick={() => navigate("/profile")}>Profile</Nav.Link>
-    </NavDropdown.Item>
-  );
+  const loginL = <Link onClick={() => navigate("/login")}>Login</Link>;
+  const registerL = <Link onClick={() => navigate("/register")}>Register</Link>;
+  const profileL = <Link onClick={() => navigate("/profile")}>Profile</Link>;
   const dashboardL = (
-    <NavDropdown.Item href="#action/3.4">
-      <Nav.Link onClick={() => navigate("/dashboard")}>Dashboard</Nav.Link>
-    </NavDropdown.Item>
+    <Link onClick={() => navigate("/dashboard")}>Dashboard</Link>
   );
 
   return <NavLinks home={{ loginL, registerL, profileL, dashboardL }} />;

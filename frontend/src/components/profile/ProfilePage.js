@@ -12,15 +12,15 @@ import {
   MDBListGroupItem,
 } from "mdb-react-ui-kit";
 import ProfileNav from "./ProfileNav";
-import { userContext } from "../../App";
+import { AppContext } from "../State/AppState";
 import ProfileSkills from "./ProfileSkills";
 import UpdateProfile from "./UpdateProfile";
-import { Button } from "react-bootstrap";
+import { Button } from "../styled/Button.Styled";
 import SkillsModal from "./SkillsModal";
 import PersonalInfo, { PersonalBox } from "./PersonalInfo";
 export const profileContext = createContext();
 const ProfilePage = () => {
-  const { userId } = useContext(userContext);
+  const { userId } = useContext(AppContext);
   const [skillModal, setSkillModal] = useState(false);
   const [profileData, setProfileData] = useState({
     userImg: null,

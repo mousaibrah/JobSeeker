@@ -1,6 +1,7 @@
 import { MDBBtn } from "mdb-react-ui-kit";
 import React, { useContext } from "react";
-import { Alert, Button } from "react-bootstrap";
+import { Alert } from "react-bootstrap";
+import { Button } from "../styled/Button.Styled";
 import { registerContext } from "./Register";
 const SubmitBtnComponent = () => {
   const { isRegistered, err, result, checkSubmit } =

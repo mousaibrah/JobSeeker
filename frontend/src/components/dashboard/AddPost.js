@@ -1,12 +1,7 @@
-import {
-  MDBInput,
-  MDBCol,
-  MDBRow,
-  MDBCardText,
-  MDBTextArea,
-} from "mdb-react-ui-kit";
+
 import React from "react";
-import { Button } from "react-bootstrap";
+import { Button } from "../styled/Button.Styled";
+import { Input } from "../styled/Input.Styled";
 
 const AddPost = () => {
   return (
@@ -18,7 +13,7 @@ const AddPost = () => {
             src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
             alt=""
           />
-          <input placeholder="Yoy Have A Job Opining" className="shareInput" />
+          <Input mx={'300px'} placeholder="You Have A Job Opining ..." className="shareInput" />
         </div>
         <hr className="shareHr" />
         <div className="shareBottom">
@@ -28,7 +23,7 @@ const AddPost = () => {
             </div>
           </div>
           <div className="share-btn">
-            <button className="shareButton">Share</button>
+            <Button >Share</Button>
           </div>
         </div>
       </div>

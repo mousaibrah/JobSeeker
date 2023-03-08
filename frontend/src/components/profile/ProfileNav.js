@@ -1,17 +1,17 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { Nav } from "react-bootstrap";
+import { Link } from "../styled/Links";
 import NavLinks from "../navbar/NavLinks";
-import { userContext } from "../../App";
+import { AppContext } from "../State/AppState";
 const ProfileNav = () => {
   const navigate = useNavigate();
-  const { setUserId, setToken, setIsLoggedIn } = useContext(userContext);
+  const { setUserId, setToken, setIsLoggedIn } = useContext(AppContext);
 
   const dashboardL = (
-    <Nav.Link onClick={() => navigate("/dashboard")}>Dashboard</Nav.Link>
+    <Link onClick={() => navigate("/dashboard")}>Dashboard</Link>
   );
   const Logout = (
-    <Nav.Link
+    <Link
       onClick={() => {
         setToken(null);
         setUserId(null);
@@ -20,7 +20,7 @@ const ProfileNav = () => {
       }}
     >
       Logout
-    </Nav.Link>
+    </Link>
   );
 
   return <NavLinks home={{ Logout, dashboardL }} />;

@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import { MDBBtn } from "mdb-react-ui-kit";
+
 import Alert from "react-bootstrap/Alert";
 import { Link, useNavigate } from "react-router-dom";
 import { loginContext } from "./Login";
-import { Button } from "react-bootstrap";
+import { Button } from "../styled/Button.Styled";
 const SubmitComponent = () => {
   const { result, err, isLoggedIn, login } = useContext(loginContext);
   return (

@@ -2,6 +2,7 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import GlobalStyle from './components/styled/Global.Styled'
 import "mdbreact/dist/css/mdb.css";
 import { Container } from "react-bootstrap";
 // import {Container} from './components/styled/Container.Styled'
@@ -17,40 +18,26 @@ import Error from "./components/404/Error";
 import Footer from "./components/Footer/Footer";
 import ProfilePage from "./components/profile/ProfilePage";
 // Export Context
-export const userContext = createContext();
+
 // Import Styled Container
 function App() {
-  const [userId, setUserId] = useState(localStorage.getItem("userId") || null);
-  const [token, setToken] = useState(
-    JSON.parse(localStorage.getItem("token")) || null
-  );
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  // Context Value
-  const value = {
-    userId,
-    setUserId,
-    token,
-    setToken,
-    isLoggedIn,
-    setIsLoggedIn,
-  };
-  return (
-    <userContext.Provider value={value}>
-      <div className="App">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/dashboard" element={<DashBoard />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="*" element={<Error />} />
-        </Routes>
 
-        <Container fluid>
-          <Footer />
-        </Container>
-      </div>
-    </userContext.Provider>
+  return (
+    <div className="App">
+     <GlobalStyle/>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/dashboard" element={<DashBoard />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="*" element={<Error />} />
+      </Routes>
+
+      <Container fluid>
+        <Footer />
+      </Container>
+    </div>
   );
 }
 
