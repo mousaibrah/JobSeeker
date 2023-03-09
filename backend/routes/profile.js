@@ -5,7 +5,7 @@ const {
   updateProfile,
   getProfileByUserId,
   addSkillToProfile,
-  updateImg
+  updateImg,
 } = require("../controllers/profile");
 profileRouter.post("/:id", createProfile);
 profileRouter.get("/:id", getProfileByUserId);

@@ -22,15 +22,15 @@ import SkillsModal from "./SkillsModal";
 import PersonalInfo, { PersonalBox } from "./PersonalInfo";
 import PostBox from "../dashboard/PostBox";
 import Swal from "sweetalert2";
+import UploadImg from "./UploadImg";
 export const profileContext = createContext();
 const ProfilePage = () => {
   const userId = localStorage.getItem("userId");
   const [skillModal, setSkillModal] = useState(false);
   const [profilePosts, setProfilePosts] = useState([]);
-  const [image, setImage] = useState("");
-  const [url, setUrl] = useState("");
   const [profileData, setProfileData] = useState({});
   const [modalShow, setModalShow] = useState(false);
+  const [profilePicModal, setProfilePicModal] = useState(false);
   const {
     userImg,
     UserName,
@@ -43,10 +43,7 @@ const ProfilePage = () => {
   } = profileData;
   useEffect(() => {
     getProfileInfo();
-    if (image.length>10) {
-      updateProfileImg()
-    }
-  }, [image]);
+  }, []);
   const getProfileInfo = async () => {
     try {
       const result = await axios.get(
@@ -68,6 +65,7 @@ const ProfilePage = () => {
         `http://localhost:5000/profile/${JSON.parse(userId)}`,
         profileData
       );
+      console.log("update :>> ", update);
     } catch (error) {
       console.log("error PP 68 :>> ", error);
     }
@@ -92,55 +90,52 @@ const ProfilePage = () => {
     setSkillModal,
     addSkills,
   };
-  
-  const updateProfileImg = async () => {
-    try {
-      const data = await axios.put(
-        `http://localhost:5000/profile${JSON.parse(userId)}/img`,
-        { url }
-      );
-      setProfileData(data.data);
-    } catch (error) {
-      console.log("error :>> ", error);
-    }
-  };
-  const updateImg = async () => {
-    const { value: file } = await Swal.fire({
-      title: "Select image",
-      input: "file",
-      inputAttributes: {
-        accept: "image/*",
-        "aria-label": "Upload your profile picture",
-      },
-    });
-    if (file) {
-      const reader = new FileReader();
-      reader.unload = (e) => {
-        setImage(file);
-        const data = new FormData();
-        data.append("file", image);
-        data.append("upload_preset", "ym3yv62c");
-        axios
-          .post("https://api.cloudinary.com/v1_1/dvgnuchjw/upload", data)
-          .then((data) => {
-            setUrl(data.url);
-          })
-          .catch((err) => console.log(err));
-        Swal.fire({
-          title: "Your uploaded profile picture",
-          imageUrl: e.target.result,
-          imageAlt: "The uploaded picture",
-        });
-      };
 
-      reader.readAsDataURL(file);
-    }
-  };
+  // const updateImg = async () => {
+  //   const { value: file } = await Swal.fire({
+  //     title: "Select image",
+  //     input: "file",
+
+  //   });
+
+  //   if (file) {
+  //     const reader = new FileReader();
+  //     reader.onload = async (e) => {
+  //       setImage(file);
+  //       const data = new FormData();
+  //       data.append("file", image);
+  //       data.append("upload_preset", "ym3yv62c");
+  //       try {
+  //         const result = await axios.post(
+  //           "https://api.cloudinary.com/v1_1/dvgnuchjw/upload",
+  //           data
+  //         );
+  //         setUrl(result.data.url);
+  //         setProfileData({...profileData,userImg:result.data.url})
+
+  //       } catch (error) {
+  //         console.log("error :>> ", error);
+  //       }
+
+  //       Swal.fire({
+  //         title: "Your uploaded picture",
+  //         imageUrl: e.target.result,
+  //         imageAlt: "The uploaded picture",
+
+  //       });
+  //     };
+  //     reader.readAsDataURL(file);
+  //     setTimeout(() => {
+  //       updateProfile()
+  //     }, 5000);
+  //   }
+  // };
 
   return (
     <>
       <ProfileNav />
       <profileContext.Provider value={value}>
+        <UploadImg toggle={{ profilePicModal, setProfilePicModal }} />
         <MDBContainer className="py-5">
           <MDBRow>
             <MDBCol lg="4">
@@ -155,7 +150,7 @@ const ProfilePage = () => {
                   <BsPencilSquare
                     className="edit-img-btn"
                     onClick={() => {
-                      updateImg();
+                      setProfilePicModal(true);
                     }}
                   />
 
