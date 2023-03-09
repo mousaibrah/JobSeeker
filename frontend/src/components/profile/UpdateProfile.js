@@ -1,13 +1,9 @@
 import React, { useState, useContext } from "react";
 import { Modal } from "react-bootstrap";
 import { Button } from "../styled/Button.Styled";
-import { userContext } from "../../App";
+
 import {
   MDBCard,
-  MDBCardText,
-  MDBCol,
-  MDBInput,
-  MDBRow,
 } from "mdb-react-ui-kit";
 
 import { profileContext } from "./ProfilePage";
@@ -51,7 +47,7 @@ const UpdateProfile = () => {
         centered
       >
         <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">Edit</Modal.Title>
+          <Modal.Title id="contained-modal-title-vcenter" className="update-text">Edit</Modal.Title>
         </Modal.Header>
         <MDBCard>
           <Modal.Body>

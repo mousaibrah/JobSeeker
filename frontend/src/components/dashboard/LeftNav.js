@@ -60,7 +60,7 @@ const LeftNav = ({ personalInfo }) => {
               marginBottom: "4px",
             }}
           >
-            <MDBCardText className="box-text" style={{ color: "#fcfeff" }}>
+            <MDBCardText  style={{ color: "#fcfeff" }}>
               FaceBook{" "}
             </MDBCardText>
             <MDBCardText className="box-text" style={{ color: "#fcfeff" }}>
@@ -75,7 +75,7 @@ const LeftNav = ({ personalInfo }) => {
               marginBottom: "4px",
             }}
           >
-            <MDBCardText className="box-text" style={{ color: "#fcfeff" }}>
+            <MDBCardText  style={{ color: "#fcfeff" }}>
               GitHub
             </MDBCardText>
             <MDBCardText className="box-text" style={{ color: "#fcfeff" }}>

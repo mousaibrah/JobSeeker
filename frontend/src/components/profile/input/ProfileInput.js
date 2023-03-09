@@ -7,7 +7,7 @@ const ProfileInput = ({ input, onFunction }) => {
   return (
     <MDBRow>
       <MDBCol col="6">
-        <MDBCardText>{title}</MDBCardText>
+        <MDBCardText className="update-text">{title}</MDBCardText>
       </MDBCol>
       <MDBCol col="6">
         <Input

@@ -15,7 +15,7 @@
 .posts-page {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  /* gap: 10px; */
 }
 .DashBoard {
   padding-top: 50px;
@@ -221,4 +221,13 @@ hr {
   border-radius: "50%";
   width: 60px;
   height: 60px;
+}
+.update-text{
+  color: #1e1e2a;
+}
+.edit-img-btn{
+  color: #fcfeff ;
+  font-size: 22px;
+  transform: translate(100%,250%);
+
 }

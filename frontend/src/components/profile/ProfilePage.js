@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect, createContext } from "react";
+import { BsPencilSquare } from "react-icons/bs";
 import axios from "axios";
 import {
   MDBCol,
@@ -19,8 +20,10 @@ import { Button } from "../styled/Button.Styled";
 import SkillsModal from "./SkillsModal";
 import PersonalInfo, { PersonalBox } from "./PersonalInfo";
 import PostBox from "../dashboard/PostBox";
+import Swal from "sweetalert2";
 export const profileContext = createContext();
 const ProfilePage = () => {
+  const [updateImgPopup, SetUpdateImgPopup] = useState(false)
   const { userId, profileData, setProfileData, profilePosts, setProfilePosts } =
     useContext(AppContext);
   const [skillModal, setSkillModal] = useState(false);
@@ -77,6 +80,21 @@ const ProfilePage = () => {
     setSkillModal,
     addSkills,
   };
+  const updateImg = async()=>{
+    Swal.fire({
+      title: 'Upload Your New Picture',
+      input: 'file',
+      inputAttributes: {
+        autocapitalize: 'off'
+      },
+      showCancelButton: true,
+      confirmButtonText: 'upload',
+      showLoaderOnConfirm: true,
+    
+  }).then(res=>console.log('res :>> ',res.value)).catch((err)=>console.log('err :>> ', err))
+
+
+}
   return (
     <>
       <ProfileNav />
@@ -92,12 +110,14 @@ const ProfilePage = () => {
                 }}
               >
                 <MDBCardBody className="text-center">
+              <BsPencilSquare className="edit-img-btn"  onClick={()=>updateImg()}/>
                   <MDBCardImage
                     src={userImg}
                     className="rounded-circle"
                     style={{ width: "150px" }}
                     fluid
                   />
+                  
                   <MDBListGroup className="rounded-3">
                     <PersonalBox
                       info={{ text: "Aria Of EXPERTISE :", value: expertise }}

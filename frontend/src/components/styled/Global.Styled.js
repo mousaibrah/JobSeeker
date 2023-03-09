@@ -2,6 +2,7 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
 *{
+  user-select: none;
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
