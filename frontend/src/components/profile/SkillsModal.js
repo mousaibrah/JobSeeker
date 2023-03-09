@@ -16,7 +16,7 @@ const SkillsModal = () => {
         <Modal.Title className="text-dark">Skills</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        {skills.length
+        {skills?.length
           ? skills.map((skill) => {
               return (
                 <MDBListGroupItem

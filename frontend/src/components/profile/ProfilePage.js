@@ -159,7 +159,7 @@ const ProfilePage = () => {
                       </Button>
                       <SkillsModal />
                     </MDBListGroupItem>
-                    {skills.length ? <ProfileSkills data={skills} /> : ""}
+                    {skills?.length ? <ProfileSkills data={skills} /> : ""}
                   </MDBListGroup>
                 </MDBCardBody>
               </MDBCard>

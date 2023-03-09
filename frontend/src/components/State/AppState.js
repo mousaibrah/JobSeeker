@@ -12,15 +12,7 @@ const AppState = () => {
 
   const [profileData, setProfileData] = useState(
     JSON.parse(localStorage.getItem("profile")) || {
-      userImg: null,
-      UserName: null,
-      email: null,
-      mobile: null,
-      about: null,
-      expertise: null,
-      skills: [],
-      education: null,
-      userId,
+     
     }
   );
   const value = {
