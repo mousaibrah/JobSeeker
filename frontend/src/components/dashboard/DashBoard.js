@@ -11,7 +11,7 @@ import OurClient from "./OurClient";
 import PostBox from "./PostBox";
 import { AppContext } from "../State/AppState";
 const DashBoard = () => {
-  const { posts, setPosts, profileData } = useContext(AppContext);
+  const { posts, setPosts } = useContext(AppContext);
   useEffect(() => {
     getPosts();
   }, []);
@@ -29,8 +29,7 @@ const DashBoard = () => {
       <Container fluid className="DashBoard">
         <MDBRow>
           <MDBCol lg="3">
-            <LeftNav personalInfo={profileData} />
-            {/* <Catagories /> */}
+            <LeftNav  />
           </MDBCol>
           <MDBCol lg="7" className="posts-page">
             <AddPost />

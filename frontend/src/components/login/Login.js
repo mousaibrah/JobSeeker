@@ -43,15 +43,9 @@ const Login = () => {
         password,
       });
       if (res.data.success) {
-        const profile = await axios.get(
-          `http://localhost:5000/profile/${res.data.userId}`
-        );
-
-        setProfileData(profile.data.data);
         setUserId(res.data.userId);
         setToken(res.data.token);
         localStorage.setItem("userId", JSON.stringify(res.data.userId));
-        localStorage.setItem("profile", JSON.stringify(profile.data.data));
 
         localStorage.setItem("token", JSON.stringify(res.data.token));
         if (rememberMe) {

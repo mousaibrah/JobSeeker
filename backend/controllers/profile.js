@@ -62,9 +62,20 @@ const addSkillToProfile = async (req, res) => {
     res.json(error);
   }
 };
+const updateImg = async (req, res) => {
+  const userId = req.params.id;
+  const {userImg} = req.body
+try {
+  const result = await profileSchema.findOneAndUpdate({userId},{$set:{userImg:userImg}} ,{new:true})
+  res.json(result)
+} catch (error) {
+  res.json(error)
+}
+};
 module.exports = {
   createProfile,
   updateProfile,
   getProfileByUserId,
   addSkillToProfile,
+  updateImg,
 };

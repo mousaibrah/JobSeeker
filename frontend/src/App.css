@@ -222,12 +222,11 @@ hr {
   width: 60px;
   height: 60px;
 }
-.update-text{
+.update-text {
   color: #1e1e2a;
 }
-.edit-img-btn{
-  color: #fcfeff ;
+.edit-img-btn {
+  color: #fcfeff;
   font-size: 22px;
-  transform: translate(100%,250%);
-
+  transform: translate(100%, 250%);
 }

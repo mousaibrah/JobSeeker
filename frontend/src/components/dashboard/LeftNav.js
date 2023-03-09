@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from 'axios';
 import {
   MDBCard,
   MDBCardBody,
@@ -8,18 +9,24 @@ import {
   MDBListGroupItem,
 } from "mdb-react-ui-kit";
 import { PersonalBox } from "../profile/PersonalInfo";
-const LeftNav = ({ personalInfo }) => {
-  const {
-    userImg,
-    UserName,
-    about,
-    expertise,
-    skills,
-    education,
-    email,
-    mobile,
-  } = personalInfo;
-  console.log("personalInfo :>> ", personalInfo);
+const LeftNav = () => {
+  const userId = localStorage.getItem("userId")
+  const [personalInfo, setPersonalInfo] = useState({});
+  const { userImg, UserName, education } = personalInfo;
+  useEffect(() => {
+    getPersonalInfo();
+  }, []);
+  const getPersonalInfo = async () => {
+    try {
+      const personalInfo = await axios.get(
+        `http://localhost:5000/profile/${JSON.parse(userId)}`
+      );
+      const { userImg, UserName, education } = personalInfo.data.data;
+      setPersonalInfo({ userImg, UserName, education });
+    } catch (error) {
+      console.log("error LN 21:>> ", error);
+    }
+  };
   return (
     <MDBCard
       className="mb-4"
@@ -60,9 +67,7 @@ const LeftNav = ({ personalInfo }) => {
               marginBottom: "4px",
             }}
           >
-            <MDBCardText  style={{ color: "#fcfeff" }}>
-              FaceBook{" "}
-            </MDBCardText>
+            <MDBCardText style={{ color: "#fcfeff" }}>FaceBook </MDBCardText>
             <MDBCardText className="box-text" style={{ color: "#fcfeff" }}>
               personal Account
             </MDBCardText>
@@ -75,9 +80,7 @@ const LeftNav = ({ personalInfo }) => {
               marginBottom: "4px",
             }}
           >
-            <MDBCardText  style={{ color: "#fcfeff" }}>
-              GitHub
-            </MDBCardText>
+            <MDBCardText style={{ color: "#fcfeff" }}>GitHub</MDBCardText>
             <MDBCardText className="box-text" style={{ color: "#fcfeff" }}>
               personal Account
             </MDBCardText>

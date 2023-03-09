@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect, createContext } from "react";
 import { BsPencilSquare } from "react-icons/bs";
+import { Input } from "../styled/Input.Styled";
 import axios from "axios";
 import {
   MDBCol,
@@ -23,11 +24,12 @@ import PostBox from "../dashboard/PostBox";
 import Swal from "sweetalert2";
 export const profileContext = createContext();
 const ProfilePage = () => {
-  const [updateImgPopup, SetUpdateImgPopup] = useState(false)
-  const { userId, profileData, setProfileData, profilePosts, setProfilePosts } =
-    useContext(AppContext);
+  const userId = localStorage.getItem("userId");
   const [skillModal, setSkillModal] = useState(false);
-
+  const [profilePosts, setProfilePosts] = useState([]);
+  const [image, setImage] = useState("");
+  const [url, setUrl] = useState("");
+  const [profileData, setProfileData] = useState({});
   const [modalShow, setModalShow] = useState(false);
   const {
     userImg,
@@ -40,24 +42,35 @@ const ProfilePage = () => {
     mobile,
   } = profileData;
   useEffect(() => {
-    getPosts();
-  }, []);
-  const getPosts = async () => {
+    getProfileInfo();
+    if (image.length>10) {
+      updateProfileImg()
+    }
+  }, [image]);
+  const getProfileInfo = async () => {
     try {
+      const result = await axios.get(
+        `http://localhost:5000/profile/${JSON.parse(userId)}`
+      );
       const post = await axios.get(
         `http://localhost:5000/posts/${JSON.parse(userId)}`
       );
-
       setProfilePosts(post.data.post);
-    } catch (error) {}
+      setProfileData(result.data.data);
+    } catch (error) {
+      console.log("error PP 57:>> ", error);
+    }
   };
+
   const updateProfile = async () => {
     try {
       const update = await axios.put(
         `http://localhost:5000/profile/${JSON.parse(userId)}`,
         profileData
       );
-    } catch (error) {}
+    } catch (error) {
+      console.log("error PP 68 :>> ", error);
+    }
   };
   const addSkills = async () => {
     try {
@@ -65,9 +78,8 @@ const ProfilePage = () => {
         `http://localhost:5000/profile/${JSON.parse(userId)}/skills`,
         { skill: skills }
       );
-      // console.log('skillAdded :>> ', skillAdded);
     } catch (error) {
-      // console.log('skillAdded :>> ', error);
+      console.log("error PP 79:>> ", error);
     }
   };
   const value = {
@@ -80,21 +92,51 @@ const ProfilePage = () => {
     setSkillModal,
     addSkills,
   };
-  const updateImg = async()=>{
-    Swal.fire({
-      title: 'Upload Your New Picture',
-      input: 'file',
+  
+  const updateProfileImg = async () => {
+    try {
+      const data = await axios.put(
+        `http://localhost:5000/profile${JSON.parse(userId)}/img`,
+        { url }
+      );
+      setProfileData(data.data);
+    } catch (error) {
+      console.log("error :>> ", error);
+    }
+  };
+  const updateImg = async () => {
+    const { value: file } = await Swal.fire({
+      title: "Select image",
+      input: "file",
       inputAttributes: {
-        autocapitalize: 'off'
+        accept: "image/*",
+        "aria-label": "Upload your profile picture",
       },
-      showCancelButton: true,
-      confirmButtonText: 'upload',
-      showLoaderOnConfirm: true,
-    
-  }).then(res=>console.log('res :>> ',res.value)).catch((err)=>console.log('err :>> ', err))
+    });
+    if (file) {
+      const reader = new FileReader();
+      reader.unload = (e) => {
+        setImage(file);
+        const data = new FormData();
+        data.append("file", image);
+        data.append("upload_preset", "ym3yv62c");
+        axios
+          .post("https://api.cloudinary.com/v1_1/dvgnuchjw/upload", data)
+          .then((data) => {
+            setUrl(data.url);
+          })
+          .catch((err) => console.log(err));
+        Swal.fire({
+          title: "Your uploaded profile picture",
+          imageUrl: e.target.result,
+          imageAlt: "The uploaded picture",
+        });
+      };
 
+      reader.readAsDataURL(file);
+    }
+  };
 
-}
   return (
     <>
       <ProfileNav />
@@ -110,14 +152,20 @@ const ProfilePage = () => {
                 }}
               >
                 <MDBCardBody className="text-center">
-              <BsPencilSquare className="edit-img-btn"  onClick={()=>updateImg()}/>
+                  <BsPencilSquare
+                    className="edit-img-btn"
+                    onClick={() => {
+                      updateImg();
+                    }}
+                  />
+
                   <MDBCardImage
                     src={userImg}
                     className="rounded-circle"
                     style={{ width: "150px" }}
                     fluid
                   />
-                  
+
                   <MDBListGroup className="rounded-3">
                     <PersonalBox
                       info={{ text: "Aria Of EXPERTISE :", value: expertise }}

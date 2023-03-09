@@ -16,6 +16,7 @@ const ProfileNav = () => {
         setToken(null);
         setUserId(null);
         setIsLoggedIn(false);
+        localStorage.clear();
         navigate("/");
       }}
     >
