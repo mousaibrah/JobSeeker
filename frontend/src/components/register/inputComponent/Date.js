@@ -1,9 +1,19 @@
 import React,{useContext} from 'react'
 import { RegisterContext } from '../Context/Context'
+import UseableInput from './UseableInput';
 const Date = () => {
-const {} = useContext(RegisterContext)
+const {registerInfo,setRegisterInfo} = useContext(RegisterContext)
+const attr = {
+  label: "Date Of Birth",
+  type: "date",
+  action: (e) =>setRegisterInfo({ ...registerInfo, dateOfBirth: e.target.value }),
+  className: "dateOfBirth",
+  initValue: registerInfo.dateOfBirth,
+  
+  
+};
   return (
-    <div>Date</div>
+    <UseableInput attr={attr}/>
   )
 }
 

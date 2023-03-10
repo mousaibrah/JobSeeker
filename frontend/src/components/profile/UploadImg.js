@@ -76,9 +76,6 @@ const UploadImg = ({ toggle }) => {
       <Modal.Body>
         <Input type="file" onChange={processFile} />
       </Modal.Body>
-      <Modal.Footer>
-        <Button onClick={() => console.log("test")}>Update</Button>
-      </Modal.Footer>
     </Modal>
   );
 };

@@ -17,6 +17,7 @@ import Home from "./components/Home/Home";
 import Error from "./components/404/Error";
 import Footer from "./components/Footer/Footer";
 import ProfilePage from "./components/profile/ProfilePage";
+import Context from "./components/register/Context/Context";
 // Export Context
 
 // Import Styled Container
@@ -29,7 +30,7 @@ function App() {
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/dashboard" element={<DashBoard />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/register" element={<Context />} />
         <Route path="*" element={<Error />} />
       </Routes>
 
