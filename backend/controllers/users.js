@@ -12,6 +12,8 @@ const register = async (req, res) => {
     password,
     dateOfBirth,
     role,
+    location,
+    img,
   } = req.body;
 
   try {
@@ -23,6 +25,8 @@ const register = async (req, res) => {
       email,
       password,
       dateOfBirth,
+      location,
+      img,
       role: findRole._id,
     });
     const result = await newUser.save();

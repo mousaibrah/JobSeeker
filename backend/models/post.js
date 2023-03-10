@@ -27,9 +27,10 @@ const postSchema = new mongoose.Schema(
         required: true,
       },
     ],
+    location: { type: String },
     picturePath: { type: String },
     userPicturePath: { type: String },
-    applied: { type: Map, of: Boolean },
+    applied: { type: Number, default: 0 },
   },
   { timestamps: true }
 );

@@ -13,6 +13,7 @@ const profileSchema = new mongoose.Schema({
   email: { type: String },
   mobile: { type: String },
   about: { type: String },
+  location: { type: String },
   userId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
 });
 module.exports = mongoose.model("Profile", profileSchema);

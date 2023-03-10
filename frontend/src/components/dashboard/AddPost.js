@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { Button } from "../styled/Button.Styled";
 import { Input } from "../styled/Input.Styled";
 import { AppContext } from "../State/AppState";
+import { Form } from "react-bootstrap";
 
 const AddPost = () => {
   const [desc, setDesc] = useState("");
@@ -12,6 +13,7 @@ const AddPost = () => {
     <div className="share">
       <div className="shareWrapper">
         <div className="shareTop">
+        
           <img
             className="shareProfileImg"
             src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"

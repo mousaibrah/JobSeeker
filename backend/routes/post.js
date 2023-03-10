@@ -8,7 +8,7 @@ const {
   deletePost,
 } = require("../controllers/post");
 
-postRouter.post("/", createPost);
+postRouter.post("/:id", createPost);
 postRouter.get("/", getPosts);
 postRouter.get("/:id", getPostById);
 postRouter.put("/:id", updatePost);

@@ -25,6 +25,7 @@ const createProfile = async (req, res) => {
       expertise,
       mobile: `${data.phoneNumber}`,
       skills,
+      location: data.location,
       education,
       userId,
     });

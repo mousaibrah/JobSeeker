@@ -1,15 +1,23 @@
 const postSchema = require("../models/post");
+const profileSchema = require("../models/profile");
+const userSchema = require("../models/users");
 
 const createPost = async (req, res) => {
-  const { title, userId, company, description, responsibility } = req.body;
-  const newPost = new postSchema({
-    title,
-    userId,
-    company,
-    description,
-    responsibility,
-  });
+  const userId = req.params.id;
+  const { title, company, description, responsibility, picturePath } = req.body;
   try {
+    const personal = await profileSchema.findOne({ userId });
+    const location = await userSchema.findOne({ _id: userId });
+    const newPost = new postSchema({
+      title,
+      userId,
+      company: personal.UserName,
+      description,
+      responsibility,
+      picturePath,
+      location: location.location,
+      userPicturePath: personal.userImg,
+    });
     const result = await newPost.save();
     res.status(201).json(newPost);
   } catch (error) {
