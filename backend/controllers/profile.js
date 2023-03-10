@@ -13,12 +13,12 @@ const getProfileByUserId = async (req, res) => {
 };
 const createProfile = async (req, res) => {
   const userId = req.params.id;
-  const { userImg, about, expertise, skills, education } = req.body;
+  const {  about, expertise, skills, education } = req.body;
 
   try {
     const data = await userSchema.findById({ _id: userId });
     const newProfile = new profileSchema({
-      userImg,
+      userImg:data.img,
       UserName: `${data.firstName} ${data.lastName}`,
       about,
       email: `${data.email}`,

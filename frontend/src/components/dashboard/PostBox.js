@@ -21,6 +21,7 @@ const PostBox = ({ postsData }) => {
               <span className="postDate">{post.createdAt.slice(0, 10)}</span>
             </div>
             <div className="postTopRight"></div>
+            <span className="postDate">{post.location}</span>
           </div>
           <div className="postCenter">
             <span className="postText">{post.description}</span>

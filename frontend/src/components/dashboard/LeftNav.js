@@ -12,7 +12,7 @@ import { PersonalBox } from "../profile/PersonalInfo";
 const LeftNav = () => {
   const userId = localStorage.getItem("userId")
   const [personalInfo, setPersonalInfo] = useState({});
-  const { userImg, UserName, education } = personalInfo;
+  const { userImg, UserName, education,location } = personalInfo;
   useEffect(() => {
     getPersonalInfo();
   }, []);
@@ -21,8 +21,8 @@ const LeftNav = () => {
       const personalInfo = await axios.get(
         `http://localhost:5000/profile/${JSON.parse(userId)}`
       );
-      const { userImg, UserName, education } = personalInfo.data.data;
-      setPersonalInfo({ userImg, UserName, education });
+      const { userImg, UserName, education,location } = personalInfo.data.data;
+      setPersonalInfo({ userImg, UserName, education,location });
     } catch (error) {
       console.log("error LN 21:>> ", error);
     }
@@ -42,7 +42,7 @@ const LeftNav = () => {
         <MDBListGroup className="rounded-3">
           <PersonalBox info={{ text: "Name :", value: UserName }} />
           <PersonalBox info={{ text: "Education :", value: education }} />
-          <PersonalBox info={{ text: "Location :", value: "Jordan/Amman" }} />
+          <PersonalBox info={{ text: "Location :", value: location }} />
           <PersonalBox
             info={{ text: "Years Of Experience :", value: "3 Years" }}
           />

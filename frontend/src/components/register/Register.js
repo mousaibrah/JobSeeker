@@ -10,6 +10,7 @@ import Date from './inputComponent/Date';
 import Location from './inputComponent/Location';
 import Img from './inputComponent/Img';
 import Role from './inputComponent/Role';
+import SubmitBtn from './SubmitBtn';
 const Register = () => {
  
   return (
@@ -24,6 +25,7 @@ const Register = () => {
       <Location/>
       <Img/>
       <Role/>
+      <SubmitBtn/>
     </Container>
   )
 }

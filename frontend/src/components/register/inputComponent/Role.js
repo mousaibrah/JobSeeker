@@ -11,6 +11,7 @@ const {registerInfo,
         value='COMPANY'
         label="Company"
         name="group1"
+        onChange={(e)=>setRegisterInfo({...registerInfo,role:e.target.value})}
         type="radio"
         id={`inline-$'radio'-1`}
       />
@@ -19,6 +20,7 @@ const {registerInfo,
         value='USER'
         label="User"
         name="group1"
+        onChange={(e)=>setRegisterInfo({...registerInfo,role:e.target.value})}
         type="radio"
         id={`inline-$'radio'-2`}
       />
