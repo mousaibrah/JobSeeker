@@ -30,7 +30,7 @@ const LeftNav = () => {
   return (
     <MDBCard
       className="mb-4"
-      style={{ backgroundColor: "#1e1e2a", border: "2px solid #fcfeff" }}
+      style={{ backgroundColor: "#2d2e37", border: "2px solid #fcfeff" }}
     >
       <MDBCardBody className="text-center">
         <MDBCardImage
@@ -50,7 +50,7 @@ const LeftNav = () => {
           <MDBListGroupItem
             className="d-flex justify-content-between align-items-center p-3"
             style={{
-              backgroundColor: "#1e1e2a",
+              backgroundColor: "#2d2e37",
               borderBottom: "1px solid #fcfeff",
               marginBottom: "4px",
             }}
@@ -62,7 +62,7 @@ const LeftNav = () => {
           <MDBListGroupItem
             className="d-flex justify-content-between align-items-center p-3"
             style={{
-              backgroundColor: "#1e1e2a",
+              backgroundColor: "#2d2e37",
               borderBottom: "1px solid #0275d8",
               marginBottom: "4px",
             }}
@@ -75,7 +75,7 @@ const LeftNav = () => {
           <MDBListGroupItem
             className="d-flex justify-content-between align-items-center p-3"
             style={{
-              backgroundColor: "#1e1e2a",
+              backgroundColor: "#2d2e37",
               borderBottom: "1px solid #0275d8",
               marginBottom: "4px",
             }}

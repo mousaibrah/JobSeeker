@@ -6,7 +6,7 @@ const ProfileSkills = ({ data }) => {
   const skills = data.map((skill) => {
     return (
       <MDBListGroupItem
-        style={{ backgroundColor: "#1e1e2a", border: "1px solid #fcfeff" }}
+        style={{ backgroundColor: "#2d2e37", border: "1px solid #fcfeff" }}
         key={v4()}
         className="d-flex justify-content-between align-items-center p-3"
       >

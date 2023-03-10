@@ -5,7 +5,6 @@ import { v4 } from "uuid";
 const PostBox = ({ postsData }) => {
   const [maxLength, setMaxLength] = useState(250);
   const [isCollapse, setIsCollapse] = useState(false);
-  console.log("postsData :>> ", postsData);
   if (!postsData) {
     return;
   }

@@ -10,7 +10,7 @@ import {
 const OurClient = () => {
   return (
     <>
-      <MDBCard style={{ backgroundColor: "#1e1e2a" }}>
+      <MDBCard style={{ backgroundColor: "#2d2e37" }}>
         <p>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Pariatur
           sapiente saepe ut praesentium eveniet debitis corrupti voluptas

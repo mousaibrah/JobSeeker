@@ -142,7 +142,7 @@ const ProfilePage = () => {
               <MDBCard
                 className="mb-4"
                 style={{
-                  backgroundColor: "#1e1e2a",
+                  backgroundColor: "#2d2e37",
                   border: "2px solid #fcfeff",
                 }}
               >
@@ -176,7 +176,7 @@ const ProfilePage = () => {
               <MDBCard
                 className="mb-4 mb-lg-0"
                 style={{
-                  backgroundColor: "#1e1e2a",
+                  backgroundColor: "#2d2e37",
                   border: "1px solid #fcfeff",
                 }}
               >
@@ -185,7 +185,7 @@ const ProfilePage = () => {
                     <MDBListGroupItem
                       className="d-flex justify-content-between align-items-center p-3"
                       style={{
-                        backgroundColor: "#1e1e2a",
+                        backgroundColor: "#2d2e37",
                         border: "1px solid #fcfeff",
                       }}
                     >
@@ -211,7 +211,7 @@ const ProfilePage = () => {
               <MDBCard
                 className="mb-4"
                 style={{
-                  backgroundColor: "#1e1e2a",
+                  backgroundColor: "#2d2e37",
                   border: "1px solid #fcfeff",
                 }}
               >

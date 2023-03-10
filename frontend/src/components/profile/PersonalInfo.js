@@ -10,7 +10,7 @@ export const PersonalBox = ({ info }) => {
     <MDBListGroupItem
       className="d-flex justify-content-between align-items-center p-3"
       style={{
-        backgroundColor: "#1e1e2a",
+        backgroundColor: "#2d2e37",
         borderBottom: "1px solid #0275d8",
         marginBottom: "4px",
       }}

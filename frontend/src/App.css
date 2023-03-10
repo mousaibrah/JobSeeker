@@ -53,6 +53,9 @@ hr {
 
 .postWrapper {
   padding: 10px;
+  /* background-image: linear-gradient(to right , #f8a92a,#2d2e37); */
+  background-color: #2d2e37;
+  border: 2px solid #fcfeff;
 }
 
 .postTop {

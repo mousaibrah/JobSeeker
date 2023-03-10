@@ -10,10 +10,9 @@ const AddPost = () => {
 
   const sharePost = async () => {};
   return (
-    <div className="share">
+    <div className="share" style={{ backgroundColor: "#2d2e37" }}>
       <div className="shareWrapper">
         <div className="shareTop">
-        
           <img
             className="shareProfileImg"
             src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
