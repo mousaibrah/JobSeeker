@@ -1,6 +1,6 @@
 import axios from "axios";
 import { MDBCol, MDBRow } from "mdb-react-ui-kit";
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, createContext, useState } from "react";
 import { Container } from "react-bootstrap";
 import { v4 } from "uuid";
 import Catagories from "../catagories/Catagories";
@@ -10,8 +10,10 @@ import LeftNav from "./LeftNav";
 import OurClient from "./OurClient";
 import PostBox from "./PostBox";
 import { AppContext } from "../State/AppState";
+export const DashBoardContext = createContext();
 const DashBoard = () => {
   const { posts, setPosts } = useContext(AppContext);
+  const [personalInfo, setPersonalInfo] = useState({});
   useEffect(() => {
     getPosts();
   }, []);
@@ -26,22 +28,24 @@ const DashBoard = () => {
   return (
     <>
       <DashboardNav />
-      <Container fluid className="DashBoard">
-        <MDBRow>
-          <MDBCol lg="3">
-            <LeftNav  />
-          </MDBCol>
-          <MDBCol lg="7" className="posts-page">
-            <AddPost />
+      <DashBoardContext.Provider value={{ personalInfo, setPersonalInfo }}>
+        <Container fluid className="DashBoard">
+          <MDBRow>
+            <MDBCol lg="3">
+              <LeftNav />
+            </MDBCol>
+            <MDBCol lg="7" className="posts-page">
+              <AddPost />
 
-            <PostBox postsData={posts} key={v4()} />
-          </MDBCol>
+              <PostBox postsData={posts} key={v4()} />
+            </MDBCol>
 
-          <MDBCol lg="2">
-            <OurClient />
-          </MDBCol>
-        </MDBRow>
-      </Container>
+            <MDBCol lg="2">
+              <OurClient />
+            </MDBCol>
+          </MDBRow>
+        </Container>
+      </DashBoardContext.Provider>
     </>
   );
 };

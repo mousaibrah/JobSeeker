@@ -1,10 +1,19 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Button } from "../styled/Button.Styled";
 import { v4 } from "uuid";
-
+import axios from "axios";
+import { AppContext } from "../State/AppState";
 const PostBox = ({ postsData }) => {
-  const [maxLength, setMaxLength] = useState(250);
-  const [isCollapse, setIsCollapse] = useState(false);
+  const { posts, setPosts, userId } = useContext(AppContext);
+
+  const deletePost = async (id) => {
+    try {
+      const response = await axios.delete(`http://localhost:5000/posts/${id}`);
+      setPosts(posts.filter((post) => post._id !== id));
+    } catch (error) {
+      console.log("error postBox 13 :>> ", error);
+    }
+  };
   if (!postsData) {
     return;
   }
@@ -19,13 +28,26 @@ const PostBox = ({ postsData }) => {
 
               <span className="postDate">{post.createdAt.slice(0, 10)}</span>
             </div>
-            <div className="postTopRight"></div>
-            <span className="postDate">{post.location}</span>
+            <div className="postTopCenter">
+              <span className="postDate">{post.location}</span>
+            </div>
+            <div className="postTopRight">
+              {post.userId === userId && (
+                <span
+                  className="deleteBtn"
+                  id={`${post._id}`}
+                  onClick={(e) => deletePost(e.target.id)}
+                  title="DELETE POST"
+                >
+                  ❌
+                </span>
+              )}
+            </div>
           </div>
           <div className="postCenter">
             <span className="postText">{post.description}</span>
             {post.responsibility
-              ? post.responsibility.map((elem) => <li>{elem}</li>)
+              ? post.responsibility.map((elem) => <li key={v4()}>{elem}</li>)
               : ""}
             <img className="postImg" src={post?.picturePath} />
           </div>

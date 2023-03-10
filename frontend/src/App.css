@@ -233,3 +233,10 @@ hr {
   font-size: 22px;
   transform: translate(100%, 250%);
 }
+.postTopRight{
+  transition: 0.3s;
+}
+.postTopRight:hover{
+transform: scale(1.3);
+
+}

@@ -4,14 +4,15 @@ import NavLinks from "../navbar/NavLinks";
 import { Nav, NavDropdown, Container } from "react-bootstrap";
 import { Button } from "../styled/Button.Styled";
 import { Link } from "../styled/Links";
+import imgPath from './404.jpg';
 const Error = () => {
   const navigate = useNavigate();
   return (
     <Container fluid>
       <ErrorNav />
       <img
-        src="https://img.freepik.com/free-vector/oops-404-error-with-broken-robot-concept-illustration_114360-5529.jpg?w=2000"
-        style={{ width: "100%", height: "75vh" }}
+        src={`${imgPath}`}
+       width={'100%'}
       />
       <Button onClick={() => navigate("/")}>Go Home</Button>
     </Container>

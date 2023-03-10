@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import axios from 'axios';
+import React, { useContext, useEffect, useState } from "react";
+import axios from "axios";
 import {
   MDBCard,
   MDBCardBody,
@@ -9,10 +9,11 @@ import {
   MDBListGroupItem,
 } from "mdb-react-ui-kit";
 import { PersonalBox } from "../profile/PersonalInfo";
+import { DashBoardContext } from "./DashBoard";
 const LeftNav = () => {
-  const userId = localStorage.getItem("userId")
-  const [personalInfo, setPersonalInfo] = useState({});
-  const { userImg, UserName, education,location } = personalInfo;
+  const userId = localStorage.getItem("userId");
+  const { personalInfo, setPersonalInfo } = useContext(DashBoardContext);
+  const { userImg, UserName, education, location } = personalInfo;
   useEffect(() => {
     getPersonalInfo();
   }, []);
@@ -21,8 +22,8 @@ const LeftNav = () => {
       const personalInfo = await axios.get(
         `http://localhost:5000/profile/${JSON.parse(userId)}`
       );
-      const { userImg, UserName, education,location } = personalInfo.data.data;
-      setPersonalInfo({ userImg, UserName, education,location });
+      const { userImg, UserName, education, location } = personalInfo.data.data;
+      setPersonalInfo({ userImg, UserName, education, location });
     } catch (error) {
       console.log("error LN 21:>> ", error);
     }

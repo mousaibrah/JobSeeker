@@ -11,16 +11,19 @@ const OurClient = () => {
   return (
     <>
       <MDBCard style={{ backgroundColor: "#2d2e37" }}>
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Pariatur
-          sapiente saepe ut praesentium eveniet debitis corrupti voluptas
-          quisquam doloremque officiis, eius necessitatibus sequi voluptates
-          ducimus iure beatae sint molestias quo? Lorem ipsum dolor sit amet
-          consectetur adipisicing elit. Natus similique accusamus totam fugit
-          odio vitae architecto tempore? Quos maxime ullam itaque reiciendis
-          provident vitae? Illo mollitia facilis aliquam. Repellat, est.
+        <p style={{ textAlign: "center", padding: "0px 4px" }}>
+          Hope You Enjoy Our Website
         </p>
+        <ul>
+          <li>Please Let Us Know</li>
+          <li>If You Have Any Problem</li>
+          <li>Or If You See offensive</li>
+          <li>Read About Our services</li>
+          <li>Please Rate Our services</li>
+          <li>Enjoy ❤️</li>
+        </ul>
       </MDBCard>
+      
     </>
   );
 };
