@@ -24,9 +24,6 @@ const Login = () => {
     isLoggedIn,
     setIsLoggedIn,
     setUserId,
-    setProfileData,
-    profileData,
-    userId,
   } = useContext(AppContext);
   const [result, setResult] = useState("");
   const [rememberMe, setRememberMe] = useState(false);

@@ -4,8 +4,8 @@ import { v4 } from "uuid";
 import axios from "axios";
 import { AppContext } from "../State/AppState";
 const PostBox = ({ postsData }) => {
-  const { posts, setPosts, userId } = useContext(AppContext);
-
+  const { posts, setPosts } = useContext(AppContext);
+const userId =JSON.parse(localStorage.getItem('userId'))
   const deletePost = async (id) => {
     try {
       const response = await axios.delete(`http://localhost:5000/posts/${id}`);

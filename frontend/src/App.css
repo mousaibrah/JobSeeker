@@ -1,13 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;1,200;1,400;1,600&family=Quicksand:wght@300;400;500;600;700&family=Style+Script&display=swap");
 
-.catagories:hover {
-  font-size: larger;
-  cursor: pointer;
-  background-color: #0275d8;
-  color: #fff;
-  transform: scale(1.1);
-  transition: 0.3s;
+.Home{
+  background: #2d2e37; 
+  position: relative;
+  text-align: center;
+ 
 }
+.img-container{
+  filter: blur(3px);
+}
+.text-container{
+background-color: #d0d3e984;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%)
+}
+
 
 .footer {
   margin-top: auto;

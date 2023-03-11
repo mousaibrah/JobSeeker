@@ -6,12 +6,12 @@ const HomeNav = () => {
   const navigate = useNavigate();
   const loginL = <Link onClick={() => navigate("/login")}>Login</Link>;
   const registerL = <Link onClick={() => navigate("/register")}>Register</Link>;
-  const profileL = <Link onClick={() => navigate("/profile")}>Profile</Link>;
+ ;
   const dashboardL = (
     <Link onClick={() => navigate("/dashboard")}>Dashboard</Link>
   );
 
-  return <NavLinks home={{ loginL, registerL, profileL, dashboardL }} />;
+  return <NavLinks home={{ loginL, registerL, dashboardL }} />;
 };
 
 export default HomeNav;
