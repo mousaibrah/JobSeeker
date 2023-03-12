@@ -9,7 +9,7 @@ const FirstName = () => {
   const attr = {
     label: "First Name",
     type: "text",
-    action: (e) =>setRegisterInfo({ ...registerInfo, firstName: e.target.value }),
+    action: (e) =>{setRegisterInfo({ ...registerInfo, firstName: e.target.value })},
     className: "firstName",
     initValue: registerInfo.firstName,
     

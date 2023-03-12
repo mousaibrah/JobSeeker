@@ -45,6 +45,7 @@ const userId =JSON.parse(localStorage.getItem('userId'))
             </div>
           </div>
           <div className="postCenter">
+            <h3 className="text-primary" style={{textAlign:'center'}}>{post.title}</h3>
             <span className="postText">{post.description}</span>
             {post.responsibility
               ? post.responsibility.map((elem) => <li key={v4()}>{elem}</li>)

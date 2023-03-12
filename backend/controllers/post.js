@@ -53,12 +53,12 @@ const getPostById = async (req, res) => {
   }
 };
 const updatePost = async (req, res) => {
-  const _id = req.params.id;
-  const { title, userId, company, description, responsibility } = req.body;
+  const userId = req.params.id;
+  const { title, description, responsibility,picturePath } = req.body;
   try {
-    const update = await postSchema.findByIdAndUpdate(
-      { _id },
-      { title, userId, company, description, responsibility },
+    const update = await postSchema.findOneAndUpdate(
+      { userId },
+      { title, company, description, responsibility,picturePath },
       { new: true }
     );
     if (!update) {

@@ -59,7 +59,6 @@ const UploadImg = ({ toggle }) => {
 
       let json = await res.json();
       //   setUrl(JSON.stringify(json.url));
-      alert("img Uploded");
       console.log("url :>> ", JSON.stringify(json.url));
       updateProfileImg(json.url);
     }
