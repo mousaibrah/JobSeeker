@@ -29,13 +29,9 @@ const DashBoard = () => {
       console.log("error :>> ", error);
     }
   };
-  const Modal =async ()=>{
-    Swal.fire(
-      'Good job!',
-      'You clicked the button!',
-      'success'
-    )
-  }
+  const Modal = async () => {
+    Swal.fire("Good job!", "You clicked the button!", "success");
+  };
   return (
     <>
       <DashboardNav />
@@ -48,11 +44,9 @@ const DashBoard = () => {
             <MDBCol lg="7" className="posts-page">
               <AddPost />
 
-              <PostBox postsData={{posts,setApplyModal}} key={v4()} />
-            
+              <PostBox postsData={{ posts, setApplyModal }} key={v4()} />
+
               {/* <Apply/>  */}
-              
-              
             </MDBCol>
 
             <MDBCol lg="2">

@@ -7,6 +7,7 @@ const PORT = process.env.PORT || 5000;
 const roleRouter = require("./routes/role");
 const userRouter = require("./routes/users");
 const postRouter = require("./routes/post");
+const emailRouter = require("./routes/email");
 const profileRouter = require("./routes/profile");
 const Admin = require("./routes/createAdmin");
 app.use(cors());

@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
+import React from "react";
 import FirstName from "./inputComponent/FirstName";
-import { RegisterContext } from "./Context/Context";
+
 import LastName from "./inputComponent/LastName";
 import Mobile from "./inputComponent/Mobile";
 import Email from "./inputComponent/Email";
@@ -11,7 +11,7 @@ import Location from "./inputComponent/Location";
 import Img from "./inputComponent/Img";
 import Role from "./inputComponent/Role";
 import SubmitBtn from "./SubmitBtn";
-import { MDBCol, MDBRow, MDBValidation } from "mdb-react-ui-kit";
+import { MDBCol, MDBRow } from "mdb-react-ui-kit";
 import RegisterNav from "./RegisterNav";
 import Google from "./inputComponent/Google";
 const Register = () => {
@@ -24,7 +24,7 @@ const Register = () => {
             <img
               src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
               className="img-fluid"
-              alt="Phone image"
+              alt="Phone"
             />
           </MDBCol>
           <MDBCol lg="6">

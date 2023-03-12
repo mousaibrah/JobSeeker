@@ -1,40 +1,25 @@
-import React, { useState, useContext } from "react";
+import React from "react";
 import { Input } from "../styled/Input.Styled";
-import { AppContext } from "../State/AppState";
-import { Button, Modal } from "react-bootstrap";
+
+import { Modal } from "react-bootstrap";
 import axios from "axios";
 
 const UploadImg = ({ toggle }) => {
   const { profilePicModal, setProfilePicModal } = toggle;
-  //   const [image, setImage] = useState("");
-  //   const [url, setUrl] = useState("");
-  const { setProfileData, userId, profileData } = useContext(AppContext);
+
+  const userId = localStorage.getItem("userId");
   const updateProfileImg = async (url) => {
     try {
       const data = await axios.put(
         `http://localhost:5000/profile/${JSON.parse(userId)}/img`,
         { userImg: url }
       );
+      console.log("data :>> ", data);
       setProfilePicModal(false);
     } catch (error) {
       console.log("error :>> ", error);
     }
   };
-  /*  const convertToUrl = () => {
-    const data = new FormData();
-    data.append("file", image);
-    data.append("upload_preset", "ym3yv62c");
-
-    axios
-      .post("https://api.cloudinary.com/v1_1/dvgnuchjw/upload", data)
-      .then((data) => {
-        setUrl(data.url);
-        updateProfileImg();
-      })
-      .catch((error) => {
-        console.log("error :>> ", error);
-      });
-  }; */
   const processFile = async (e) => {
     var YOUR_CLOUD_NAME = "dvgnuchjw";
     var YOUR_UNSIGNED_UPLOAD_PRESET = "ym3yv62c";

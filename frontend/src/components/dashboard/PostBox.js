@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { Button } from "../styled/Button.Styled";
 import { v4 } from "uuid";
 import axios from "axios";
@@ -6,7 +6,7 @@ import { AppContext } from "../State/AppState";
 
 const PostBox = ({ postsData }) => {
   const { posts, setPosts } = useContext(AppContext);
-  const {posts:dashBoardPosts,setApplyModal} = postsData
+  const { posts: dashBoardPosts, setApplyModal } = postsData;
   const userId = JSON.parse(localStorage.getItem("userId"));
   const deletePost = async (id) => {
     try {
@@ -19,7 +19,7 @@ const PostBox = ({ postsData }) => {
   if (!dashBoardPosts) {
     return;
   }
-  
+
   const Post = dashBoardPosts.map((post) => {
     return (
       <div className="post" key={v4()}>
@@ -60,7 +60,6 @@ const PostBox = ({ postsData }) => {
           <div className="postBottom">
             <div className="postBottomLeft">
               <Button onClick={() => setApplyModal(true)}>APPLY</Button>
-              
             </div>
             <div className="postBottomRight">
               <span className="postLikeCounter">

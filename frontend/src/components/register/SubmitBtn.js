@@ -7,39 +7,47 @@ import { Button } from "../styled/Button.Styled";
 
 const SubmitBtn = () => {
   const navigate = useNavigate();
-  const { registerInfo,result,setResult,err, setErr,isRegistered, setIsRegistered } = useContext(RegisterContext);
+  const {
+    registerInfo,
+    result,
+    setResult,
+    err,
+    setErr,
+    isRegistered,
+    setIsRegistered,
+  } = useContext(RegisterContext);
   const register = async () => {
     try {
       const res = await axios.post(
         "http://localhost:5000/users/register",
         registerInfo
       );
-     
+
       setResult(res.data.message);
-      if(res.data.result._id){
+      if (res.data.result._id) {
         const profile = await axios.post(
           `http://localhost:5000/profile/${res.data.result._id}`,
           registerInfo
         );
+        console.log("profile :>> ", profile);
       }
-     
-      
-      setIsRegistered(true)
+
+      setIsRegistered(true);
       setTimeout(() => {
         navigate("/login");
       }, 3000);
     } catch (error) {
-      setIsRegistered(false)
+      setIsRegistered(false);
       setResult(error.response.data.message);
       setErr(true);
     }
   };
   return (
-  <>
-  <Button onClick={register}>Register</Button>
-  {isRegistered&&<Alert variant='success'>{result}</Alert>}
-  {err&&<Alert variant='danger'>{result}</Alert>}
-  </>
+    <>
+      <Button onClick={register}>Register</Button>
+      {isRegistered && <Alert variant="success">{result}</Alert>}
+      {err && <Alert variant="danger">{result}</Alert>}
+    </>
   );
 };
 
