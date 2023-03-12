@@ -4,7 +4,7 @@ const userSchema = require("../models/users");
 
 const createPost = async (req, res) => {
   const userId = req.params.id;
-  const { title, company, description, responsibility, picturePath } = req.body;
+  const { title, description, responsibility, picturePath } = req.body;
   try {
     const personal = await profileSchema.findOne({ userId });
     const location = await userSchema.findOne({ _id: userId });

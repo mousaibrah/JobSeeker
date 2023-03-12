@@ -11,32 +11,55 @@ import Location from "./inputComponent/Location";
 import Img from "./inputComponent/Img";
 import Role from "./inputComponent/Role";
 import SubmitBtn from "./SubmitBtn";
-import { MDBCol, MDBRow } from "mdb-react-ui-kit";
+import { MDBCol, MDBRow, MDBValidation } from "mdb-react-ui-kit";
 import RegisterNav from "./RegisterNav";
+import Google from "./inputComponent/Google";
 const Register = () => {
   return (
     <>
       <RegisterNav />
-      <Container>
+      <Container className="register-page">
         <MDBRow>
           <MDBCol lg="6">
             <img
               src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
-              class="img-fluid"
+              className="img-fluid"
               alt="Phone image"
             />
           </MDBCol>
           <MDBCol lg="6">
-            <FirstName />
-            <LastName />
-            <Mobile />
+            <MDBRow>
+              <MDBCol>
+                {" "}
+                <FirstName />
+              </MDBCol>
+              <MDBCol>
+                <LastName />
+              </MDBCol>
+            </MDBRow>
+            <MDBRow>
+              <MDBCol>
+                {" "}
+                <Mobile />
+              </MDBCol>
+              <MDBCol>
+                <Location />
+              </MDBCol>
+            </MDBRow>
+            <Date />
             <Email />
             <Password />
-            <Date />
-            <Location />
+
             <Img />
             <Role />
-            <SubmitBtn />
+
+            <MDBRow className="justify-content-md-center">
+              <SubmitBtn />
+            </MDBRow>
+
+            <MDBRow className="justify-content-md-center">
+              <Google />
+            </MDBRow>
           </MDBCol>
         </MDBRow>
       </Container>

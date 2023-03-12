@@ -14,14 +14,16 @@ const SubmitBtn = () => {
         "http://localhost:5000/users/register",
         registerInfo
       );
-      console.log('res :>> ', res);
-   console.log('registerInfo :>> ', registerInfo);
+     
       setResult(res.data.message);
-      const profile = await axios.post(
-        `http://localhost:5000/profile/${res.data.result._id}`,
-        registerInfo
-      );
-      setResult(res.data.message);
+      if(res.data.result._id){
+        const profile = await axios.post(
+          `http://localhost:5000/profile/${res.data.result._id}`,
+          registerInfo
+        );
+      }
+     
+      
       setIsRegistered(true)
       setTimeout(() => {
         navigate("/login");

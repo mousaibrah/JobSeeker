@@ -34,7 +34,8 @@ const Home = () => {
   }, [currentIndex]);
 
   return (
-    <Container fluid>
+    <>
+      {/* <Container fluid> */}
       <HomeNav />{" "}
       <MDBCard>
         <MDBCardBody className="Home">
@@ -85,7 +86,8 @@ const Home = () => {
           </div>
         </MDBCardBody>
       </MDBCard>
-    </Container>
+      {/* </Container> */}
+    </>
   );
 };
 
