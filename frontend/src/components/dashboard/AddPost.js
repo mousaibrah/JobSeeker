@@ -8,7 +8,7 @@ import axios from "axios";
 import { v4 } from "uuid";
 const AddPost = () => {
   const [responsibilityInput, setResponsibilityInput] = useState("");
-  const { setPosts,posts } = useContext(AppContext);
+  const { setPosts, posts } = useContext(AppContext);
   const [newPost, setNewPost] = useState({
     title: "",
     description: "",
@@ -54,7 +54,7 @@ const AddPost = () => {
         `http://localhost:5000/posts/${userId}`,
         newPost
       );
-      setPosts([...posts,request.data])
+      setPosts([...posts, request.data]);
       console.log("request :>> ", request);
     } catch (error) {
       console.log("error :>> ", error);

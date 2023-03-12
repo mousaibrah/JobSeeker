@@ -10,10 +10,14 @@ import LeftNav from "./LeftNav";
 import OurClient from "./OurClient";
 import PostBox from "./PostBox";
 import { AppContext } from "../State/AppState";
+import Swal from "sweetalert2";
+import Apply from "./Apply";
 export const DashBoardContext = createContext();
 const DashBoard = () => {
   const { posts, setPosts } = useContext(AppContext);
   const [personalInfo, setPersonalInfo] = useState({});
+  const [applyModal, setApplyModal] = useState(false);
+
   useEffect(() => {
     getPosts();
   }, []);
@@ -25,6 +29,13 @@ const DashBoard = () => {
       console.log("error :>> ", error);
     }
   };
+  const Modal =async ()=>{
+    Swal.fire(
+      'Good job!',
+      'You clicked the button!',
+      'success'
+    )
+  }
   return (
     <>
       <DashboardNav />
@@ -37,7 +48,11 @@ const DashBoard = () => {
             <MDBCol lg="7" className="posts-page">
               <AddPost />
 
-              <PostBox postsData={posts} key={v4()} />
+              <PostBox postsData={{posts,setApplyModal}} key={v4()} />
+            
+              {/* <Apply/>  */}
+              
+              
             </MDBCol>
 
             <MDBCol lg="2">

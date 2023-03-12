@@ -3,9 +3,11 @@ import { Button } from "../styled/Button.Styled";
 import { v4 } from "uuid";
 import axios from "axios";
 import { AppContext } from "../State/AppState";
+
 const PostBox = ({ postsData }) => {
   const { posts, setPosts } = useContext(AppContext);
-const userId =JSON.parse(localStorage.getItem('userId'))
+  const {posts:dashBoardPosts,setApplyModal} = postsData
+  const userId = JSON.parse(localStorage.getItem("userId"));
   const deletePost = async (id) => {
     try {
       const response = await axios.delete(`http://localhost:5000/posts/${id}`);
@@ -14,10 +16,11 @@ const userId =JSON.parse(localStorage.getItem('userId'))
       console.log("error postBox 13 :>> ", error);
     }
   };
-  if (!postsData) {
+  if (!dashBoardPosts) {
     return;
   }
-  const Post = postsData.map((post) => {
+  
+  const Post = dashBoardPosts.map((post) => {
     return (
       <div className="post" key={v4()}>
         <div className="postWrapper">
@@ -45,7 +48,9 @@ const userId =JSON.parse(localStorage.getItem('userId'))
             </div>
           </div>
           <div className="postCenter">
-            <h3 className="text-primary" style={{textAlign:'center'}}>{post.title}</h3>
+            <h3 className="text-primary" style={{ textAlign: "center" }}>
+              {post.title}
+            </h3>
             <span className="postText">{post.description}</span>
             {post.responsibility
               ? post.responsibility.map((elem) => <li key={v4()}>{elem}</li>)
@@ -54,7 +59,8 @@ const userId =JSON.parse(localStorage.getItem('userId'))
           </div>
           <div className="postBottom">
             <div className="postBottomLeft">
-              <Button>APPLY</Button>
+              <Button onClick={() => setApplyModal(true)}>APPLY</Button>
+              
             </div>
             <div className="postBottomRight">
               <span className="postLikeCounter">
