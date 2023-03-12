@@ -8,7 +8,7 @@ const EmailComponent = () => {
   return (
     <>
       <Label>Email address</Label>
-      <Input
+      <MDBInput
         wrapperclass="mb-4"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
