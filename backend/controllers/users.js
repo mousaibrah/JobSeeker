@@ -1,5 +1,6 @@
 const userSchema = require("../models/users");
 const roleSchema = require("../models/role");
+const adminSchema = require("../models/adminController");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
@@ -29,6 +30,12 @@ const register = async (req, res) => {
       img,
       role: findRole._id,
     });
+    const createUser = new adminSchema({
+      clientId: newUser._id,
+      clientRole: role,
+      clientName: `${firstName} ${lastName}`,
+    });
+    const data = await createUser.save();
     const result = await newUser.save();
     res.status(201).json({
       success: true,

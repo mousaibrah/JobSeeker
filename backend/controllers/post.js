@@ -13,6 +13,7 @@ const createPost = async (req, res) => {
       type,
       location,
       description,
+      userId,
       userPicturePath: personal.userImg,
     });
     const result = await newPost.save();

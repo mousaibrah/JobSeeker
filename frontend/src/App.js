@@ -5,7 +5,8 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import GlobalStyle from "./components/styled/Global.Styled";
 import "mdbreact/dist/css/mdb.css";
 import { Container } from "react-bootstrap";
-
+// TEXT EDITOR
+import 'react-quill/dist/quill.snow.css'
 // Import React & react Router
 import React from "react";
 import { Routes, Route } from "react-router-dom";
@@ -23,7 +24,6 @@ import Modal01 from "./components/Feed/addJobModal/Modal01";
 
 // Import Styled Container
 function App() {
-  
   return (
     <div className="App">
       <GlobalStyle />

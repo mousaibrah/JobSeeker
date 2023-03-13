@@ -4,34 +4,81 @@ import { Button } from "../../styled/Button.Styled";
 import { AddJobContext } from "../AddPost";
 import { v4 } from "uuid";
 const Modal03 = () => {
-  const { modal03, setModal03, setModal02, setSubmitModal } =
-    useContext(AddJobContext);
+  const {
+    modal03,
+    setModal03,
+    setModal02,
+    setSubmitModal,
+    sharePost,
+    newPost,
+  } = useContext(AddJobContext);
+  const date = new Date();
+  const dd = date.getDate();
+  const mm = date.getUTCMonth() + 1;
+  const yy = date.getFullYear();
+console.log('newPost :>> ', newPost);
   return (
     <>
-      <Modal show={modal03} dialogClassName="modal-90w">
+      <Modal
+        show={modal03}
+        onHide={() => setModal03(false)}
+        size="xl"
+        dialogClassName="modal-90w"
+      >
         <Modal.Header closeButton>
           <Modal.Title className="text-dark">
             Your Post Will Look Like This
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <div className="postCenter">
-            <h2 className="text-dark">{'title'}</h2>
-            <span className="postText text-dark">{'description'}</span>
-            {/* {responsibility?.map((elem) => (
-              <li className="text-dark" key={v4()}>
-                {elem}
-              </li>
-            ))} */}
-            <img className="postImg" src={'picturePath'} />
+          <div className="post" key={v4()}>
+            <div className="postWrapper">
+              <div className="postTop">
+                <div className="postTopLeft">
+                  <img
+                    className="postProfileImg"
+                    src={newPost?.userPicturePath}
+                  />
+                  <span className="postUsername">{newPost?.company}</span>
+
+                  <span className="postDate">{`${yy}/ ${mm} /${dd}  `}</span>
+                </div>
+                <div className="postTopCenter">
+                  <span className="postDate">{newPost?.location}</span>
+                </div>
+                <div className="postTopRight"></div>
+              </div>
+              <div className="postCenter">
+                <h3 className="text-primary" style={{ textAlign: "center" }}>
+                  {newPost.title}
+                </h3>
+                
+                <div
+                  className="postText" 
+                  
+                  dangerouslySetInnerHTML={{ __html: newPost?.description }}
+                ></div>
+              </div>
+              <div className="postBottom">
+                <div className="postBottomLeft">
+                  <Button onClick={() => console.log("test")}>APPLY</Button>
+                </div>
+                <div className="postBottomRight">
+                  <span className="postLikeCounter">
+                    {" "}
+                    People Applied ...{newPost?.applied}
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
         </Modal.Body>
         <Modal.Footer>
           <Button
             variant="primary"
             onClick={() => {
-                setModal02(true);
-                setModal03(false);
+              setModal02(true);
+              setModal03(false);
             }}
           >
             Back
@@ -39,7 +86,9 @@ const Modal03 = () => {
           <Button
             variant="primary"
             onClick={() => {
-            //   sharePost();
+              sharePost();
+              setSubmitModal(true);
+              setModal03(false);
             }}
           >
             Save
