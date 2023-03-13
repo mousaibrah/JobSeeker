@@ -13,7 +13,7 @@ const NavLinks = ({ home }) => {
       </div>
     
       <div className="Links">
-        {home?.dashboardL}
+        {home?.feed}
         {home?.profileL}
         {home?.loginL}
         {home?.registerL}

@@ -7,11 +7,11 @@ const LoginNav = () => {
   const navigate = useNavigate();
 
   const registerL = <Link onClick={() => navigate("/register")}>Register</Link>;
-  const dashboardL = (
-    <Link onClick={() => navigate("/dashboard")}>Dashboard</Link>
+  const feed = (
+    <Link onClick={() => navigate("/feed")}>Feed</Link>
   );
 
-  return <NavLinks home={{ registerL, dashboardL }} />;
+  return <NavLinks home={{ registerL, feed }} />;
 };
 
 export default LoginNav;

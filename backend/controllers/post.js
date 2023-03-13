@@ -4,18 +4,15 @@ const userSchema = require("../models/users");
 
 const createPost = async (req, res) => {
   const userId = req.params.id;
-  const { title, description, responsibility, picturePath } = req.body;
+  const { jobTitle, company, type, location, description } = req.body;
   try {
     const personal = await profileSchema.findOne({ userId });
-    const location = await userSchema.findOne({ _id: userId });
     const newPost = new postSchema({
-      title,
-      userId,
-      company: personal.UserName,
+      jobTitle,
+      company,
+      type,
+      location,
       description,
-      responsibility,
-      picturePath,
-      location: location.location,
       userPicturePath: personal.userImg,
     });
     const result = await newPost.save();
@@ -35,9 +32,9 @@ const getPosts = async (req, res) => {
   }
 };
 const getPostById = async (req, res) => {
-  const userId = req.params.id;
+  const _id = req.params.id;
   try {
-    const data = await postSchema.find({ userId });
+    const data = await postSchema.findById({ _id });
     if (!data) {
       res
         .status(404)
@@ -54,11 +51,11 @@ const getPostById = async (req, res) => {
 };
 const updatePost = async (req, res) => {
   const userId = req.params.id;
-  const { title, description, responsibility,picturePath } = req.body;
+  const { title, description, } = req.body;
   try {
     const update = await postSchema.findOneAndUpdate(
       { userId },
-      { title, company, description, responsibility,picturePath },
+      { title, description, },
       { new: true }
     );
     if (!update) {

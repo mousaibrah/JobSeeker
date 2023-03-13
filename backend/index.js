@@ -13,6 +13,7 @@ const Admin = require("./routes/createAdmin");
 app.use(cors());
 app.use(express.json());
 app.use("/roles", roleRouter);
+app.use("/email", emailRouter);
 app.use("/admin", Admin);
 app.use("/users", userRouter);
 app.use("/posts", postRouter);

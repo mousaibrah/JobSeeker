@@ -10,24 +10,29 @@ import { Container } from "react-bootstrap";
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 // Import Components
-import DashBoard from "./components/dashboard/DashBoard";
+import Feed from "./components/Feed/Feed";
 import Login from "./components/login/Login";
 import Home from "./components/Home/Home";
 import Error from "./components/404/Error";
 import Footer from "./components/Footer/Footer";
 import ProfilePage from "./components/profile/ProfilePage";
 import Context from "./components/register/Context/Context";
+import PostPage from "./components/Feed/PostPage";
+import Modal01 from "./components/Feed/addJobModal/Modal01";
 // Export Context
 
 // Import Styled Container
 function App() {
+  
   return (
     <div className="App">
       <GlobalStyle />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/dashboard" element={<DashBoard />} />
+        <Route path="/Feed" element={<Feed />} />
+        <Route path="/Feed/:id" element={<PostPage />} />
+        <Route path="/Feed/create" element={<Modal01 />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Context />} />
         <Route path="*" element={<Error />} />

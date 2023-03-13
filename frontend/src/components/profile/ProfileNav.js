@@ -7,8 +7,8 @@ const ProfileNav = () => {
   const navigate = useNavigate();
   const { setUserId, setToken, setIsLoggedIn } = useContext(AppContext);
 
-  const dashboardL = (
-    <Link onClick={() => navigate("/dashboard")}>Dashboard</Link>
+  const feed = (
+    <Link onClick={() => navigate("/feed")}>Feed</Link>
   );
   const Logout = (
     <Link
@@ -24,7 +24,7 @@ const ProfileNav = () => {
     </Link>
   );
 
-  return <NavLinks home={{ Logout, dashboardL }} />;
+  return <NavLinks home={{ Logout, feed }} />;
 };
 
 export default ProfileNav;

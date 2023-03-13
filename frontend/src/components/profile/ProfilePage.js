@@ -20,7 +20,7 @@ import UpdateProfile from "./UpdateProfile";
 import { Button } from "../styled/Button.Styled";
 import SkillsModal from "./SkillsModal";
 import PersonalInfo, { PersonalBox } from "./PersonalInfo";
-import PostBox from "../dashboard/PostBox";
+import PostBox from "../Feed/PostBox";
 import Swal from "sweetalert2";
 import UploadImg from "./UploadImg";
 export const profileContext = createContext();

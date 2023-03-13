@@ -3,19 +3,17 @@ import { MDBCol, MDBRow } from "mdb-react-ui-kit";
 import React, { useEffect, useContext, createContext, useState } from "react";
 import { Container } from "react-bootstrap";
 import { v4 } from "uuid";
-import Catagories from "../catagories/Catagories";
 import AddPost from "./AddPost";
-import DashboardNav from "./DashboardNav";
 import LeftNav from "./LeftNav";
 import OurClient from "./OurClient";
 import PostBox from "./PostBox";
 import { AppContext } from "../State/AppState";
 import Swal from "sweetalert2";
 import Apply from "./Apply";
+import FeedNav from "./FeedNav";
 export const DashBoardContext = createContext();
-const DashBoard = () => {
+const Feed = () => {
   const { posts, setPosts } = useContext(AppContext);
-  const [personalInfo, setPersonalInfo] = useState({});
   const [applyModal, setApplyModal] = useState(false);
 
   useEffect(() => {
@@ -29,13 +27,11 @@ const DashBoard = () => {
       console.log("error :>> ", error);
     }
   };
-  const Modal = async () => {
-    Swal.fire("Good job!", "You clicked the button!", "success");
-  };
+ 
   return (
     <>
-      <DashboardNav />
-      <DashBoardContext.Provider value={{ personalInfo, setPersonalInfo }}>
+      <FeedNav />
+      
         <Container fluid className="DashBoard">
           <MDBRow>
             <MDBCol lg="3">
@@ -54,12 +50,12 @@ const DashBoard = () => {
             </MDBCol>
           </MDBRow>
         </Container>
-      </DashBoardContext.Provider>
+    
     </>
   );
 };
 
-export default DashBoard;
+export default Feed;
 
 /* 
 <WidgetWrapper>

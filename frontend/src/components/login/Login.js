@@ -30,7 +30,7 @@ const Login = () => {
   const [err, setErr] = useState(false);
   if (isLoggedIn) {
     setTimeout(() => {
-      navigate("/dashboard");
+      navigate("/feed");
     }, 2000);
   }
   const login = async () => {

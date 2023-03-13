@@ -1,9 +1,8 @@
-const express = require('express');
-const emailRouter = express.Router()
-const {emailForCompany,reply} = require('../controllers/email')
+const express = require("express");
+const emailRouter = express.Router();
+const { emailForCompany, reply } = require("../controllers/email");
 
-emailRouter.post('/',emailForCompany)
-emailRouter.post('/reply',reply)
+emailRouter.post("/", emailForCompany);
+emailRouter.post("/reply", reply);
 
-
-module.exports = emailRouter
+module.exports = emailRouter;

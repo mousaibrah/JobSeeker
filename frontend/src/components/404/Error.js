@@ -22,11 +22,10 @@ const ErrorNav = () => {
   const navigate = useNavigate();
   const loginL = <Link onClick={() => navigate("/login")}>Login</Link>;
   const registerL = <Link onClick={() => navigate("/register")}>Register</Link>;
-  const profileL = <Link onClick={() => navigate("/profile")}>Profile</Link>;
-  const dashboardL = (
-    <Link onClick={() => navigate("/dashboard")}>Dashboard</Link>
+  const feed = (
+    <Link onClick={() => navigate("/feed")}>Feed</Link>
   );
 
-  return <NavLinks home={{ loginL, registerL, profileL, dashboardL }} />;
+  return <NavLinks home={{ loginL, registerL, feed }} />;
 };
 export default Error;

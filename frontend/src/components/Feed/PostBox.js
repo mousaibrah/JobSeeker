@@ -2,11 +2,13 @@ import React, { useContext } from "react";
 import { Button } from "../styled/Button.Styled";
 import { v4 } from "uuid";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { AppContext } from "../State/AppState";
 
 const PostBox = ({ postsData }) => {
   const { posts, setPosts } = useContext(AppContext);
-  const { posts: dashBoardPosts, setApplyModal } = postsData;
+  const navigate = useNavigate()
+  const { posts: dashBoardPosts } = postsData;
   const userId = JSON.parse(localStorage.getItem("userId"));
   const deletePost = async (id) => {
     try {
@@ -21,8 +23,28 @@ const PostBox = ({ postsData }) => {
   }
 
   const Post = dashBoardPosts.map((post) => {
+    
     return (
       <div className="post" key={v4()}>
+        <img className="shareProfileImg" src={post.userPicturePath} alt="" />
+          <h3>{post.company}</h3>
+        <div className="post-container">
+          <p>{post.location}</p>
+          <h5>{post.title}</h5>
+
+          <Button onClick={()=>navigate(`/feed/${post._id}`)}>More Details</Button>
+        </div>
+      </div>
+    );
+  });
+  return <>{Post}</>;
+};
+
+export default PostBox;
+
+
+/* 
+<div className="post" key={v4()}>
         <div className="postWrapper">
           <div className="postTop">
             <div className="postTopLeft">
@@ -52,6 +74,7 @@ const PostBox = ({ postsData }) => {
               {post.title}
             </h3>
             <span className="postText">{post.description}</span>
+
             {post.responsibility
               ? post.responsibility.map((elem) => <li key={v4()}>{elem}</li>)
               : ""}
@@ -70,9 +93,5 @@ const PostBox = ({ postsData }) => {
           </div>
         </div>
       </div>
-    );
-  });
-  return <>{Post}</>;
-};
 
-export default PostBox;
+*/

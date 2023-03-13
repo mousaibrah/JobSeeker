@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "../styled/Links";
 import NavLinks from "../navbar/NavLinks";
 import { AppContext } from "../State/AppState";
-const DashboardNav = () => {
+const FeedNav = () => {
   const navigate = useNavigate();
   const { setUserId, setToken, setIsLoggedIn } = useContext(AppContext);
   const profileL = <Link onClick={() => navigate("/profile")}>Profile</Link>;
@@ -24,4 +24,4 @@ const DashboardNav = () => {
   return <NavLinks home={{ profileL, Logout }} />;
 };
 
-export default DashboardNav;
+export default FeedNav;
