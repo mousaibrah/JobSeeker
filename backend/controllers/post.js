@@ -24,7 +24,7 @@ const createPost = async (req, res) => {
 };
 const getPosts = async (req, res) => {
   try {
-    const data = await postSchema.find({});
+    const data = await postSchema.find({}).sort({ createdAt: -1 });
     res.status(200).json(data);
   } catch (error) {
     res
@@ -35,7 +35,7 @@ const getPosts = async (req, res) => {
 const getPostById = async (req, res) => {
   const _id = req.params.id;
   try {
-    const data = await postSchema.findById({_id});
+    const data = await postSchema.findById({ _id });
     if (!data) {
       res
         .status(404)
@@ -91,7 +91,7 @@ const deletePost = async (req, res) => {
       .json({ success: false, status: "Server Error", message: error.message });
   }
 };
-const getPostByUser = async(req,res)=>{
+const getPostByUser = async (req, res) => {
   const userId = req.params.id;
   try {
     const data = await postSchema.find({ userId: userId });
@@ -108,14 +108,37 @@ const getPostByUser = async(req,res)=>{
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }
-}
-const getPostsFilterByType = async(req,res)=>{
-  const {type} = req.query
+};
+const getPostsFilterByType = async (req, res) => {
+  const { type } = req.query;
   try {
-    const filteredData = await postSchema.find({type})
-    res.status(200).json(filteredData)
+    const filteredData = await postSchema.find({ type });
+    res.status(200).json(filteredData);
   } catch (error) {
-    res.status(500).json({ success: false, message: "server error",error:error.message })
+    res
+      .status(500)
+      .json({ success: false, message: "server error", error: error.message });
   }
-}
-module.exports = { createPost, getPosts, getPostById, updatePost, deletePost,getPostByUser ,getPostsFilterByType};
+};
+const sortDate = async (req, res) => {
+  const { date } = req.query;
+
+  try {
+    const sorted = await postSchema.find({}).sort({ createdAt: date });
+    res.status(200).json(sorted);
+  } catch (error) {
+    res
+      .status(500)
+      .json({ success: false, message: "server error", error: error.message });
+  }
+};
+module.exports = {
+  createPost,
+  getPosts,
+  getPostById,
+  updatePost,
+  deletePost,
+  getPostByUser,
+  getPostsFilterByType,
+  sortDate,
+};

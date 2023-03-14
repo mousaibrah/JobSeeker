@@ -31,8 +31,7 @@ const AddPost = () => {
         `http://localhost:5000/posts/${userId}`,
         newPost
       );
-      setPosts([...posts, request.data]);
-      console.log("request :>> ", request);
+      setPosts([request.data, ...posts]);
     } catch (error) {
       console.log("error :>> ", error);
     }

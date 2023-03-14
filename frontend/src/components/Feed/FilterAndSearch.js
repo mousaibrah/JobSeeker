@@ -4,14 +4,31 @@ import { Accordion, Form } from "react-bootstrap";
 import { AppContext } from "../State/AppState";
 
 const FilterAndSearch = () => {
-  const [filterType, setFilterType] = useState("");
   const { posts, setPosts } = useContext(AppContext);
-  const filterResult = async () => {
+  const filterResult = async (type) => {
     try {
       const filteredData = await axios.get(
-        `http://localhost:5000/posts/filter/?type=${filterType}`
+        `http://localhost:5000/posts/filter/?type=${type}`
       );
-      console.log("filteredData :>> ", filteredData);
+      setPosts(filteredData.data);
+    } catch (error) {
+      console.log("error :>> ", error);
+    }
+  };
+  const getAllPosts = async () => {
+    try {
+      const allPosts = await axios.get("http://localhost:5000/posts");
+      setPosts(allPosts.data);
+    } catch (error) {
+      console.log("error :>> ", error);
+    }
+  };
+  const sortDate = async (e) => {
+    try {
+      const sort = await axios.get(
+        `http://localhost:5000/posts/sort?date=${e.target.value}`
+      );
+      setPosts(sort.data);
     } catch (error) {
       console.log("error :>> ", error);
     }
@@ -43,8 +60,7 @@ const FilterAndSearch = () => {
                 value="Full-Stack-Dev"
                 label="Full-Stack-Dev"
                 onChange={(e) => {
-                  setFilterType(e.target.value);
-                  filterResult();
+                  filterResult(e.target.value);
                 }}
                 name="group1"
                 type="radio"
@@ -56,8 +72,7 @@ const FilterAndSearch = () => {
                 label="Back-End-Dev"
                 name="group1"
                 onChange={(e) => {
-                  setFilterType(e.target.value);
-                  filterResult();
+                  filterResult(e.target.value);
                 }}
                 type="radio"
                 id={`Back-End-Dev`}
@@ -68,19 +83,28 @@ const FilterAndSearch = () => {
                 label="Front-End-Dev"
                 name="group1"
                 onChange={(e) => {
-                  setFilterType(e.target.value);
-                  filterResult();
+                  filterResult(e.target.value);
                 }}
                 type="radio"
                 id={`Front-End-Dev`}
               />
+              <Form.Check
+                inline
+                value="All"
+                label="All"
+                name="group1"
+                onChange={getAllPosts}
+                type="radio"
+                id={`All`}
+              />
               <Form.Select
                 aria-label="Default select example"
                 className="filter-date"
+                onChange={sortDate}
               >
                 <option>Date</option>
-                <option value="Oldest">Oldest</option>
-                <option value="newest">Newest</option>
+                <option value="1">Oldest</option>
+                <option value="-1">Newest</option>
               </Form.Select>
 
               <Form.Control

@@ -304,16 +304,16 @@ hr {
   color: #fcfeff !important;
   background-color: #2d2e37 !important;
 }
-.filter-inputs{
+.filter-inputs {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.filter-date{
+.filter-date {
   width: 100px !important;
   height: fit-content !important;
 }
-.filter-search{
+.filter-search {
   height: fit-content !important;
   width: 175px !important;
 }

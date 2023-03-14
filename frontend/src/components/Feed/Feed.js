@@ -39,7 +39,7 @@ const Feed = () => {
           </MDBCol>
           <MDBCol lg="7" className="posts-page">
             <MDBRow>
-              <FilterAndSearch/>
+              <FilterAndSearch />
             </MDBRow>
             {(role === "COMPANY" || role === "ADMIN") && <AddPost />}
 
