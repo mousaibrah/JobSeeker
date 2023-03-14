@@ -3,7 +3,7 @@ import React, { useContext, useState } from "react";
 import { RegisterContext } from "../Context/Context";
 const Role = () => {
   const { registerInfo, setRegisterInfo } = useContext(RegisterContext);
-  const [toggle, setToggle] = useState(false);
+  // const [toggle, setToggle] = useState(false);
   return (
     <div>
       <Form.Check
@@ -11,10 +11,9 @@ const Role = () => {
         value="COMPANY"
         label="Company"
         name="group1"
-        checked={toggle}
         onChange={(e) => {
           setRegisterInfo({ ...registerInfo, role: e.target.value });
-          setToggle((prev) => !prev);
+          // setToggle((prev) => !prev);
         }}
         type="radio"
         id={`inline-$'radio'-1`}
@@ -26,9 +25,8 @@ const Role = () => {
         name="group1"
         onChange={(e) => {
           setRegisterInfo({ ...registerInfo, role: e.target.value });
-          setToggle((prev) => !prev);
+          // setToggle((prev) => !prev);
         }}
-        checked={!toggle}
         type="radio"
         id={`inline-$'radio'-2`}
       />

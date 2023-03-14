@@ -6,11 +6,13 @@ const {
   getPostById,
   updatePost,
   deletePost,
+  getPostByUser,
 } = require("../controllers/post");
 
 postRouter.post("/:id", createPost);
 postRouter.get("/", getPosts);
 postRouter.get("/:id", getPostById);
+postRouter.get("/author/:id", getPostByUser);
 postRouter.put("/:id", updatePost);
 postRouter.delete("/:id", deletePost);
 

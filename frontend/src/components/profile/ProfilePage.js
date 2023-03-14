@@ -27,7 +27,7 @@ export const profileContext = createContext();
 const ProfilePage = () => {
   const userId = localStorage.getItem("userId");
   const [skillModal, setSkillModal] = useState(false);
-  const [profilePosts, setProfilePosts] = useState([]);
+  const [posts, setPosts] = useState([]);
   const [profileData, setProfileData] = useState({});
   const [modalShow, setModalShow] = useState(false);
   const [profilePicModal, setProfilePicModal] = useState(false);
@@ -50,9 +50,9 @@ const ProfilePage = () => {
         `http://localhost:5000/profile/${JSON.parse(userId)}`
       );
       const post = await axios.get(
-        `http://localhost:5000/posts/${JSON.parse(userId)}`
+        `http://localhost:5000/posts/author/${JSON.parse(userId)}`
       );
-      setProfilePosts(post?.data?.post);
+      setPosts(post?.data?.post);
       setProfileData(result.data.data);
     } catch (error) {
       console.log("error PP 57:>> ", error);
@@ -90,8 +90,6 @@ const ProfilePage = () => {
     setSkillModal,
     addSkills,
   };
-
-
 
   return (
     <>
@@ -187,7 +185,7 @@ const ProfilePage = () => {
                   <PersonalInfo info={{ text: "About", item: about }} />
                 </MDBCardBody>
               </MDBCard>
-              <PostBox postsData={profilePosts} />
+              <PostBox postsData={{posts}} />
             </MDBCol>
           </MDBRow>
         </MDBContainer>

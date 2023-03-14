@@ -14,7 +14,6 @@ import FeedNav from "./FeedNav";
 export const DashBoardContext = createContext();
 const Feed = () => {
   const { posts, setPosts } = useContext(AppContext);
-  const [applyModal, setApplyModal] = useState(false);
   const role = JSON.parse(localStorage.getItem("role"));
   useEffect(() => {
     getPosts();
@@ -40,9 +39,9 @@ const Feed = () => {
           <MDBCol lg="7" className="posts-page">
             {(role === "COMPANY" ||role === "ADMIN") && <AddPost />}
 
-            <PostBox postsData={{ posts, setApplyModal }} key={v4()} />
+            <PostBox postsData={{ posts }} key={v4()} />
 
-            {/* <Apply/>  */}
+            
           </MDBCol>
 
           <MDBCol lg="2">

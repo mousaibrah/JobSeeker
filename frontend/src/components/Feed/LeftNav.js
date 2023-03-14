@@ -7,11 +7,12 @@ import {
   MDBListGroup,
 } from "mdb-react-ui-kit";
 import { PersonalBox } from "../profile/PersonalInfo";
+import { Link } from "../styled/Links";
 
 const LeftNav = () => {
   const userId = localStorage.getItem("userId");
   const [personalInfo, setPersonalInfo] = useState({});
-
+const Role = JSON.parse(localStorage.getItem('role'))
   const { userImg, UserName, education, location } = personalInfo;
   useEffect(() => {
     getPersonalInfo();
@@ -43,6 +44,11 @@ const LeftNav = () => {
           <PersonalBox info={{ text: "Name :", value: UserName }} />
           <PersonalBox info={{ text: "Education :", value: education }} />
           <PersonalBox info={{ text: "Location :", value: location }} />
+         {Role==='USER'&& <>
+          <hr/>
+          <Link>Upgrade To Company Account</Link>
+          <hr/>
+          </>}
         </MDBListGroup>
       </MDBCardBody>
     </MDBCard>

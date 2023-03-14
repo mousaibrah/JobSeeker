@@ -33,9 +33,9 @@ const getPosts = async (req, res) => {
   }
 };
 const getPostById = async (req, res) => {
-  const userId = req.params.id;
+  const _id = req.params.id;
   try {
-    const data = await postSchema.find({ userId: userId });
+    const data = await postSchema.findById({_id});
     if (!data) {
       res
         .status(404)
@@ -91,5 +91,23 @@ const deletePost = async (req, res) => {
       .json({ success: false, status: "Server Error", message: error.message });
   }
 };
+const getPostByUser = async(req,res)=>{
+  const userId = req.params.id;
+  try {
+    const data = await postSchema.find({ userId: userId });
+    if (!data) {
+      res
+        .status(404)
+        .json({ success: false, message: "Sorry We Cant Find Your Request" });
+    } else {
+      res.status(200).json({
+        success: true,
+        post: data,
+      });
+    }
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+}
 
-module.exports = { createPost, getPosts, getPostById, updatePost, deletePost };
+module.exports = { createPost, getPosts, getPostById, updatePost, deletePost,getPostByUser };
