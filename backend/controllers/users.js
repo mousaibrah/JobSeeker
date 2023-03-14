@@ -30,13 +30,14 @@ const register = async (req, res) => {
       img,
       role: findRole._id,
     });
+    const result = await newUser.save();
+    
     const createUser = new adminSchema({
-      clientId: newUser._id,
+      clientId: result._id,
       clientRole: role,
       clientName: `${firstName} ${lastName}`,
     });
     const data = await createUser.save();
-    const result = await newUser.save();
     res.status(201).json({
       success: true,
       message: `Account Created Successfully`,
@@ -92,6 +93,7 @@ const login = async (req, res) => {
       message: `Valid login credentials`,
       token: token,
       userId: result._id,
+      role: result?.role?.role,
     });
   } catch (error) {
     res.status(500).json({
@@ -101,5 +103,27 @@ const login = async (req, res) => {
     });
   }
 };
-
-module.exports = { register, login };
+const getUsers = async (req, res) => {
+  try {
+    const data = await adminSchema.find({});
+    res.status(200).json(data);
+  } catch (error) {
+    res
+      .status(500)
+      .json({ success: false, message: "Server Error", err: error.message });
+  }
+};
+const deleteUser = async (req, res) => {
+  const _id = req.params.id;
+  try {
+    const deleteUser = await adminSchema.findByIdAndDelete({ _id });
+    res
+      .status(200)
+      .json({ success: true, message: "The User Has Been Deleted" });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ success: false, message: "Server Error", err: error.message });
+  }
+};
+module.exports = { register, login, getUsers, deleteUser };

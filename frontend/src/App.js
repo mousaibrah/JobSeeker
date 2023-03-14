@@ -20,6 +20,7 @@ import ProfilePage from "./components/profile/ProfilePage";
 import Context from "./components/register/Context/Context";
 import PostPage from "./components/Feed/PostPage";
 import Modal01 from "./components/Feed/addJobModal/Modal01";
+import DashBoard from "./components/AdminDashBoard/DashBoard";
 // Export Context
 
 // Import Styled Container
@@ -29,6 +30,7 @@ function App() {
       <GlobalStyle />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/dashboard" element={<DashBoard />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/Feed" element={<Feed />} />
         <Route path="/Feed/:id" element={<PostPage />} />

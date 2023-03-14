@@ -2,7 +2,7 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
 *{
-  user-select: none;
+    user-select: none;
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
@@ -18,8 +18,7 @@ html::-webkit-scrollbar-thumb {
   background: #0275d8;
 }
   body {
- height: 100vh;
-
+   height: 100vh;
    color: #fcfeff;
     background: #1e1e2a;
   }

@@ -33,9 +33,9 @@ const getPosts = async (req, res) => {
   }
 };
 const getPostById = async (req, res) => {
-  const _id = req.params.id;
+  const userId = req.params.id;
   try {
-    const data = await postSchema.findById({ _id });
+    const data = await postSchema.find({ userId: userId });
     if (!data) {
       res
         .status(404)
@@ -52,11 +52,11 @@ const getPostById = async (req, res) => {
 };
 const updatePost = async (req, res) => {
   const userId = req.params.id;
-  const { title, description, } = req.body;
+  const { title, description } = req.body;
   try {
     const update = await postSchema.findOneAndUpdate(
       { userId },
-      { title, description, },
+      { title, description },
       { new: true }
     );
     if (!update) {

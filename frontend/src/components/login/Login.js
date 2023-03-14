@@ -18,21 +18,23 @@ export const loginContext = createContext();
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
+  const [role, setRole] = useState("");
   const [password, setPassword] = useState("");
-  const {
-    setToken,
-    isLoggedIn,
-    setIsLoggedIn,
-    setUserId,
-  } = useContext(AppContext);
+  const { setToken, isLoggedIn, setIsLoggedIn, setUserId } =
+    useContext(AppContext);
   const [result, setResult] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const [err, setErr] = useState(false);
   if (isLoggedIn) {
     setTimeout(() => {
-      navigate("/feed");
+      if (role === "ADMIN") {
+        navigate("/dashboard");
+      } else {
+        navigate("/feed");
+      }
     }, 2000);
   }
+
   const login = async () => {
     try {
       const res = await axios.post("http://localhost:5000/users/login", {
@@ -42,7 +44,9 @@ const Login = () => {
       if (res.data.success) {
         setUserId(res.data.userId);
         setToken(res.data.token);
+        setRole(res.data.role);
         localStorage.setItem("userId", JSON.stringify(res.data.userId));
+        localStorage.setItem("role", JSON.stringify(res.data.role));
 
         localStorage.setItem("token", JSON.stringify(res.data.token));
         if (rememberMe) {

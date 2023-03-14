@@ -25,8 +25,17 @@
   flex-direction: column;
   /* gap: 10px; */
 }
-.DashBoard {
-  padding-top: 50px;
+
+.DashBoard-Nav {
+  height: 100vh;
+}
+.DashBoard-Heading {
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #2d2e37;
+  color: #fcfeff;
 }
 /* Post Box */
 .text-social {

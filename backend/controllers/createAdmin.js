@@ -7,6 +7,7 @@ const createAdminRole = async (req, res, next) => {
     role: "ADMIN",
     permissions: [
       "CREATE_ROLES",
+      "VIEW_USERS",
       "CRUD_POSTS",
       "CREATE_UPDATE_PROFILE",
       "VIEW_POSTS",

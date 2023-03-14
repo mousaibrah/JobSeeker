@@ -24,7 +24,7 @@ const SubmitBtn = () => {
       );
 
       setResult(res.data.message);
-      if (res.data.result._id) {
+      if (res?.data?.result?._id) {
         const profile = await axios.post(
           `http://localhost:5000/profile/${res.data.result._id}`,
           registerInfo
@@ -33,15 +33,19 @@ const SubmitBtn = () => {
       }
 
       setIsRegistered(true);
-      setTimeout(() => {
-        navigate("/login");
-      }, 3000);
+      
     } catch (error) {
       setIsRegistered(false);
       setResult(error.response.data.message);
       setErr(true);
     }
   };
+  if(isRegistered){
+    setTimeout(() => {
+      
+      navigate("/login");
+    }, 2000);
+  }
   return (
     <>
       <Button onClick={register}>Register</Button>

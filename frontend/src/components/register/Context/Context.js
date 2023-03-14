@@ -11,6 +11,7 @@ const Context = () => {
     location: "",
     phoneNumber: "",
     password: "",
+    role:'USER'
   });
   const [result, setResult] = useState("");
   const [err, setErr] = useState(false);

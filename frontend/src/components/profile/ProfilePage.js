@@ -52,7 +52,7 @@ const ProfilePage = () => {
       const post = await axios.get(
         `http://localhost:5000/posts/${JSON.parse(userId)}`
       );
-      setProfilePosts(post.data.post);
+      setProfilePosts(post?.data?.post);
       setProfileData(result.data.data);
     } catch (error) {
       console.log("error PP 57:>> ", error);

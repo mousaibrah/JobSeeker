@@ -14,6 +14,10 @@ const FeedNav = () => {
         setToken(null);
         setUserId(null);
         setIsLoggedIn(false);
+        localStorage.removeItem('userId');
+        localStorage.removeItem('role');
+        localStorage.removeItem('token');
+        localStorage.removeItem('logged');
         navigate("/");
       }}
     >

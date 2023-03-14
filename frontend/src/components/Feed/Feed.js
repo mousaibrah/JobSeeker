@@ -15,7 +15,7 @@ export const DashBoardContext = createContext();
 const Feed = () => {
   const { posts, setPosts } = useContext(AppContext);
   const [applyModal, setApplyModal] = useState(false);
-
+  const role = JSON.parse(localStorage.getItem("role"));
   useEffect(() => {
     getPosts();
   }, []);
@@ -27,30 +27,29 @@ const Feed = () => {
       console.log("error :>> ", error);
     }
   };
- 
+
   return (
     <>
       <FeedNav />
-      
-        <Container fluid className="DashBoard">
-          <MDBRow>
-            <MDBCol lg="3">
-              <LeftNav />
-            </MDBCol>
-            <MDBCol lg="7" className="posts-page">
-              <AddPost />
 
-              <PostBox postsData={{ posts, setApplyModal }} key={v4()} />
+      <Container fluid className="DashBoard">
+        <MDBRow>
+          <MDBCol lg="3">
+            <LeftNav />
+          </MDBCol>
+          <MDBCol lg="7" className="posts-page">
+            {(role === "COMPANY" ||role === "ADMIN") && <AddPost />}
 
-              {/* <Apply/>  */}
-            </MDBCol>
+            <PostBox postsData={{ posts, setApplyModal }} key={v4()} />
 
-            <MDBCol lg="2">
-              <OurClient />
-            </MDBCol>
-          </MDBRow>
-        </Container>
-    
+            {/* <Apply/>  */}
+          </MDBCol>
+
+          <MDBCol lg="2">
+            <OurClient />
+          </MDBCol>
+        </MDBRow>
+      </Container>
     </>
   );
 };
