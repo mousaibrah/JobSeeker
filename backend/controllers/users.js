@@ -135,7 +135,7 @@ const updateRole = async (req, res) => {
       { role: findRole._id },
       { new: true }
     );
-
+    const updateAdminDashBoard = await adminSchema.findOneAndUpdate({clientId:_id},{clientRole:'COMPANY'})
     res.status(200).json(true);
   } catch (error) {
     res.status(500).json(error.message);

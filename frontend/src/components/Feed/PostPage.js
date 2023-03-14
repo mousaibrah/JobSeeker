@@ -5,19 +5,27 @@ import axios from "axios";
 import { v4 } from "uuid";
 import { Button } from "../styled/Button.Styled";
 import { Container } from "react-bootstrap";
+import ApplyModal from "./ApplyModal/ApplyModal";
 const PostPage = () => {
   const { id } = useParams();
   const userId = JSON.parse(localStorage.getItem("userId"));
   const Role = JSON.parse(localStorage.getItem("role"));
+  const [email, setEmail] = useState("");
+  const [applyToggle, setApplyToggle] = useState(false);
+  const [Url, setUrl] = useState("");
+  const [companyId, setCompanyId] = useState();
   const [post, setPost] = useState("");
   const navigate = useNavigate();
+
   useEffect(() => {
     getPostById();
   }, []);
+
   const getPostById = async () => {
     try {
       const postData = await axios.get(`http://localhost:5000/posts/${id}`);
       setPost(postData.data.post);
+      setCompanyId(postData.data.post.userId);
     } catch (error) {
       console.log("error :>> ", error);
     }
@@ -67,12 +75,17 @@ const PostPage = () => {
             <div className="postBottom">
               <div className="postBottomLeft">
                 {Role === "USER" && (
-                  <Button onClick={() => console.log("test")}>APPLY</Button>
+                  <Button onClick={() => setApplyToggle(true)}>APPLY</Button>
                 )}
               </div>
-              {/* <div className="postBottomRight">
-                
-              </div> */}
+              {/* <div className="postBottomRight"></div> */}
+              <ApplyModal
+                toggle={{
+                  setApplyToggle,
+                  applyToggle,
+                  companyId,
+                }}
+              />
             </div>
           </div>
         </div>

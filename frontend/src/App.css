@@ -20,6 +20,15 @@
 .footer {
   margin-top: auto;
 }
+#swal-input2{
+  width: 80%;
+  color: #1e1e2a; 
+  border: 0;
+}
+#swal-input1{
+  border: #1e1e2a 1px solid;
+  color: #1e1e2a;
+}
 .upgrade-btn:hover {
   color: #0275d8;
 }

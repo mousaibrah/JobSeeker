@@ -8,7 +8,7 @@ const Modal03 = () => {
     modal03,
     setModal03,
     setModal02,
-    setSubmitModal,
+
     sharePost,
     newPost,
   } = useContext(AddJobContext);
@@ -80,7 +80,6 @@ const Modal03 = () => {
             variant="primary"
             onClick={() => {
               sharePost();
-              setSubmitModal(true);
               setModal03(false);
             }}
           >

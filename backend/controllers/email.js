@@ -1,7 +1,8 @@
 var nodemailer = require("nodemailer");
-
+const userSchema = require("../models/users");
 const emailForCompany = async (req, res) => {
-  const { from, to, message } = req.body;
+  const { email, companyId, Url } = req.body;
+  const companyEmail = await userSchema.findById({ _id: companyId });
 
   let transporter = nodemailer.createTransport({
     service: "gmail",
@@ -14,10 +15,9 @@ const emailForCompany = async (req, res) => {
   });
 
   const msg = {
-    from: `${from}`,
-    to: `${to}`,
+    to: `${companyEmail.email}`,
     subject: "CV applicate",
-    text: `${message}`,
+    text: `JOB SEEKER ©️ Here Is A CV Link From ${email} on Your Post on Our Web Site${Url}`,
   };
 
   const info = await transporter.sendMail(msg);
@@ -26,7 +26,7 @@ const emailForCompany = async (req, res) => {
 
   console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
 
-  res.send("Email Sent!");
+  res.send(true);
 };
 const reply = async (req, res) => {
   const { to, message } = req.body;

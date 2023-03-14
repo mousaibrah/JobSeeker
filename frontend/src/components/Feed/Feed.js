@@ -1,7 +1,7 @@
 import axios from "axios";
 import { MDBCol, MDBRow } from "mdb-react-ui-kit";
 import React, { useEffect, useContext, createContext, useState } from "react";
-import { Container } from "react-bootstrap";
+import { Container, Spinner } from "react-bootstrap";
 import { v4 } from "uuid";
 import AddPost from "./AddPost";
 import LeftNav from "./LeftNav";
@@ -37,11 +37,12 @@ const Feed = () => {
             <LeftNav />
           </MDBCol>
           <MDBCol lg="7" className="posts-page">
-            {(role === "COMPANY" ||role === "ADMIN") && <AddPost />}
+            <MDBRow>
+              <p>test</p>
+            </MDBRow>
+            {(role === "COMPANY" || role === "ADMIN") && <AddPost />}
 
             <PostBox postsData={{ posts }} key={v4()} />
-
-            
           </MDBCol>
 
           <MDBCol lg="2">

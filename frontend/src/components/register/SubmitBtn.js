@@ -29,7 +29,6 @@ const SubmitBtn = () => {
           `http://localhost:5000/profile/${res.data.result._id}`,
           registerInfo
         );
-        console.log("profile :>> ", profile);
       }
 
       setIsRegistered(true);
