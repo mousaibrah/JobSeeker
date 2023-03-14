@@ -8,6 +8,7 @@ import { Container } from "react-bootstrap";
 const PostPage = () => {
   const { id } = useParams();
   const userId = JSON.parse(localStorage.getItem("userId"));
+  const Role = JSON.parse(localStorage.getItem("role"));
   const [post, setPost] = useState("");
   const navigate = useNavigate();
   useEffect(() => {
@@ -33,7 +34,12 @@ const PostPage = () => {
             <div className="postTop">
               <div className="postTopLeft">
                 <img className="postProfileImg" src={post?.userPicturePath} />
-                <span className="postUsername">{post?.company}</span>
+                <span
+                  className="postUsername"
+                  onClick={() => navigate(`/profile/${post.userId}`)}
+                >
+                  {post?.company}
+                </span>
 
                 <span className="postDate">
                   {post?.createdAt?.slice(0, 10)}
@@ -60,14 +66,13 @@ const PostPage = () => {
             </div>
             <div className="postBottom">
               <div className="postBottomLeft">
-                <Button onClick={() => console.log("test")}>APPLY</Button>
+                {Role === "USER" && (
+                  <Button onClick={() => console.log("test")}>APPLY</Button>
+                )}
               </div>
-              <div className="postBottomRight">
-                <span className="postLikeCounter">
-                  {" "}
-                  People Applied ...{post?.applied}
-                </span>
-              </div>
+              {/* <div className="postBottomRight">
+                
+              </div> */}
             </div>
           </div>
         </div>

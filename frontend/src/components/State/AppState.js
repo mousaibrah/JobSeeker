@@ -2,7 +2,7 @@ import React, { createContext, useState } from "react";
 import App from "../../App";
 export const AppContext = createContext();
 const AppState = () => {
-  const [userId, setUserId] = useState(localStorage.getItem("userId")||'');
+  const [userId, setUserId] = useState(JSON.parse(localStorage.getItem("userId")) || "");
   const [token, setToken] = useState(
     JSON.parse(localStorage.getItem("token")) || null
   );
@@ -10,6 +10,7 @@ const AppState = () => {
     JSON.parse(localStorage.getItem("logged")) || false
   );
   const [posts, setPosts] = useState([]);
+  const [role, setRole] = useState(JSON.parse(localStorage.getItem("role"))||'');
 
   const value = {
     userId,
@@ -20,6 +21,8 @@ const AppState = () => {
     setIsLoggedIn,
     posts,
     setPosts,
+    role,
+    setRole,
   };
   return (
     <AppContext.Provider value={value}>

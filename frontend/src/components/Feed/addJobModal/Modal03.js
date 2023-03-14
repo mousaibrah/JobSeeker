@@ -16,7 +16,6 @@ const Modal03 = () => {
   const dd = date.getDate();
   const mm = date.getUTCMonth() + 1;
   const yy = date.getFullYear();
-console.log('newPost :>> ', newPost);
   return (
     <>
       <Modal
@@ -52,10 +51,9 @@ console.log('newPost :>> ', newPost);
                 <h3 className="text-primary" style={{ textAlign: "center" }}>
                   {newPost.title}
                 </h3>
-                
+
                 <div
-                  className="postText" 
-                  
+                  className="postText"
                   dangerouslySetInnerHTML={{ __html: newPost?.description }}
                 ></div>
               </div>
@@ -63,12 +61,7 @@ console.log('newPost :>> ', newPost);
                 <div className="postBottomLeft">
                   <Button onClick={() => console.log("test")}>APPLY</Button>
                 </div>
-                <div className="postBottomRight">
-                  <span className="postLikeCounter">
-                    {" "}
-                    People Applied ...{newPost?.applied}
-                  </span>
-                </div>
+                <div className="postBottomRight"></div>
               </div>
             </div>
           </div>

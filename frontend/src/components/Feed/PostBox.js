@@ -4,7 +4,6 @@ import { v4 } from "uuid";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../State/AppState";
-import { Link } from "../styled/Links";
 
 const PostBox = ({ postsData }) => {
   const { posts, setPosts } = useContext(AppContext);
@@ -24,14 +23,12 @@ const PostBox = ({ postsData }) => {
   }
 
   const Post = dashBoardPosts.map((post) => {
-    console.log("post :>> ", post);
-    console.log("post :>> ", post);
     return (
       <div className="post" key={v4()}>
         <img className="shareProfileImg" src={post.userPicturePath} alt="" />
-        <Link onClick={() => navigate(`/profile/${post.userId}`)}>
+        <h3 onClick={() => navigate(`/profile/${post.userId}`)}>
           {post.company}
-        </Link>
+        </h3>
         <div className="post-container">
           <p>{post.location}</p>
           <h5>{post.title}</h5>

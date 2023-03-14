@@ -10,19 +10,18 @@ const AddPost = () => {
   const [responsibilityInput, setResponsibilityInput] = useState("");
   const { setPosts, posts } = useContext(AppContext);
   const [newPost, setNewPost] = useState({
-    jobTitle:'',
-      company:'',
-      type:'',
-      location:'',
-      description:""
+    jobTitle: "",
+    company: "",
+    type: "",
+    location: "",
+    description: "",
   });
- 
+
   const userId = JSON.parse(localStorage.getItem("userId"));
- 
+
   const [modal01, setModal01] = useState(false);
   const [modal02, setModal02] = useState(false);
   const [modal03, setModal03] = useState(false);
-  const [submitModal, setSubmitModal] = useState(false);
 
   const handleShow = () => setModal01(true);
 
@@ -45,19 +44,18 @@ const AddPost = () => {
     setModal02,
     modal01,
     setModal01,
-    submitModal,
-    setSubmitModal,
     sharePost,
     newPost,
     setNewPost,
   };
   return (
     <AddJobContext.Provider value={value}>
-     
-        <div className="AddPost">
-          <Button className="create-post-job" onClick={handleShow}>Post New Job</Button>
-        </div>
-     
+      <div className="AddPost">
+        <Button className="create-post-job" onClick={handleShow}>
+          Post New Job
+        </Button>
+      </div>
+
       <Modal01 />
     </AddJobContext.Provider>
   );

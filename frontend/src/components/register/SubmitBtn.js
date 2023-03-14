@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useContext } from "react";
-import { Alert } from "react-bootstrap";
+import { Alert, } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { RegisterContext } from "./Context/Context";
 import { Button } from "../styled/Button.Styled";
@@ -48,6 +48,7 @@ const SubmitBtn = () => {
   }
   return (
     <>
+    
       <Button onClick={register}>Register</Button>
       {isRegistered && <Alert variant="success">{result}</Alert>}
       {err && <Alert variant="danger">{result}</Alert>}

@@ -12,6 +12,7 @@ import {
 } from "mdb-react-ui-kit";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import PostBox from "../Feed/PostBox";
 import PersonalInfo, { PersonalBox } from "../profile/PersonalInfo";
 import ProfileSkills from "../profile/ProfileSkills";
 import ViewProfileNav from "./ViewProfileNav";
@@ -19,6 +20,7 @@ import ViewProfileNav from "./ViewProfileNav";
 const ViewProfile = () => {
   const { userId } = useParams();
   const [profileInfo, setProfileInfo] = useState({});
+  const [posts, setPosts] = useState([]);
   const {
     UserName,
     email,
@@ -38,6 +40,10 @@ const ViewProfile = () => {
       const profile = await axios.get(
         `http://localhost:5000/profile/${userId}`
       );
+      const post = await axios.get(
+        `http://localhost:5000/posts/author/${userId}`
+      );
+      setPosts(post?.data?.post);
       setProfileInfo(profile.data.data);
     } catch (error) {
       console.log("error.message :>> ", error.message);
@@ -45,7 +51,7 @@ const ViewProfile = () => {
   };
   return (
     <>
-    <ViewProfileNav/>
+      <ViewProfileNav />
       <MDBContainer className="py-5">
         <MDBRow>
           <MDBCol lg="4">
@@ -118,6 +124,8 @@ const ViewProfile = () => {
                 <PersonalInfo info={{ text: "About", item: about }} />
               </MDBCardBody>
             </MDBCard>
+            <PostBox postsData={{posts}} />
+
           </MDBCol>
         </MDBRow>
       </MDBContainer>

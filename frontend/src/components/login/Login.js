@@ -18,9 +18,8 @@ export const loginContext = createContext();
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
-  const [role, setRole] = useState("");
   const [password, setPassword] = useState("");
-  const { setToken, isLoggedIn, setIsLoggedIn, setUserId } =
+  const { setToken, isLoggedIn, setIsLoggedIn, setUserId ,role, setRole} =
     useContext(AppContext);
   const [result, setResult] = useState("");
   const [rememberMe, setRememberMe] = useState(false);

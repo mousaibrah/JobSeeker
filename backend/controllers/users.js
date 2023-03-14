@@ -31,7 +31,7 @@ const register = async (req, res) => {
       role: findRole._id,
     });
     const result = await newUser.save();
-    
+
     const createUser = new adminSchema({
       clientId: result._id,
       clientRole: role,
@@ -126,4 +126,19 @@ const deleteUser = async (req, res) => {
       .json({ success: false, message: "Server Error", err: error.message });
   }
 };
-module.exports = { register, login, getUsers, deleteUser };
+const updateRole = async (req, res) => {
+  const _id = req.params.id;
+  try {
+    const findRole = await roleSchema.findOne({ role: "COMPANY" });
+    const userData = await userSchema.findByIdAndUpdate(
+      { _id },
+      { role: findRole._id },
+      { new: true }
+    );
+
+    res.status(200).json(true);
+  } catch (error) {
+    res.status(500).json(error.message);
+  }
+};
+module.exports = { register, login, getUsers, deleteUser, updateRole };
