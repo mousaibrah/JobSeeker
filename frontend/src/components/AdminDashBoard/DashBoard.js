@@ -9,10 +9,10 @@ import {
 import React, { useEffect, useState } from "react";
 import { Col, Container, Row, Table } from "react-bootstrap";
 import { v4 } from "uuid";
-import { Link } from "../styled/Links";
 import AdminNav from "./AdminNav";
-
+import { useNavigate } from "react-router-dom";
 const DashBoard = () => {
+  const navigate = useNavigate();
   const items = ["Members", "Jobs", "Alerts", "Delay"];
   const [client, setClient] = useState([]);
   const token = JSON.parse(localStorage.getItem("token"));
@@ -33,6 +33,7 @@ const DashBoard = () => {
   const CardItem = items.map((item) => {
     return (
       <MDBListGroupItem
+        key={v4()}
         className="d-flex justify-content-between align-items-center p-3"
         style={{
           backgroundColor: "#2d2e37",
@@ -55,8 +56,10 @@ const DashBoard = () => {
         <td>{clientId}</td>
         <td>{clientRole}</td>
         <td>{clientName}</td>
-        <td>{createdAt}</td>
-        <td>{`${clientName}`} Profile</td>
+        <td>{createdAt?.slice(0, 10)}</td>
+        <td onClick={() => navigate(`/profile/${clientId}`)}>
+          {`${clientName}`} Profile
+        </td>
       </tr>
     );
   });
@@ -65,45 +68,44 @@ const DashBoard = () => {
     <>
       <AdminNav />
       <div className="DashBoard">
-        <Row>
-          <Col
-            lg="2"
-            style={{ backgroundColor: "#2d2e37", color: "#fcfeff" }}
-            className="DashBoard-Nav"
-          >
-            <MDBCard
-              className="mb-4"
-              style={{
-                backgroundColor: "#2d2e37",
-                border: "2px solid #fcfeff",
-              }}
+        <Container fluid>
+          <Row>
+            <Col
+              lg="2"
+              style={{ backgroundColor: "#2d2e37", color: "#fcfeff" }}
+              className="DashBoard-Nav"
             >
-              <MDBCardBody className="text-center">
-                <MDBListGroup className="rounded-3">{CardItem}</MDBListGroup>
-              </MDBCardBody>
-            </MDBCard>
-          </Col>
-          <Col lg="10">
-            <Row className="DashBoard-Heading">users</Row>
-            <Row>
-            <Container>
-               <Table bordered hover className="text-light" >
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>CLIENT ID</th>
-                    <th>CLIENT ROLE</th>
-                    <th>CLIENT NAME</th>
-                    <th>CLIENT JOIN DATE</th>
-                    <th>Delete</th>
-                  </tr>
-                </thead>
-                <tbody>{sortClient}</tbody>
-              </Table>
-            </Container>
-            </Row>
-          </Col>
-        </Row>
+              <MDBCard
+                className="mb-4"
+                style={{
+                  backgroundColor: "#2d2e37",
+                }}
+              >
+                <MDBCardBody className="text-center">
+                  <MDBListGroup className="rounded-3">{CardItem}</MDBListGroup>
+                </MDBCardBody>
+              </MDBCard>
+            </Col>
+            <Col lg="10">
+              <Row className="DashBoard-Heading">users</Row>
+              <Row>
+                <Table bordered hover className="text-light">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>CLIENT ID</th>
+                      <th>CLIENT ROLE</th>
+                      <th>CLIENT NAME</th>
+                      <th>CLIENT JOIN DATE</th>
+                      <th>VIEW PROFILE</th>
+                    </tr>
+                  </thead>
+                  <tbody>{sortClient}</tbody>
+                </Table>
+              </Row>
+            </Col>
+          </Row>
+        </Container>
       </div>
     </>
   );

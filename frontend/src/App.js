@@ -6,7 +6,7 @@ import GlobalStyle from "./components/styled/Global.Styled";
 import "mdbreact/dist/css/mdb.css";
 import { Container } from "react-bootstrap";
 // TEXT EDITOR
-import 'react-quill/dist/quill.snow.css'
+import "react-quill/dist/quill.snow.css";
 // Import React & react Router
 import React from "react";
 import { Routes, Route } from "react-router-dom";
@@ -21,6 +21,7 @@ import Context from "./components/register/Context/Context";
 import PostPage from "./components/Feed/PostPage";
 import Modal01 from "./components/Feed/addJobModal/Modal01";
 import DashBoard from "./components/AdminDashBoard/DashBoard";
+import ViewProfile from "./components/viewProfile/ViewProfile";
 // Export Context
 
 // Import Styled Container
@@ -32,6 +33,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/dashboard" element={<DashBoard />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/profile/:userId" element={<ViewProfile />} />
         <Route path="/Feed" element={<Feed />} />
         <Route path="/Feed/:id" element={<PostPage />} />
         <Route path="/Feed/create" element={<Modal01 />} />

@@ -25,9 +25,14 @@
   flex-direction: column;
   /* gap: 10px; */
 }
-
+.DashBoard {
+ width: 100%;
+}
 .DashBoard-Nav {
   height: 100vh;
+}
+.table-hover thead tr:hover th, .table-hover tbody tr:hover td {
+ color: #fcfeff;
 }
 .DashBoard-Heading {
   height: 50px;

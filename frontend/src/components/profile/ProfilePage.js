@@ -91,45 +91,7 @@ const ProfilePage = () => {
     addSkills,
   };
 
-  // const updateImg = async () => {
-  //   const { value: file } = await Swal.fire({
-  //     title: "Select image",
-  //     input: "file",
 
-  //   });
-
-  //   if (file) {
-  //     const reader = new FileReader();
-  //     reader.onload = async (e) => {
-  //       setImage(file);
-  //       const data = new FormData();
-  //       data.append("file", image);
-  //       data.append("upload_preset", "ym3yv62c");
-  //       try {
-  //         const result = await axios.post(
-  //           "https://api.cloudinary.com/v1_1/dvgnuchjw/upload",
-  //           data
-  //         );
-  //         setUrl(result.data.url);
-  //         setProfileData({...profileData,userImg:result.data.url})
-
-  //       } catch (error) {
-  //         console.log("error :>> ", error);
-  //       }
-
-  //       Swal.fire({
-  //         title: "Your uploaded picture",
-  //         imageUrl: e.target.result,
-  //         imageAlt: "The uploaded picture",
-
-  //       });
-  //     };
-  //     reader.readAsDataURL(file);
-  //     setTimeout(() => {
-  //       updateProfile()
-  //     }, 5000);
-  //   }
-  // };
 
   return (
     <>
