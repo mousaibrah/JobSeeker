@@ -50,9 +50,9 @@ const Modal01 = () => {
                 }
               >
                 <option>Select Your Opining Position</option>
-                <option value="Full-Stack Dev">Full-Stack Dev</option>
-                <option value="Back-End">Back-End</option>
-                <option value="Front-End">Front-End</option>
+                <option value="Full-Stack-Dev">Full-Stack-Dev</option>
+                <option value="Back-End-Dev">Back-End-Dev</option>
+                <option value="Front-End-Dev">Front-End-Dev</option>
               </Form.Select>
               <Form.Label>location</Form.Label>
               <Form.Control

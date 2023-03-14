@@ -1,9 +1,23 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useContext, useState } from "react";
 import { Accordion, Form } from "react-bootstrap";
+import { AppContext } from "../State/AppState";
 
 const FilterAndSearch = () => {
+  const [filterType, setFilterType] = useState("");
+  const { posts, setPosts } = useContext(AppContext);
+  const filterResult = async () => {
+    try {
+      const filteredData = await axios.get(
+        `http://localhost:5000/posts/filter/?type=${filterType}`
+      );
+      console.log("filteredData :>> ", filteredData);
+    } catch (error) {
+      console.log("error :>> ", error);
+    }
+  };
   return (
-    <Accordion className="Filter" >
+    <Accordion className="Filter">
       <Accordion.Item eventKey="0">
         <Accordion.Header>
           {" "}
@@ -23,31 +37,58 @@ const FilterAndSearch = () => {
         </Accordion.Header>
         <Accordion.Body>
           <Form>
-            <Form.Check
-              inline
-              value="Full-Stack"
-              label="Full-Stack"
-              name="group1"
-              type="radio"
-              id={`Full-Stack`}
-            />
-            <Form.Check
-              inline
-              value="Back-End"
-              label="Back-End"
-              name="group1"
-              type="radio"
-              id={`Back-End`}
-            />
-            <Form.Check
-              inline
-              value="Front-End"
-              label="Front-End"
-              name="group1"
-              type="radio"
-              id={`Front-End`}
-            />
-            <Form.Control type="search" placeholder="Search" size="sm" />
+            <div className="filter-inputs">
+              <Form.Check
+                inline
+                value="Full-Stack-Dev"
+                label="Full-Stack-Dev"
+                onChange={(e) => {
+                  setFilterType(e.target.value);
+                  filterResult();
+                }}
+                name="group1"
+                type="radio"
+                id={`Full-Stack-Dev`}
+              />
+              <Form.Check
+                inline
+                value="Back-End-Dev"
+                label="Back-End-Dev"
+                name="group1"
+                onChange={(e) => {
+                  setFilterType(e.target.value);
+                  filterResult();
+                }}
+                type="radio"
+                id={`Back-End-Dev`}
+              />
+              <Form.Check
+                inline
+                value="Front-End-Dev"
+                label="Front-End-Dev"
+                name="group1"
+                onChange={(e) => {
+                  setFilterType(e.target.value);
+                  filterResult();
+                }}
+                type="radio"
+                id={`Front-End-Dev`}
+              />
+              <Form.Select
+                aria-label="Default select example"
+                className="filter-date"
+              >
+                <option>Date</option>
+                <option value="Oldest">Oldest</option>
+                <option value="newest">Newest</option>
+              </Form.Select>
+
+              <Form.Control
+                type="search"
+                placeholder="Search"
+                className="filter-search"
+              />
+            </div>
           </Form>
         </Accordion.Body>
       </Accordion.Item>

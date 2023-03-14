@@ -301,6 +301,19 @@ hr {
 }
 
 .accordion-button {
-  color: #ffffff !important;
+  color: #fcfeff !important;
   background-color: #2d2e37 !important;
+}
+.filter-inputs{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.filter-date{
+  width: 100px !important;
+  height: fit-content !important;
+}
+.filter-search{
+  height: fit-content !important;
+  width: 175px !important;
 }

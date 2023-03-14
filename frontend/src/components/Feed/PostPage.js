@@ -60,7 +60,7 @@ const PostPage = () => {
             </div>
             <div className="postCenter">
               <h3 className="text-primary" style={{ textAlign: "center" }}>
-                {post.title}
+                {post.jobTitle}
               </h3>
               <div
                 className="postText"

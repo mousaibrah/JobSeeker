@@ -109,5 +109,13 @@ const getPostByUser = async(req,res)=>{
     res.status(500).json({ success: false, message: error.message });
   }
 }
-
-module.exports = { createPost, getPosts, getPostById, updatePost, deletePost,getPostByUser };
+const getPostsFilterByType = async(req,res)=>{
+  const {type} = req.query
+  try {
+    const filteredData = await postSchema.find({type})
+    res.status(200).json(filteredData)
+  } catch (error) {
+    res.status(500).json({ success: false, message: "server error",error:error.message })
+  }
+}
+module.exports = { createPost, getPosts, getPostById, updatePost, deletePost,getPostByUser ,getPostsFilterByType};

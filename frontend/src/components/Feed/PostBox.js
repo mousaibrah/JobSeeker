@@ -25,17 +25,38 @@ const PostBox = ({ postsData }) => {
   const Post = dashBoardPosts.map((post) => {
     return (
       <div className="post" key={v4()}>
-        <img className="shareProfileImg" src={post.userPicturePath} alt="" />
-        <h3 onClick={() => navigate(`/profile/${post.userId}`)}>
-          {post.company}
-        </h3>
-        <div className="post-container">
-          <p>{post.location}</p>
-          <h5>{post.title}</h5>
+        <div className="postWrapper">
+        <div className="postTop">
+              <div className="postTopLeft">
+                <img className="postProfileImg" src={post?.userPicturePath} />
+                <span
+                  className="postUsername"
+                  onClick={() => navigate(`/profile/${post.userId}`)}
+                >
+                  {post?.company}
+                </span>
+
+                <span className="postDate">
+                  {post?.createdAt?.slice(0, 10)}
+                </span>
+              </div>
+              <div className="postTopCenter">
+                <span className="postDate">{post?.location}</span>
+              </div>
+            </div>
+            <div className="postCenter">
+              
+              <h5>{post.jobTitle}</h5>
+
+            
+            </div>
+      
+          
 
           <Button onClick={() => navigate(`/feed/${post._id}`)}>
             More Details
           </Button>
+        
         </div>
       </div>
     );
