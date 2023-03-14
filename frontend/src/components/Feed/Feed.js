@@ -11,6 +11,7 @@ import { AppContext } from "../State/AppState";
 import Swal from "sweetalert2";
 import Apply from "./Apply";
 import FeedNav from "./FeedNav";
+import FilterAndSearch from "./FilterAndSearch";
 export const DashBoardContext = createContext();
 const Feed = () => {
   const { posts, setPosts } = useContext(AppContext);
@@ -38,7 +39,7 @@ const Feed = () => {
           </MDBCol>
           <MDBCol lg="7" className="posts-page">
             <MDBRow>
-              <p>test</p>
+              <FilterAndSearch/>
             </MDBRow>
             {(role === "COMPANY" || role === "ADMIN") && <AddPost />}
 

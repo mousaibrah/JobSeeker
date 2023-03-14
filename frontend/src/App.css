@@ -20,12 +20,12 @@
 .footer {
   margin-top: auto;
 }
-#swal-input2{
+#swal-input2 {
   width: 80%;
-  color: #1e1e2a; 
+  color: #1e1e2a;
   border: 0;
 }
-#swal-input1{
+#swal-input1 {
   border: #1e1e2a 1px solid;
   color: #1e1e2a;
 }
@@ -298,4 +298,9 @@ hr {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.accordion-button {
+  color: #ffffff !important;
+  background-color: #2d2e37 !important;
 }
