@@ -1,13 +1,80 @@
-:root{
-    --main-color : #0275d8;
-    --hover-color: #0369c2;
-    --body-color: #1e1e2a;
-    --container-color :#2d2e37;
-    --text-color:#fcfeff;
-  }
-  .Container{
-    display: grid;
-    grid-template-rows: 1fr;
-    grid-template-columns: 1fr 3fr;
-    column-gap: 25px;
-  }
+:root {
+  --main-color: #0275d8;
+  --hover-color: #0369c2;
+  --body-color: #1e1e2a;
+  --container-color: #2d2e37;
+  --text-color: #fcfeff;
+}
+.Container {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 3fr;
+  column-gap: 25px;
+}
+.Col {
+  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.top-box {
+  justify-self: center;
+  align-self: center;
+}
+.box-text {
+  color: var(--text-color);
+}
+.box {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 9px;
+}
+
+.Skill-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 50px;
+  border-bottom: var(--main-color) 2px solid;
+}
+.Skill-header p {
+  position: absolute;
+  left: 0;
+}
+.add-skill-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 20px;
+}
+.skill-box {
+  display: flex;
+  flex-direction: column;
+  margin-top: 9px;
+}
+.profile-info-about {
+  position: relative;
+}
+.edit-profile-btn {
+  position: absolute;
+  right: 15px;
+  font-size: 20px;
+}
+.edit-img-btn {
+  font-size: 20px;
+  transform: translate(100%, 250%);
+}
+.skill-modal-footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.skill-modal-btns {
+  display: flex;
+}
+
+.icon:hover {
+  color: var(--hover-color);
+}

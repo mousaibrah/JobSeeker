@@ -1,16 +1,9 @@
 import React from "react";
-import {
-  MDBCard,
-  MDBListGroupItem,
-  MDBCol,
-  MDBRow,
-  MDBCardImage,
-} from "mdb-react-ui-kit";
-
+import { Box } from "../styled/Box.Styled";
 const OurClient = () => {
   return (
     <>
-      <MDBCard style={{ backgroundColor: "#2d2e37" }}>
+      <Box>
         <p style={{ textAlign: "center", padding: "0px 4px" }}>
           Hope You Enjoy Our Website
         </p>
@@ -22,8 +15,7 @@ const OurClient = () => {
           <li>Please Rate Our services</li>
           <li>Enjoy ❤️</li>
         </ul>
-      </MDBCard>
-      
+      </Box>
     </>
   );
 };

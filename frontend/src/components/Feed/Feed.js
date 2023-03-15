@@ -1,7 +1,7 @@
 import axios from "axios";
+import "./Style.css";
 import { MDBCol, MDBRow } from "mdb-react-ui-kit";
 import React, { useEffect, useContext, createContext, useState } from "react";
-import { Container, Spinner } from "react-bootstrap";
 import { v4 } from "uuid";
 import AddPost from "./AddPost";
 import LeftNav from "./LeftNav";
@@ -10,8 +10,11 @@ import PostBox from "./PostBox";
 import { AppContext } from "../State/AppState";
 import Swal from "sweetalert2";
 import Apply from "./Apply";
+import { Container } from "../styled/Container.Styled";
 import FeedNav from "./FeedNav";
 import FilterAndSearch from "./FilterAndSearch";
+import { Row } from "../styled/Row.Styled";
+import { Col } from "../styled/Column.Styled";
 const Feed = () => {
   const { posts, setPosts } = useContext(AppContext);
   const role = JSON.parse(localStorage.getItem("role"));
@@ -30,25 +33,18 @@ const Feed = () => {
   return (
     <>
       <FeedNav />
-
-      <Container fluid className="DashBoard">
-        <MDBRow>
-          <MDBCol lg="3">
+      <Container className="DashBoard">
+          <Col className="Col">
             <LeftNav />
-          </MDBCol>
-          <MDBCol lg="7" className="posts-page">
-            <MDBRow>
-              <FilterAndSearch />
-            </MDBRow>
+          </Col>
+          <Col className="Col posts-aria">
+            <FilterAndSearch />
             {(role === "COMPANY" || role === "ADMIN") && <AddPost />}
-
             <PostBox postsData={{ posts }} key={v4()} />
-          </MDBCol>
-
-          <MDBCol lg="2">
+          </Col>
+          <Col className="Col">
             <OurClient />
-          </MDBCol>
-        </MDBRow>
+          </Col>
       </Container>
     </>
   );

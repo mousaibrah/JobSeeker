@@ -10,6 +10,8 @@ import { PersonalBox } from "../profile/PersonalInfo";
 import { Link } from "../styled/Links";
 import Swal from "sweetalert2";
 import { AppContext } from "../State/AppState";
+import { Box } from "../styled/Box.Styled";
+import { BsPencilSquare } from "react-icons/bs";
 
 const LeftNav = () => {
   const userId = JSON.parse(localStorage.getItem("userId"));
@@ -47,50 +49,47 @@ const LeftNav = () => {
   const upgradeRoleModal = () => {
     Swal.fire({
       title: `When You Upgrade Your Role
+
       1.You Can Create Job Offers (Post)
       2.You Can Upgrade Your Profile 
       3.!You Can't Apply For Job's No More
       
       Are You Sure You Want To Proceed
       `,
-      showCancelButton: true,
       confirmButtonText: "Save",
+      showCancelButton: true,
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        Swal.fire("Saved!", "", "success");
+        Swal.fire("Your Request Sent", " ", "success");
         upgradeRole();
       }
     });
   };
   return (
-    <MDBCard
-      className="mb-4"
-      style={{ backgroundColor: "#2d2e37", border: "2px solid #fcfeff" }}
-    >
-      <MDBCardBody className="text-center">
+    <Box gb={"3px"}>
+      <div className="top-box">
         <MDBCardImage
           src={userImg}
           className="rounded-circle"
           style={{ width: "150px" }}
           fluid
         />
-        <MDBListGroup className="rounded-3">
-          <PersonalBox info={{ text: "Name :", value: UserName }} />
-          <PersonalBox info={{ text: "Education :", value: education }} />
-          <PersonalBox info={{ text: "Location :", value: location }} />
-          {Role === "USER" && (
-            <>
-              <hr />
-              <p className="upgrade-btn" onClick={upgradeRoleModal}>
-                Upgrade To Company Account
-              </p>
-              <hr />
-            </>
-          )}
-        </MDBListGroup>
-      </MDBCardBody>
-    </MDBCard>
+      </div>
+      <PersonalBox info={{ text: "Name :", value: UserName }} />
+
+      <PersonalBox info={{ text: "Education :", value: education }} />
+      <PersonalBox info={{ text: "Location :", value: location }} />
+      {Role === "USER" && (
+        <>
+          <hr />
+          <p className="upgrade-btn" onClick={upgradeRoleModal}>
+            Upgrade To Company Account
+          </p>
+          <hr />
+        </>
+      )}
+    </Box>
   );
 };
 

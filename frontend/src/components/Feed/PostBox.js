@@ -4,6 +4,7 @@ import { v4 } from "uuid";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../State/AppState";
+import { Box } from "../styled/Box.Styled";
 
 const PostBox = ({ postsData }) => {
   const { posts, setPosts } = useContext(AppContext);
@@ -24,7 +25,7 @@ const PostBox = ({ postsData }) => {
 
   const Post = dashBoardPosts.map((post) => {
     return (
-      <div className="post" key={v4()}>
+      <Box key={v4()}>
         <div className="postWrapper">
           <div className="postTop">
             <div className="postTopLeft">
@@ -50,7 +51,7 @@ const PostBox = ({ postsData }) => {
             More Details
           </Button>
         </div>
-      </div>
+      </Box>
     );
   });
   return <>{Post}</>;

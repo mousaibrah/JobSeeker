@@ -18,23 +18,11 @@ const SkillsModal = () => {
       <Modal.Body>
         {skills?.length
           ? skills.map((skill) => {
-              return (
-                <MDBListGroupItem
-                  style={{
-                    color: "#000",
-                    border: "1px solid black",
-                    marginTop: "3px",
-                  }}
-                  key={v4()}
-                  className="d-flex justify-content-between align-items-center p-3"
-                >
-                  <MDBCardText style={{ fontWeight: 400 }}>{skill}</MDBCardText>
-                </MDBListGroupItem>
-              );
+              return <li className="text-dark">{skill}</li>;
             })
           : ""}
         <MDBInput
-          style={{ border: "2px solid black", marginTop: "9px" }}
+          style={{ marginTop: "15px" }}
           placeholder=" Add More Skill"
           value={skill}
           onChange={(e) => {
@@ -42,29 +30,37 @@ const SkillsModal = () => {
           }}
         />
       </Modal.Body>
-      <Modal.Footer>
-        <Button
-          variant="success"
-          onClick={() => {
-            const profileClone = { ...profileData };
-            profileClone.skills.push(skill);
-            setProfileData({ profileData, skills: profileClone.skills });
-            setSkill("");
-          }}
-        >
-          Add
-        </Button>
-        <Button
-          variant="primary"
-          onClick={() => {
-            addSkills();
+      <div className="skill-modal-footer">
+        <div>
+          <ul>
+            <li className="text-dark">Input Your Skill Then Press Add</li>
+            <li className="text-dark">When You Done Adding Press Save</li>
+          </ul>
+        </div>
+        <div className="skill-modal-btns">
+          <Button
+            variant="success"
+            onClick={() => {
+              const profileClone = { ...profileData };
+              profileClone.skills.push(skill);
+              setProfileData({ profileData, skills: profileClone.skills });
+              setSkill("");
+            }}
+          >
+            Add
+          </Button>
+          <Button
+            variant="primary"
+            onClick={() => {
+              addSkills();
 
-            setSkillModal(false);
-          }}
-        >
-          Save
-        </Button>
-      </Modal.Footer>
+              setSkillModal(false);
+            }}
+          >
+            Save
+          </Button>
+        </div>
+      </div>
     </Modal>
   );
 };

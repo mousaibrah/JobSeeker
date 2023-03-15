@@ -1,7 +1,98 @@
-:root{
-    --main-color : #0275d8;
-    --hover-color: #0369c2;
-    --body-color: #1e1e2a;
-    --container-color :#2d2e37;
-    --text-color:#fcfeff;
-  }
+:root {
+  --main-color: #0275d8;
+  --hover-color: #0369c2;
+  --body-color: #1e1e2a;
+  --container-color: #2d2e37;
+  --text-color: #fcfeff;
+}
+
+.DashBoard {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 2fr 8fr 2fr;
+  column-gap: 30px;
+}
+.Col {
+  padding-top: 30px;
+}
+.posts-aria {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.accordion-button {
+  color: #fcfeff !important;
+  background-color: #2d2e37 !important;
+}
+
+/* Left Nav Style */
+.swal2-popup {
+  background-color: var(--container-color) !important;
+}
+.swal2-title {
+  font-family: "Poppins", sans-serif !important;
+  font-size: 20px !important;
+  text-align: justify !important;
+  color: var(--text-color) !important;
+  font-weight: 300 !important;
+}
+.swal2-confirm {
+  background-color: var(--main-color) !important;
+  border: 0 !important;
+}
+.swal2-cancel {
+  background-color: rgb(229, 49, 49) !important;
+}
+/* Posts Style */
+.postProfileImg {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.postBottomLeft {
+  display: flex;
+  align-items: center;
+}
+.postBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.postUsername {
+  font-size: 15px;
+  font-weight: 500;
+  margin: 0 10px;
+}
+
+.postDate {
+  font-size: 12px;
+}
+
+.postCenter {
+  margin: 20px 0;
+}
+.postTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.postText * {
+  color: #fcfeff !important;
+}
+.postTopLeft {
+  display: flex;
+  align-items: center;
+}
+.post {
+  width: 100%;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
+  box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
+  margin-top: 20px;
+}
+
+.postWrapper {
+  padding: 10px;
+  background-color: #2d2e37;
+}

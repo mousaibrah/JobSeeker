@@ -41,10 +41,6 @@ function App() {
         <Route path="/register" element={<Context />} />
         <Route path="*" element={<Error />} />
       </Routes>
-
-    
-        
-      
     </div>
   );
 }
