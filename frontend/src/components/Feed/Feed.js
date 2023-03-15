@@ -12,7 +12,6 @@ import Swal from "sweetalert2";
 import Apply from "./Apply";
 import FeedNav from "./FeedNav";
 import FilterAndSearch from "./FilterAndSearch";
-export const DashBoardContext = createContext();
 const Feed = () => {
   const { posts, setPosts } = useContext(AppContext);
   const role = JSON.parse(localStorage.getItem("role"));

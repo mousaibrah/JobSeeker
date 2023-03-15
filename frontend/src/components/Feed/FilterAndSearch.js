@@ -1,10 +1,23 @@
 import axios from "axios";
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Accordion, Form } from "react-bootstrap";
+import ErrorModal from "../Error/ErrorModal";
 import { AppContext } from "../State/AppState";
 
 const FilterAndSearch = () => {
   const { posts, setPosts } = useContext(AppContext);
+  const [text, setText] = useState("");
+  const [err, setErr] = useState(false);
+  const [show, setShow] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  useEffect(() => {
+    document.addEventListener("keydown", preventRefresh, true);
+  }, []);
+  const preventRefresh = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+    }
+  };
   const filterResult = async (type) => {
     try {
       const filteredData = await axios.get(
@@ -31,6 +44,19 @@ const FilterAndSearch = () => {
       setPosts(sort.data);
     } catch (error) {
       console.log("error :>> ", error);
+    }
+  };
+  const searchFilter = async () => {
+    try {
+      const filteredData = await axios.post(
+        "http://localhost:5000/posts/search",
+        { text }
+      );
+      setPosts(filteredData.data);
+    } catch (error) {
+      setErr(true);
+      setShow(true);
+      setErrorMessage(error.response.data.message);
     }
   };
   return (
@@ -111,9 +137,15 @@ const FilterAndSearch = () => {
                 type="search"
                 placeholder="Search"
                 className="filter-search"
+                value={text}
+                onChange={(e) => {
+                  setText(e.target.value);
+                }}
               />
+              <h2 onClick={searchFilter}>➡️</h2>
             </div>
           </Form>
+          {err && <ErrorModal data={{ show, setShow, errorMessage }} />}
         </Accordion.Body>
       </Accordion.Item>
     </Accordion>

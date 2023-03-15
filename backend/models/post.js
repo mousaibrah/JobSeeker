@@ -11,14 +11,14 @@ const postSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    type:{type:String},
+    type: { type: String },
     location: { type: String },
     description: {
       type: String,
       required: true,
     },
     userPicturePath: { type: String },
-  
+
     userId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
@@ -27,5 +27,7 @@ const postSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
-
-module.exports = mongoose.model("Post", postSchema);
+postSchema.index({ jobTitle: "text" });
+const PostSchema = mongoose.model("Post", postSchema);
+PostSchema.createIndexes();
+module.exports = PostSchema;

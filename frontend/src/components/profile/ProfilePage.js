@@ -76,6 +76,7 @@ const ProfilePage = () => {
         `http://localhost:5000/profile/${JSON.parse(userId)}/skills`,
         { skill: skills }
       );
+      setProfileData(skillAdded.data);
     } catch (error) {
       console.log("error PP 79:>> ", error);
     }
@@ -89,13 +90,15 @@ const ProfilePage = () => {
     skillModal,
     setSkillModal,
     addSkills,
+    profilePicModal,
+    setProfilePicModal,
   };
 
   return (
     <>
       <ProfileNav />
       <profileContext.Provider value={value}>
-        <UploadImg toggle={{ profilePicModal, setProfilePicModal }} />
+        <UploadImg />
         <MDBContainer className="py-5">
           <MDBRow>
             <MDBCol lg="4">
@@ -185,7 +188,7 @@ const ProfilePage = () => {
                   <PersonalInfo info={{ text: "About", item: about }} />
                 </MDBCardBody>
               </MDBCard>
-              <PostBox postsData={{posts}} />
+              <PostBox postsData={{ posts }} />
             </MDBCol>
           </MDBRow>
         </MDBContainer>

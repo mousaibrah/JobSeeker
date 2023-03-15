@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Input } from "../styled/Input.Styled";
 
 import { Modal } from "react-bootstrap";
 import axios from "axios";
+import { profileContext } from "./ProfilePage";
 
 const UploadImg = ({ toggle }) => {
-  const { profilePicModal, setProfilePicModal } = toggle;
+  const { profilePicModal, setProfilePicModal,setProfileData } = useContext(profileContext);
 
   const userId = localStorage.getItem("userId");
   const updateProfileImg = async (url) => {
@@ -14,7 +15,7 @@ const UploadImg = ({ toggle }) => {
         `http://localhost:5000/profile/${JSON.parse(userId)}/img`,
         { userImg: url }
       );
-      console.log("data :>> ", data);
+      setProfileData(data.data)
       setProfilePicModal(false);
     } catch (error) {
       console.log("error :>> ", error);

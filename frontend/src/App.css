@@ -174,10 +174,10 @@ hr {
 }
 .AddPost button {
   border: 0;
-  background-color: #1e1e2a;
+  background-color:#2d2e37;
 }
 .AddPost button:hover {
-  background-color: #3c3d46;
+  background-color: #1e1e2a;
 }
 .Create-post {
   display: flex;
@@ -316,4 +316,7 @@ hr {
 .filter-search {
   height: fit-content !important;
   width: 175px !important;
+}
+.AddPost,.create-post-job{
+  background-color: #2d2e37;
 }

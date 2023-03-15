@@ -9,12 +9,14 @@ const {
   getPostByUser,
   getPostsFilterByType,
   sortDate,
+  searchFilter,
 } = require("../controllers/post");
 
-postRouter.post("/:id", createPost);
-postRouter.get("/", getPosts);
+postRouter.post("/search", searchFilter);
 postRouter.get("/filter", getPostsFilterByType);
 postRouter.get("/sort", sortDate);
+postRouter.get("/", getPosts);
+postRouter.post("/:id", createPost);
 postRouter.get("/:id", getPostById);
 postRouter.get("/author/:id", getPostByUser);
 postRouter.put("/:id", updatePost);

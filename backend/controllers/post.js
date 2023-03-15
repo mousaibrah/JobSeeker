@@ -132,6 +132,24 @@ const sortDate = async (req, res) => {
       .json({ success: false, message: "server error", error: error.message });
   }
 };
+const searchFilter = async (req, res) => {
+  const { text } = req.body;
+
+  try {
+    const filteredData = await postSchema.find({ $text: { $search: text } });
+    if (!filteredData.length) {
+      res
+        .status(404)
+        .json({ message: "Sorry We Couldn't Find What You Looking For" });
+    } else {
+      res.json(filteredData);
+    }
+  } catch (error) {
+    res
+      .status(500)
+      .json({ success: false, message: "server error", error: error.message });
+  }
+};
 module.exports = {
   createPost,
   getPosts,
@@ -141,4 +159,5 @@ module.exports = {
   getPostByUser,
   getPostsFilterByType,
   sortDate,
+  searchFilter,
 };

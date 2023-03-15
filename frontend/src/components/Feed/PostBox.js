@@ -19,7 +19,7 @@ const PostBox = ({ postsData }) => {
     }
   };
   if (!dashBoardPosts) {
-    return;
+    return <h2>Sorry There Is No Data Come Back Later</h2>;
   }
 
   const Post = dashBoardPosts.map((post) => {
