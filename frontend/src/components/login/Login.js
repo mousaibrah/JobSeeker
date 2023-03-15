@@ -1,5 +1,5 @@
 // Import React & React Router
-import React, { useState, useContext, createContext } from "react";
+import React, { useState, useContext, createContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 //  Import Bootstrap Components
 import { MDBContainer, MDBCol, MDBRow } from "mdb-react-ui-kit";
@@ -19,20 +19,23 @@ const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { setToken, isLoggedIn, setIsLoggedIn, setUserId ,role, setRole} =
+  const { setToken, isLoggedIn, setIsLoggedIn, setUserId, role, setRole } =
     useContext(AppContext);
   const [result, setResult] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const [err, setErr] = useState(false);
-  if (isLoggedIn) {
-    setTimeout(() => {
-      if (role === "ADMIN") {
-        navigate("/dashboard");
-      } else {
-        navigate("/feed");
-      }
-    }, 2000);
-  }
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      setTimeout(() => {
+        if (role === "ADMIN") {
+          navigate("/dashboard");
+        } else {
+          navigate("/feed");
+        }
+      }, 2000);
+    }
+  }, [isLoggedIn]);
 
   const login = async () => {
     try {
@@ -46,13 +49,8 @@ const Login = () => {
         setRole(res.data.role);
         localStorage.setItem("userId", JSON.stringify(res.data.userId));
         localStorage.setItem("role", JSON.stringify(res.data.role));
-
+        localStorage.setItem("logged", JSON.stringify(true));
         localStorage.setItem("token", JSON.stringify(res.data.token));
-        if (rememberMe) {
-          localStorage.setItem("logged", JSON.stringify(true));
-        } else {
-          localStorage.removeItem("logged");
-        }
         setIsLoggedIn(true);
         setErr(false);
       }

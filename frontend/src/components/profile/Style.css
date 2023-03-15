@@ -1,0 +1,13 @@
+:root{
+    --main-color : #0275d8;
+    --hover-color: #0369c2;
+    --body-color: #1e1e2a;
+    --container-color :#2d2e37;
+    --text-color:#fcfeff;
+  }
+  .Container{
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 3fr;
+    column-gap: 25px;
+  }

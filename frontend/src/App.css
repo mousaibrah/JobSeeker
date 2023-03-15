@@ -1,6 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;1,200;1,400;1,600&family=Quicksand:wght@300;400;500;600;700&family=Style+Script&display=swap");
 
-.Home {
+.App{
+  height: 100%;
+  position: relative;
+}
+
+
+ .Home {
   background: #2d2e37;
   position: relative;
   text-align: center;
@@ -35,13 +41,13 @@
 .posts-page {
   display: flex;
   flex-direction: column;
-  /* gap: 10px; */
+ 
 }
 .DashBoard {
   width: 100%;
 }
 .DashBoard-Nav {
-  height: 100vh;
+  height: 90vh;
 }
 .table-hover thead tr:hover th,
 .table-hover tbody tr:hover td {
@@ -55,7 +61,7 @@
   background-color: #2d2e37;
   color: #fcfeff;
 }
-/* Post Box */
+ 
 .text-social {
   cursor: pointer;
   font-size: 22px !important;
@@ -88,7 +94,6 @@ hr {
 
 .postWrapper {
   padding: 10px;
-  /* background-image: linear-gradient(to right , #f8a92a,#2d2e37); */
   background-color: #2d2e37;
   border: 2px solid #fcfeff;
 }
@@ -163,7 +168,7 @@ hr {
   border-bottom: 1px dashed gray;
   font-size: 15px;
 }
-/* Add Post Box */
+
 .AddPost {
   width: 100%;
   height: 50px;
@@ -288,7 +293,7 @@ hr {
   transform: scale(1.3);
 }
 .register-page {
-  /* height: 100vh; */
+ 
   display: flex;
   justify-content: center;
   align-items: center;

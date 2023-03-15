@@ -1,0 +1,45 @@
+:root {
+  --main-color: #0275d8;
+  --hover-color: #0369c2;
+  --body-color: #1e1e2a;
+  --container-color: #2d2e37;
+  --text-color: #fcfeff;
+}
+
+.DashBoard-Nav {
+  /* height: 100vh; */
+  background-color: var(--container-color);
+}
+.DashBoard-Heading {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  background-color: var(--container-color);
+}
+.Table {
+  color: var(--text-color);
+}
+
+
+/* @media (max-width : 1024px) {
+  .DashBoard{
+    width: 650px;
+  }
+  .DashBoard-Nav {
+  height: 400px;
+  width: 120px;
+  }
+  .DashBoard-Heading {
+    height: 30px;
+   
+  }
+  .Table {
+width: 500px;
+
+  }
+  .Table tr{
+    
+  }
+} */

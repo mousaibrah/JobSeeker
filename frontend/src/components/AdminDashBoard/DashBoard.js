@@ -1,3 +1,4 @@
+import "./Style.css";
 import axios from "axios";
 import {
   MDBCard,
@@ -6,6 +7,7 @@ import {
   MDBListGroup,
   MDBListGroupItem,
 } from "mdb-react-ui-kit";
+
 import React, { useEffect, useState } from "react";
 import { Col, Container, Row, Table } from "react-bootstrap";
 import { v4 } from "uuid";
@@ -35,15 +37,8 @@ const DashBoard = () => {
       <MDBListGroupItem
         key={v4()}
         className="d-flex justify-content-between align-items-center p-3"
-        style={{
-          backgroundColor: "#2d2e37",
-          borderBottom: "1px solid #0275d8",
-          marginBottom: "4px",
-        }}
       >
-        <MDBCardText className="box-text" style={{ color: "#fcfeff" }}>
-          {item}
-        </MDBCardText>
+        <MDBCardText className="box-text">{item}</MDBCardText>
       </MDBListGroupItem>
     );
   });
@@ -65,31 +60,18 @@ const DashBoard = () => {
   });
 
   return (
-    <>
+    <div className="DashBoard">
       <AdminNav />
-      <div className="DashBoard">
-        <Container fluid>
+     
+        <Container fluid >
           <Row>
-            <Col
-              lg="2"
-              style={{ backgroundColor: "#2d2e37", color: "#fcfeff" }}
-              className="DashBoard-Nav"
-            >
-              <MDBCard
-                className="mb-4"
-                style={{
-                  backgroundColor: "#2d2e37",
-                }}
-              >
-                <MDBCardBody className="text-center">
-                  <MDBListGroup className="rounded-3">{CardItem}</MDBListGroup>
-                </MDBCardBody>
-              </MDBCard>
+            <Col lg="2" className="DashBoard-Nav">
+              <MDBCardBody className="Card-Body">{CardItem}</MDBCardBody>
             </Col>
             <Col lg="10">
               <Row className="DashBoard-Heading">users</Row>
               <Row>
-                <Table bordered hover className="text-light">
+                <Table bordered hover className="Table">
                   <thead>
                     <tr>
                       <th>#</th>
@@ -106,8 +88,8 @@ const DashBoard = () => {
             </Col>
           </Row>
         </Container>
-      </div>
-    </>
+      
+    </div>
   );
 };
 

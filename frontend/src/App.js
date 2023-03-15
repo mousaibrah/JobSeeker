@@ -42,9 +42,9 @@ function App() {
         <Route path="*" element={<Error />} />
       </Routes>
 
-      <Container fluid>
-        <Footer />
-      </Container>
+    
+        
+      
     </div>
   );
 }

@@ -23,4 +23,14 @@ export const NavBar = styled.div`
     display: flex;
     gap: 30px;
   }
+  @media (max-width : 1024px) {
+   height: 45px;
+   font-size: 12px;
+   width: 650px;
+  }
+  @media (max-width : 768px) {
+   height: 35px;
+   font-size: 12px;
+   width: 490px;
+  }
 `;
