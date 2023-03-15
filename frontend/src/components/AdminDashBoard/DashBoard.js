@@ -1,18 +1,14 @@
 import "./Style.css";
 import axios from "axios";
-import {
-  MDBCard,
-  MDBCardBody,
-  MDBCardText,
-  MDBListGroup,
-  MDBListGroupItem,
-} from "mdb-react-ui-kit";
+import { MDBCardBody, MDBCardText, MDBListGroupItem } from "mdb-react-ui-kit";
 
 import React, { useEffect, useState } from "react";
-import { Col, Container, Row, Table } from "react-bootstrap";
+import { Table } from "react-bootstrap";
 import { v4 } from "uuid";
 import AdminNav from "./AdminNav";
 import { useNavigate } from "react-router-dom";
+import { Container } from "../styled/Container.Styled";
+import { Col } from "../styled/Column.Styled";
 const DashBoard = () => {
   const navigate = useNavigate();
   const items = ["Members", "Jobs", "Alerts", "Delay"];
@@ -60,36 +56,31 @@ const DashBoard = () => {
   });
 
   return (
-    <div className="DashBoard">
+    <>
+      {" "}
       <AdminNav />
-     
-        <Container fluid >
-          <Row>
-            <Col lg="2" className="DashBoard-Nav">
-              <MDBCardBody className="Card-Body">{CardItem}</MDBCardBody>
-            </Col>
-            <Col lg="10">
-              <Row className="DashBoard-Heading">users</Row>
-              <Row>
-                <Table bordered hover className="Table">
-                  <thead>
-                    <tr>
-                      <th>#</th>
-                      <th>CLIENT ID</th>
-                      <th>CLIENT ROLE</th>
-                      <th>CLIENT NAME</th>
-                      <th>CLIENT JOIN DATE</th>
-                      <th>VIEW PROFILE</th>
-                    </tr>
-                  </thead>
-                  <tbody>{sortClient}</tbody>
-                </Table>
-              </Row>
-            </Col>
-          </Row>
-        </Container>
-      
-    </div>
+      <Container className="DashBoard">
+        <Col className="DashBoard-Nav">
+          <MDBCardBody className="Card-Body">{CardItem}</MDBCardBody>
+        </Col>
+        <Col>
+          <p>Users</p>
+          <Table bordered hover className="Table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>CLIENT ID</th>
+                <th>CLIENT ROLE</th>
+                <th>CLIENT NAME</th>
+                <th>CLIENT JOIN DATE</th>
+                <th>VIEW PROFILE</th>
+              </tr>
+            </thead>
+            <tbody>{sortClient}</tbody>
+          </Table>
+        </Col>
+      </Container>
+    </>
   );
 };
 

@@ -4,7 +4,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import GlobalStyle from "./components/styled/Global.Styled";
 import "mdbreact/dist/css/mdb.css";
-import { Container } from "react-bootstrap";
 // TEXT EDITOR
 import "react-quill/dist/quill.snow.css";
 // Import React & react Router
@@ -14,8 +13,7 @@ import { Routes, Route } from "react-router-dom";
 import Feed from "./components/Feed/Feed";
 import Login from "./components/login/Login";
 import Home from "./components/Home/Home";
-import Error from "./components/404/Error";
-import Footer from "./components/Footer/Footer";
+import Error from "./components/Error/Error";
 import ProfilePage from "./components/profile/ProfilePage";
 import Context from "./components/register/Context/Context";
 import PostPage from "./components/Feed/PostPage";

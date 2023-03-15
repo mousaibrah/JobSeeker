@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "../../styled/Button.Styled";
-import { Container, Form, Modal, Spinner } from "react-bootstrap";
-import { MDBInput } from "mdb-react-ui-kit";
-import { Label } from "../../styled/Label.Styled";
+import { Form, Modal, Spinner } from "react-bootstrap";
 import axios from "axios";
 import Swal from "sweetalert2";
 const ApplyModal = ({ toggle }) => {
@@ -49,7 +47,7 @@ const ApplyModal = ({ toggle }) => {
       });
       if (emailSent.data) {
         setApplyToggle(false);
-        Swal.fire("Email Sent!", "success");
+        Swal.fire("Email Sent!", " ", "success");
       }
     } catch (error) {
       console.log("error :>> ", error);

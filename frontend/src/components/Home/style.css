@@ -1,7 +1,26 @@
-:root{
-    --main-color : #0275d8;
-    --hover-color: #0369c2;
-    --body-color: #1e1e2a;
-    --container-color :#2d2e37;
-    --text-color:#fcfeff;
-  }
+:root {
+  --main-color: #0275d8;
+  --hover-color: #0369c2;
+  --body-color: #1e1e2a;
+  --container-color: #2d2e37;
+  --text-color: #fcfeff;
+}
+.Home {
+  background: #2d2e37;
+  position: relative;
+  text-align: center;
+}
+.img-container {
+  filter: blur(3px);
+}
+.text-container {
+  background-color: #d0d3e984;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.Home img {
+  height: 86vh;
+}

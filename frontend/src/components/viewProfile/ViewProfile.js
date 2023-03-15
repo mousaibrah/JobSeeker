@@ -124,8 +124,7 @@ const ViewProfile = () => {
                 <PersonalInfo info={{ text: "About", item: about }} />
               </MDBCardBody>
             </MDBCard>
-            <PostBox postsData={{posts}} />
-
+            <PostBox postsData={{ posts }} />
           </MDBCol>
         </MDBRow>
       </MDBContainer>

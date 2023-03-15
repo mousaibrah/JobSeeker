@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "../styled/Button.Styled";
-import { Container } from "react-bootstrap";
 import HomeNav from "./HomeNav";
+import './Style.css'
 import {
   MDBCard,
   MDBCardBody,

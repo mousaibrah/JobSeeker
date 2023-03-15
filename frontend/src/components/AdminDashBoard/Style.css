@@ -5,7 +5,11 @@
   --container-color: #2d2e37;
   --text-color: #fcfeff;
 }
-
+.DashBoard {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 2fr 10fr;
+}
 .DashBoard-Nav {
   /* height: 100vh; */
   background-color: var(--container-color);
@@ -21,25 +25,3 @@
 .Table {
   color: var(--text-color);
 }
-
-
-/* @media (max-width : 1024px) {
-  .DashBoard{
-    width: 650px;
-  }
-  .DashBoard-Nav {
-  height: 400px;
-  width: 120px;
-  }
-  .DashBoard-Heading {
-    height: 30px;
-   
-  }
-  .Table {
-width: 500px;
-
-  }
-  .Table tr{
-    
-  }
-} */
