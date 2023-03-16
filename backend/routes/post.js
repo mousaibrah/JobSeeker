@@ -15,7 +15,7 @@ const {
 postRouter.post("/search", searchFilter);
 postRouter.get("/filter", getPostsFilterByType);
 postRouter.get("/sort", sortDate);
-postRouter.get("/", getPosts);
+postRouter.get("/page/:num", getPosts);
 postRouter.post("/:id", createPost);
 postRouter.get("/:id", getPostById);
 postRouter.get("/author/:id", getPostByUser);

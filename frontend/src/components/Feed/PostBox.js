@@ -9,6 +9,7 @@ import { Box } from "../styled/Box.Styled";
 const PostBox = ({ postsData }) => {
   const { posts, setPosts } = useContext(AppContext);
   const navigate = useNavigate();
+
   const { posts: dashBoardPosts } = postsData;
   const userId = JSON.parse(localStorage.getItem("userId"));
   const deletePost = async (id) => {
@@ -20,40 +21,48 @@ const PostBox = ({ postsData }) => {
     }
   };
   if (!dashBoardPosts) {
-    return <h2>Sorry There Is No Data Come Back Later</h2>;
+    return <h2>Sorry There Must Be Something Wrong Please Come Back Later</h2>;
   }
-
-  const Post = dashBoardPosts.map((post) => {
-    return (
+  let Post = [];
+  for (let index = 0; index < dashBoardPosts?.length; index++) {
+    const element = dashBoardPosts[index];
+    Post.push(
       <Box key={v4()}>
         <div className="postWrapper">
           <div className="postTop">
             <div className="postTopLeft">
-              <img className="postProfileImg" src={post?.userPicturePath} />
+              <img className="postProfileImg" src={element?.userPicturePath} />
               <span
                 className="postUsername"
-                onClick={() => navigate(`/profile/${post.userId}`)}
+                onClick={() => navigate(`/profile/${element?.userId}`)}
               >
-                {post?.company}
+                {element?.company}
               </span>
 
-              <span className="postDate">{post?.createdAt?.slice(0, 10)}</span>
+              <span className="postDate">
+                {element?.createdAt?.slice(0, 10)}
+              </span>
             </div>
             <div className="postTopCenter">
-              <span className="postDate">{post?.location}</span>
+              <span className="postDate">{element?.location}</span>
             </div>
           </div>
           <div className="postCenter">
-            <h5>{post.jobTitle}</h5>
+            <h5>{element?.jobTitle}</h5>
           </div>
 
-          <Button onClick={() => navigate(`/feed/${post._id}`)}>
+          <Button onClick={() => navigate(`/feed/${element._id}`)}>
             More Details
           </Button>
         </div>
       </Box>
     );
-  });
+  }
+  // const Post = dashBoardPosts.map((post) => {
+  //   return (
+
+  //   );
+  // });
   return <>{Post}</>;
 };
 

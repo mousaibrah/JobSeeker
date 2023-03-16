@@ -23,9 +23,15 @@ const createPost = async (req, res) => {
   }
 };
 const getPosts = async (req, res) => {
+  const { num } = req.params;
   try {
-    const data = await postSchema.find({}).sort({ createdAt: -1 });
-    res.status(200).json(data);
+    const data = await postSchema
+      .find({})
+      .sort({ createdAt: -1 })
+      .skip(num - 5)
+      .limit(5);
+    const length = await postSchema.find({});
+    res.status(200).json({ data, length: length.length });
   } catch (error) {
     res
       .status(500)

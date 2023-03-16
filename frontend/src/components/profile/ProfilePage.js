@@ -98,8 +98,8 @@ const ProfilePage = () => {
       <ProfileNav />
       <profileContext.Provider value={value}>
         <UploadImg />
-        <Container className="Container">
-          <div className="Col">
+        <Container className="Profile">
+          <div className="Profile-Col">
             <Box gb={"30px"}>
               <div className="top-box">
                 <BsPencilSquare
@@ -118,7 +118,7 @@ const ProfilePage = () => {
               <PersonalBox
                 info={{ text: "Aria Of EXPERTISE :", value: expertise }}
               />
-             
+
               <PersonalBox info={{ text: "EDUCATION :", value: education }} />
             </Box>
             <Box>
@@ -137,7 +137,7 @@ const ProfilePage = () => {
               </div>
             </Box>
           </div>
-          <div className="Col">
+          <div className="Profile-Col">
             <Box className="profile-info-about">
               <BsPencilSquare
                 className="edit-profile-btn icon"
@@ -147,16 +147,15 @@ const ProfilePage = () => {
               />
 
               {modalShow && <UpdateProfile />}
-             
-                <PersonalInfo info={{ text: "Full Name", item: UserName }} />
-                <hr />
-                <PersonalInfo info={{ text: "Email", item: email }} />
-                <hr />
-                <PersonalInfo info={{ text: "Mobile", item: mobile }} />
-                <hr />
-                <PersonalInfo info={{ text: "About", item: about }} />
-             
-              </Box>
+
+              <PersonalInfo info={{ text: "Full Name", item: UserName }} />
+              <hr />
+              <PersonalInfo info={{ text: "Email", item: email }} />
+              <hr />
+              <PersonalInfo info={{ text: "Mobile", item: mobile }} />
+              <hr />
+              <PersonalInfo info={{ text: "About", item: about }} />
+            </Box>
             <PostBox postsData={{ posts }} />
           </div>
         </Container>
@@ -166,96 +165,3 @@ const ProfilePage = () => {
 };
 
 export default ProfilePage;
-/*  <MDBContainer className="py-5">
-          <MDBRow>
-            <MDBCol lg="4">
-              <MDBCard
-                className="mb-4"
-                style={{
-                  backgroundColor: "#2d2e37",
-                  border: "2px solid #fcfeff",
-                }}
-              >
-                <MDBCardBody className="text-center">
-                  <BsPencilSquare
-                    className="edit-img-btn"
-                    onClick={() => {
-                      setProfilePicModal(true);
-                    }}
-                  />
-
-                  <MDBCardImage
-                    src={userImg}
-                    className="rounded-circle"
-                    style={{ width: "150px" }}
-                    fluid
-                  />
-
-                  <MDBListGroup className="rounded-3">
-                    <PersonalBox
-                      info={{ text: "Aria Of EXPERTISE :", value: expertise }}
-                    />
-                    <PersonalBox
-                      info={{ text: "EDUCATION :", value: education }}
-                    />
-                    <Button onClick={() => setModalShow(true)}>Edit</Button>
-                    {modalShow && <UpdateProfile />}
-                  </MDBListGroup>
-                </MDBCardBody>
-              </MDBCard>
-              <MDBCard
-                className="mb-4 mb-lg-0"
-                style={{
-                  backgroundColor: "#2d2e37",
-                  border: "1px solid #fcfeff",
-                }}
-              >
-                <MDBCardBody className="p-0">
-                  <MDBListGroup className="rounded-3">
-                    <MDBListGroupItem
-                      className="d-flex justify-content-between align-items-center p-3"
-                      style={{
-                        backgroundColor: "#2d2e37",
-                        border: "1px solid #fcfeff",
-                      }}
-                    >
-                      <MDBCardText style={{ color: "#fcfeff" }}>
-                        Skills
-                      </MDBCardText>
-                      <Button
-                        onClick={() => {
-                          setSkillModal(true);
-                        }}
-                        size="md"
-                      >
-                        Add
-                      </Button>
-                      <SkillsModal />
-                    </MDBListGroupItem>
-                    {skills?.length ? <ProfileSkills data={skills} /> : ""}
-                  </MDBListGroup>
-                </MDBCardBody>
-              </MDBCard>
-            </MDBCol>
-            <MDBCol lg="8">
-              <MDBCard
-                className="mb-4"
-                style={{
-                  backgroundColor: "#2d2e37",
-                  border: "1px solid #fcfeff",
-                }}
-              >
-                <MDBCardBody>
-                  <PersonalInfo info={{ text: "Full Name", item: UserName }} />
-                  <hr />
-                  <PersonalInfo info={{ text: "Email", item: email }} />
-                  <hr />
-                  <PersonalInfo info={{ text: "Mobile", item: mobile }} />
-                  <hr />
-                  <PersonalInfo info={{ text: "About", item: about }} />
-                </MDBCardBody>
-              </MDBCard>
-              <PostBox postsData={{ posts }} />
-            </MDBCol>
-          </MDBRow>
-        </MDBContainer> */

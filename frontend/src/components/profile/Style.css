@@ -5,13 +5,13 @@
   --container-color: #2d2e37;
   --text-color: #fcfeff;
 }
-.Container {
+.Profile {
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: 1fr 3fr;
   column-gap: 25px;
 }
-.Col {
+.Profile-Col {
   padding-top: 30px;
   display: flex;
   flex-direction: column;

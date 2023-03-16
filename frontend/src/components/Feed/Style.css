@@ -6,13 +6,13 @@
   --text-color: #fcfeff;
 }
 
-.DashBoard {
+.Feed {
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: 2fr 8fr 2fr;
   column-gap: 30px;
 }
-.Col {
+.Feed-Col {
   padding-top: 30px;
 }
 .posts-aria {
@@ -24,7 +24,19 @@
   color: #fcfeff !important;
   background-color: #2d2e37 !important;
 }
-
+.filter-inputs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.filter-date {
+  width: 100px !important;
+  height: fit-content !important;
+}
+.filter-search {
+  height: fit-content !important;
+  width: 175px !important;
+}
 /* Left Nav Style */
 .swal2-popup {
   background-color: var(--container-color) !important;
@@ -95,4 +107,19 @@
 .postWrapper {
   padding: 10px;
   background-color: #2d2e37;
+}
+.Pagination-btn {
+  background-color: var(--container-color) !important;
+  color: var(--text-color) !important;
+}
+.page-link {
+  color: var(--text-color) !important;
+  font-weight: 500;
+}
+.page-item .page-link:hover {
+  background-color: var(--body-color) !important;
+}
+.page-item.active .page-link {
+  color: var(--body-color) !important;
+  background-color: var(--text-color) !important;
 }
