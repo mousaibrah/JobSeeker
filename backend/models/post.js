@@ -29,5 +29,5 @@ const postSchema = new mongoose.Schema(
 );
 postSchema.index({ jobTitle: "text" });
 const PostSchema = mongoose.model("Post", postSchema);
-PostSchema.createIndexes();
+// PostSchema.createIndexes();
 module.exports = PostSchema;
