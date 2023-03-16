@@ -63,21 +63,23 @@ const DashBoard = () => {
         <Col className="DashBoard-Nav">
           <MDBCardBody className="Card-Body">{CardItem}</MDBCardBody>
         </Col>
-        <Col>
-          <p>Users</p>
-          <Table bordered hover className="Table">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>CLIENT ID</th>
-                <th>CLIENT ROLE</th>
-                <th>CLIENT NAME</th>
-                <th>CLIENT JOIN DATE</th>
-                <th>VIEW PROFILE</th>
-              </tr>
-            </thead>
-            <tbody>{sortClient}</tbody>
-          </Table>
+        <Col className="table-col">
+          <p className="DashBoard-Heading">Users</p>
+          <div className="table-responsive">
+            <Table bordered hover className="Table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>CLIENT ID</th>
+                  <th>CLIENT ROLE</th>
+                  <th>CLIENT NAME</th>
+                  <th>CLIENT JOIN DATE</th>
+                  <th>VIEW PROFILE</th>
+                </tr>
+              </thead>
+              <tbody>{sortClient}</tbody>
+            </Table>
+          </div>
         </Col>
       </Container>
     </>

@@ -7,11 +7,12 @@
 }
 .DashBoard {
   display: grid;
+  padding: 0 !important;
   grid-template-rows: 1fr;
   grid-template-columns: 2fr 10fr;
 }
 .DashBoard-Nav {
-  /* height: 100vh; */
+  height: 100vh;
   background-color: var(--container-color);
 }
 .DashBoard-Heading {
@@ -20,8 +21,52 @@
   align-items: center;
   justify-content: center;
   text-transform: uppercase;
+  margin-bottom: 0 !important;
   background-color: var(--container-color);
 }
+
 .Table {
+  width: 100% !important;
   color: var(--text-color);
+}
+@media screen and (max-width: 768px) {
+  .DashBoard {
+    grid-template-columns: 8rem 40rem !important;
+  }
+  .table-responsive {
+    width: 100%;
+    margin-bottom: 15px;
+    overflow-y: hidden;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    border: 1px solid #ddd;
+  }
+  .table-responsive > .table {
+    margin-bottom: 0;
+  }
+  .table-responsive > .table > thead > tr > th,
+  .table-responsive > .table > tbody > tr > th,
+  .table-responsive > .table > tfoot > tr > th,
+  .table-responsive > .table > thead > tr > td,
+  .table-responsive > .table > tbody > tr > td,
+  .table-responsive > .table > tfoot > tr > td {
+    white-space: nowrap;
+  }
+}
+@media (max-width: 430px) {
+  .DashBoard {
+    grid-template-columns: 8rem 18.6rem !important;
+  }
+}
+@media (max-width: 380px) {
+  .DashBoard {
+    grid-template-columns: 6rem 17.45rem !important;
+  }
+}
+@media (max-width: 321px) {
+  .DashBoard {
+    grid-template-columns: 6rem 13.99rem !important;
+  }
+  .DashBoard-Heading {
+    height: 30px;
+  }
 }

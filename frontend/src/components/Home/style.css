@@ -14,13 +14,25 @@
   filter: blur(3px);
 }
 .text-container {
-  background-color: #d0d3e984;
-
   position: absolute;
+  width: 50% !important;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 .Home img {
   height: 86vh;
+}
+.join-btn {
+  justify-self: center;
+  align-self: center;
+}
+
+@media (max-width: 430px) {
+  .Home {
+    padding: 0 !important;
+  }
+  .text-container {
+    width: 80% !important;
+  }
 }

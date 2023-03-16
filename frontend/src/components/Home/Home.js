@@ -2,15 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Button } from "../styled/Button.Styled";
 import HomeNav from "./HomeNav";
 import "./Style.css";
-import {
-  MDBCard,
-  MDBCardBody,
-  MDBCardImage,
-  MDBCardText,
-} from "mdb-react-ui-kit";
+import { MDBCardImage } from "mdb-react-ui-kit";
 import { useNavigate } from "react-router-dom";
 import { Box } from "../styled/Box.Styled";
 import { Row } from "../styled/Row.Styled";
+import { Col } from "../styled/Column.Styled";
 import { Container } from "../styled/Container.Styled";
 
 const Home = () => {
@@ -44,21 +40,24 @@ const Home = () => {
         <div className="img-container">
           <MDBCardImage src={images[currentIndex]} fluid width={"100%"} />
         </div>
-        <Box>
-          <Row>
-            The journey of a thousand miles begins with a single step Take Your
-          </Row>
-          <hr />
-          <Row>
-            First Step And Join Our Website The journey of a thousand miles
-            begins
-          </Row>
-          <hr />
+        <Box className="text-container">
+          <Col className="text-col" gb="5px">
+            <Row>
+              The journey of a thousand miles begins with a single step Take
+              Your
+            </Row>
+            <hr />
+            <Row>
+              First Step And Join Our Website The journey of a thousand miles
+              begins
+            </Row>
+            <hr />
 
-          <Row>with a single step I Hope We Can Help You Find You A Job </Row>
-          <Button className="join-btn" onClick={() => navigate("/register")}>
-            Join Job Seeker ▶️
-          </Button>
+            <Row>with a single step I Hope We Can Help You Find You A Job </Row>
+            <Button className="join-btn" onClick={() => navigate("/register")}>
+              Proceed Your journey ▶️
+            </Button>
+          </Col>
         </Box>
       </Container>
       {/* </Container> */}

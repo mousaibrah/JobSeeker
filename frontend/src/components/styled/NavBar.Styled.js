@@ -32,6 +32,16 @@ export const NavBar = styled.div`
     height: 50px;
   }
   @media (max-width: 430px) {
-    gap: 40px; 
+    gap: 40px;
+  }
+  @media (max-width: 376px) {
+    gap: 15px;
+    font-size: 12px;
+    padding: 0 5px !important;
+  }
+  @media (max-width: 321px) {
+    gap: 10px;
+    font-size: 10px;
+    padding: 0 5px !important;
   }
 `;
