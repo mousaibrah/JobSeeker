@@ -67,29 +67,31 @@ const LeftNav = () => {
     });
   };
   return (
-    <Box gb={"3px"}>
-      <div className="top-box">
-        <MDBCardImage
-          src={userImg}
-          className="rounded-circle"
-          style={{ width: "150px" }}
-          fluid
-        />
-      </div>
-      <PersonalBox info={{ text: "Name :", value: UserName }} />
-
-      <PersonalBox info={{ text: "Education :", value: education }} />
-      <PersonalBox info={{ text: "Location :", value: location }} />
-      {Role === "USER" && (
-        <>
-          <hr />
-          <p className="upgrade-btn" onClick={upgradeRoleModal}>
-            Upgrade To Company Account
-          </p>
-          <hr />
-        </>
-      )}
-    </Box>
+    <>
+      <Box gb={"3px"}>
+        <div className="top-box">
+          <MDBCardImage
+            src={userImg}
+            className="rounded-circle"
+            id="user-pic-feed"
+            style={{ width: "150px" }}
+            fluid
+          />
+        </div>
+        <PersonalBox info={{ text: "Name ", value: UserName }} />
+        <PersonalBox info={{ text: "Education ", value: education }} />
+        <PersonalBox info={{ text: "Location ", value: location }} />
+        {Role === "USER" && (
+          <>
+            <hr />
+            <p className="upgrade-btn" onClick={upgradeRoleModal}>
+              Upgrade To Company Account
+            </p>
+            <hr />
+          </>
+        )}
+      </Box>
+    </>
   );
 };
 

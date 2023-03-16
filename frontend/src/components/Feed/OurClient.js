@@ -3,7 +3,7 @@ import { Box } from "../styled/Box.Styled";
 const OurClient = () => {
   return (
     <>
-      <Box>
+      <Box id="Our-Client">
         <p style={{ textAlign: "center", padding: "0px 4px" }}>
           Hope You Enjoy Our Website
         </p>

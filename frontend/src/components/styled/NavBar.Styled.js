@@ -31,12 +31,7 @@ export const NavBar = styled.div`
     font-size: 0.8rem;
     height: 50px;
   }
-  @media (max-width: 425px) {
-    position: fixed;
-    bottom: 0;
-    border-bottom: none;
-    border-top: 1px solid #0275d8;
-    justify-content: center;
-    gap: 40px;
+  @media (max-width: 430px) {
+    gap: 40px; 
   }
 `;

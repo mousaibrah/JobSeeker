@@ -19,7 +19,7 @@ const PostBox = ({ postsData }) => {
       console.log("error postBox 13 :>> ", error);
     }
   };
-  if (!dashBoardPosts) {
+  if (!dashBoardPosts?.length) {
     return <h2>Sorry There Must Be Something Wrong Please Come Back Later</h2>;
   }
   let Post = [];

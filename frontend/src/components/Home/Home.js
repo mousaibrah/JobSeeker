@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "../styled/Button.Styled";
 import HomeNav from "./HomeNav";
-import './Style.css'
+import "./Style.css";
 import {
   MDBCard,
   MDBCardBody,
@@ -9,6 +9,9 @@ import {
   MDBCardText,
 } from "mdb-react-ui-kit";
 import { useNavigate } from "react-router-dom";
+import { Box } from "../styled/Box.Styled";
+import { Row } from "../styled/Row.Styled";
+import { Container } from "../styled/Container.Styled";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -37,55 +40,27 @@ const Home = () => {
     <>
       {/* <Container fluid> */}
       <HomeNav />{" "}
-      <MDBCard>
-        <MDBCardBody className="Home">
-          <div className="img-container">
-            <MDBCardImage src={images[currentIndex]} fluid width={"100%"} />
-          </div>
-          <div className="text-container">
-            {" "}
-            <MDBCardText
-              style={{
-                color: "#2d2e37",
-                fontStyle: "italic",
-                fontSize: "30px",
-              }}
-            >
-              The journey of a thousand miles begins with a single step
-            </MDBCardText>
-            <MDBCardText
-              style={{
-                color: "#2d2e37",
-                fontStyle: "italic",
-                fontSize: "30px",
-              }}
-            >
-              Take Your First Step And Join Our Website{" "}
-            </MDBCardText>
-            <MDBCardText
-              style={{
-                color: "#2d2e37",
-                fontStyle: "italic",
-                fontSize: "30px",
-              }}
-            >
-              The journey of a thousand miles begins with a single step
-            </MDBCardText>
-            <MDBCardText
-              style={{
-                color: "#2d2e37",
-                fontStyle: "italic",
-                fontSize: "30px",
-              }}
-            >
-              I Hope We Can Help You Find You A Job{" "}
-            </MDBCardText>
-            <Button className="join-btn" onClick={() => navigate("/register")}>
-              Join Job Seeker ▶️
-            </Button>
-          </div>
-        </MDBCardBody>
-      </MDBCard>
+      <Container className="Home">
+        <div className="img-container">
+          <MDBCardImage src={images[currentIndex]} fluid width={"100%"} />
+        </div>
+        <Box>
+          <Row>
+            The journey of a thousand miles begins with a single step Take Your
+          </Row>
+          <hr />
+          <Row>
+            First Step And Join Our Website The journey of a thousand miles
+            begins
+          </Row>
+          <hr />
+
+          <Row>with a single step I Hope We Can Help You Find You A Job </Row>
+          <Button className="join-btn" onClick={() => navigate("/register")}>
+            Join Job Seeker ▶️
+          </Button>
+        </Box>
+      </Container>
       {/* </Container> */}
     </>
   );

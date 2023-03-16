@@ -45,7 +45,10 @@ const Feed = () => {
       <Pagination.Item
         key={v4()}
         className="Pagination-btn"
-        onClick={() => nextPage(number)}
+        onClick={(e) => {
+          e.preventDefault();
+          nextPage(number);
+        }}
         active={number === pageActive}
       >
         {number}
@@ -54,9 +57,9 @@ const Feed = () => {
   }
   return (
     <>
-      <FeedNav id='test' />
-      <Container className="Feed">
-        <Col className="Feed-Col">
+      <FeedNav />
+      <Container className="Feed" id="Feed">
+        <Col className="Feed-Col" id="left-col">
           <LeftNav />
         </Col>
         <Col className="Feed-Col posts-aria">
@@ -65,7 +68,7 @@ const Feed = () => {
           <PostBox postsData={{ posts }} key={v4()} />
           <Pagination>{items}</Pagination>
         </Col>
-        <Col className="Feed-Col">
+        <Col className="Feed-Col Our-Client">
           <OurClient />
         </Col>
       </Container>
