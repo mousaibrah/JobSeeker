@@ -8,11 +8,8 @@ import { Container } from "react-bootstrap";
 import ApplyModal from "./ApplyModal/ApplyModal";
 const PostPage = () => {
   const { id } = useParams();
-  const userId = JSON.parse(localStorage.getItem("userId"));
   const Role = JSON.parse(localStorage.getItem("role"));
-  const [email, setEmail] = useState("");
   const [applyToggle, setApplyToggle] = useState(false);
-  const [Url, setUrl] = useState("");
   const [companyId, setCompanyId] = useState();
   const [post, setPost] = useState("");
   const navigate = useNavigate();
@@ -41,7 +38,7 @@ const PostPage = () => {
           <div className="postWrapper">
             <div className="postTop">
               <div className="postTopLeft">
-                <img className="postProfileImg" src={post?.userPicturePath} />
+                <img className="postProfileImg" alt="user-img" src={post?.userPicturePath} />
                 <span
                   className="postUsername"
                   onClick={() => navigate(`/profile/${post.userId}`)}
@@ -70,7 +67,6 @@ const PostPage = () => {
               {post.responsibility
                 ? post.responsibility.map((elem) => <li key={v4()}>{elem}</li>)
                 : ""}
-              <img className="postImg" src={post?.picturePath} />
             </div>
             <div className="postBottom">
               <div className="postBottomLeft">
