@@ -1,7 +1,6 @@
 import React from "react";
 import "./Style.css";
 import FirstName from "./inputComponent/FirstName";
-
 import LastName from "./inputComponent/LastName";
 import Mobile from "./inputComponent/Mobile";
 import Email from "./inputComponent/Email";
@@ -14,7 +13,6 @@ import Location from "./inputComponent/Location";
 import Img from "./inputComponent/Img";
 import Role from "./inputComponent/Role";
 import SubmitBtn from "./SubmitBtn";
-import { MDBCol, MDBRow } from "mdb-react-ui-kit";
 import RegisterNav from "./RegisterNav";
 import Google from "./inputComponent/Google";
 const Register = () => {
@@ -22,7 +20,7 @@ const Register = () => {
     <>
       <RegisterNav />
       <Container className="register-page">
-        <Col className="Register-Col">
+        <Col className="Register-Col image-col">
           <img
             src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
             className="img-fluid"
@@ -30,34 +28,36 @@ const Register = () => {
             alt="Phone"
           />
         </Col>
-        <Col className="Register-Col"> 
-          <Row>
-            <MDBCol>
+        <Col className="Register-Col inputs-col">
+          <Row gb="15px" className="name-row">
+            <Col>
               {" "}
               <FirstName />
-            </MDBCol>
-            <MDBCol>
+            </Col>
+            <Col>
               <LastName />
-            </MDBCol>
+            </Col>
           </Row>
-          <Row>
-            <MDBCol>
+          <Row gb="15px" className="name-row">
+            <Col>
               {" "}
               <Mobile />
-            </MDBCol>
-            <MDBCol>
+            </Col>
+            <Col>
               <Location />
-            </MDBCol>
+            </Col>
           </Row>
           <Date />
           <Email />
           <Password />
           <Img />
-          <Role />
           <Row>
+            <Role />
+          </Row>
+          <Row className="sub-btn-row">
             <SubmitBtn />
           </Row>
-          <Row>
+          <Row className="sub-btn-row">
             <Google />
           </Row>
         </Col>
