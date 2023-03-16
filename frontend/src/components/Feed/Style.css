@@ -13,12 +13,12 @@
   column-gap: 30px;
 }
 .Feed-Col {
-  padding-top: 30px;
+  padding-top: 30px !important;
 }
 .posts-aria {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 20px !important;
 }
 .accordion-button {
   color: #fcfeff !important;

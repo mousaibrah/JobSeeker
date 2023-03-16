@@ -78,3 +78,25 @@
 .icon:hover {
   color: var(--hover-color);
 }
+@media (max-width: 769px) {
+  .Profile {
+    padding: 0 10px 0 10px !important;
+  }
+  #user-profile-image {
+    width: 100px !important;
+  }
+  .box {
+    flex-direction: column;
+    gap: 0px !important;
+    align-items: start;
+  }
+  .user-profile-box {
+    gap: 5px !important;
+  }
+}
+@media (max-width: 430px) {
+  .Profile {
+    grid-template-rows: 1fr auto;
+    grid-template-columns: 1fr;
+  }
+}

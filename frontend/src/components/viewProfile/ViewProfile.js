@@ -50,6 +50,7 @@ const ViewProfile = () => {
             <div className="top-box">
               <MDBCardImage
                 src={userImg}
+                id="user-profile-image"
                 className="rounded-circle"
                 style={{ width: "150px" }}
                 fluid

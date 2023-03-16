@@ -100,7 +100,7 @@ const ProfilePage = () => {
         <UploadImg />
         <Container className="Profile">
           <div className="Profile-Col">
-            <Box gb={"30px"}>
+            <Box gb={"30px"} className='user-profile-box'>
               <div className="top-box">
                 <BsPencilSquare
                   className="edit-img-btn icon"
@@ -111,15 +111,16 @@ const ProfilePage = () => {
                 <MDBCardImage
                   src={userImg}
                   className="rounded-circle"
+                  id="user-profile-image"
                   style={{ width: "150px" }}
                   fluid
                 />
               </div>
               <PersonalBox
-                info={{ text: "Aria Of EXPERTISE :", value: expertise }}
+                info={{ text: "Aria Of EXPERTISE", value: expertise }}
               />
 
-              <PersonalBox info={{ text: "EDUCATION :", value: education }} />
+              <PersonalBox info={{ text: "EDUCATION", value: education }} />
             </Box>
             <Box>
               <div className="Skill-header">
