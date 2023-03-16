@@ -11,6 +11,7 @@ export const NavBar = styled.div`
   align-items: center;
   font-weight: 500;
   height: 70px;
+  width: 100%;
   span {
     color: #0275d8;
   }
@@ -22,5 +23,20 @@ export const NavBar = styled.div`
   .Links {
     display: flex;
     gap: 30px;
+  }
+  @media (max-width: 768px) {
+    height: 55px;
+  }
+  @media (max-width: 590px) {
+    font-size: 0.8rem;
+    height: 50px;
+  }
+  @media (max-width: 425px) {
+    position: fixed;
+    bottom: 0;
+    border-bottom: none;
+    border-top: 1px solid #0275d8;
+    justify-content: center;
+    gap: 40px;
   }
 `;

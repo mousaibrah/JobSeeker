@@ -16,4 +16,9 @@ export const Button = styled.button`
     background-color: #0274d891;
     font-weight: 500;
   }
+  @media (max-width: 768px) {
+    font-size: smaller;
+    height: fit-content;
+    font-weight: 300;
+  }
 `;

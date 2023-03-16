@@ -1,11 +1,14 @@
 import React from "react";
+import "./Style.css";
 import FirstName from "./inputComponent/FirstName";
 
 import LastName from "./inputComponent/LastName";
 import Mobile from "./inputComponent/Mobile";
 import Email from "./inputComponent/Email";
 import Password from "./inputComponent/Password";
-import { Container } from "react-bootstrap";
+import { Container } from "../styled/Container.Styled";
+import { Row } from "../styled/Row.Styled";
+import { Col } from "../styled/Column.Styled";
 import Date from "./inputComponent/Date";
 import Location from "./inputComponent/Location";
 import Img from "./inputComponent/Img";
@@ -19,49 +22,45 @@ const Register = () => {
     <>
       <RegisterNav />
       <Container className="register-page">
-        <MDBRow>
-          <MDBCol lg="6">
-            <img
-              src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
-              className="img-fluid"
-              alt="Phone"
-            />
-          </MDBCol>
-          <MDBCol lg="6">
-            <MDBRow>
-              <MDBCol>
-                {" "}
-                <FirstName />
-              </MDBCol>
-              <MDBCol>
-                <LastName />
-              </MDBCol>
-            </MDBRow>
-            <MDBRow>
-              <MDBCol>
-                {" "}
-                <Mobile />
-              </MDBCol>
-              <MDBCol>
-                <Location />
-              </MDBCol>
-            </MDBRow>
-            <Date />
-            <Email />
-            <Password />
-
-            <Img />
-            <Role />
-
-            <MDBRow className="justify-content-md-center">
-              <SubmitBtn />
-            </MDBRow>
-
-            <MDBRow className="justify-content-md-center">
-              <Google />
-            </MDBRow>
-          </MDBCol>
-        </MDBRow>
+        <Col className="Register-Col">
+          <img
+            src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
+            className="img-fluid"
+            id="register-img"
+            alt="Phone"
+          />
+        </Col>
+        <Col className="Register-Col"> 
+          <Row>
+            <MDBCol>
+              {" "}
+              <FirstName />
+            </MDBCol>
+            <MDBCol>
+              <LastName />
+            </MDBCol>
+          </Row>
+          <Row>
+            <MDBCol>
+              {" "}
+              <Mobile />
+            </MDBCol>
+            <MDBCol>
+              <Location />
+            </MDBCol>
+          </Row>
+          <Date />
+          <Email />
+          <Password />
+          <Img />
+          <Role />
+          <Row>
+            <SubmitBtn />
+          </Row>
+          <Row>
+            <Google />
+          </Row>
+        </Col>
       </Container>
     </>
   );

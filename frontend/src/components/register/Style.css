@@ -5,3 +5,21 @@
     --container-color :#2d2e37;
     --text-color:#fcfeff;
   }
+
+.register-page{
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 2fr;
+}
+
+.Register-Col{
+  padding-top: 30px;
+}
+
+
+
+  @media (max-width:768px) {
+    #register-img{
+      display: none !important;
+    }
+  }
