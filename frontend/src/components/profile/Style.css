@@ -78,6 +78,31 @@
 .icon:hover {
   color: var(--hover-color);
 }
+.skills-in-skill-modal {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.skill-in-skill-modal {
+  display: flex;
+  border: #2d2e37 1px solid;
+  padding: 0 20px;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1px;
+  font-weight: 500;
+}
+.delete-btn-skill-modal {
+  font-size: 22px;
+  color: red !important;
+}
+.update-text {
+  color: #1e1e2a;
+}
+#about-form {
+  border: #0275d8 2px solid;
+  width: 65% !important;
+}
 @media (max-width: 769px) {
   .Profile {
     padding: 0 10px 0 10px !important;

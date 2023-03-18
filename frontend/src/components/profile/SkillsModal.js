@@ -9,18 +9,36 @@ const SkillsModal = () => {
     useContext(profileContext);
   const { skills } = profileData;
   const [skill, setSkill] = useState("");
-
+  const deleteSkill = (skillName) => {
+    setProfileData({
+      ...profileData,
+      skills: skills.filter((skill) => skill !== skillName),
+    });
+  };
   return (
     <Modal centered show={skillModal} onHide={() => setSkillModal(false)}>
       <Modal.Header closeButton>
         <Modal.Title className="text-dark">Skills</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        {skills?.length
-          ? skills.map((skill) => {
-              return <li className="text-dark">{skill}</li>;
-            })
-          : ""}
+        <div className="skills-in-skill-modal">
+          {skills?.length
+            ? skills.map((skill) => {
+                return (
+                  <div key={v4()} className="skill-in-skill-modal">
+                    <li className="text-dark">{skill}</li>
+                    <p
+                      className=" delete-btn-skill-modal"
+                      onClick={() => deleteSkill(skill)}
+                    >
+                      x
+                    </p>
+                  </div>
+                );
+              })
+            : ""}
+        </div>
+
         <MDBInput
           style={{ marginTop: "15px" }}
           placeholder=" Add More Skill"

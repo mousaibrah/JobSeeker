@@ -1,8 +1,8 @@
 import React, { useState, useContext } from "react";
-import { Modal } from "react-bootstrap";
+import { Form, Modal } from "react-bootstrap";
 import { Button } from "../styled/Button.Styled";
 
-import { MDBCard } from "mdb-react-ui-kit";
+import { MDBCard, MDBCardText, MDBCol, MDBRow } from "mdb-react-ui-kit";
 
 import { profileContext } from "./ProfilePage";
 import ProfileInput from "./input/ProfileInput";
@@ -91,10 +91,27 @@ const UpdateProfile = () => {
               }}
             />
             <hr />
-            <ProfileInput
+            <MDBRow>
+              <MDBCol col="6">
+                <MDBCardText className="update-text">About</MDBCardText>
+              </MDBCol>
+              <MDBCol col="6">
+                <Form.Control
+                  id="about-form"
+                  as="textarea"
+                  onChange={(e) =>
+                    setProfileData({ ...profileData, about: e.target.value })
+                  }
+                  rows={3}
+                  
+                />
+              </MDBCol>
+            </MDBRow>
+
+            {/* <ProfileInput
               onFunction={setAbout}
               input={{ title: "About", initValue: about, isDisable: false }}
-            />
+            /> */}
           </Modal.Body>
         </MDBCard>
         <Modal.Footer>

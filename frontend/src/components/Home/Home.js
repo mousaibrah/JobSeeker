@@ -11,6 +11,7 @@ import { Container } from "../styled/Container.Styled";
 
 const Home = () => {
   const navigate = useNavigate();
+  const logged = JSON.parse(localStorage.getItem('logged'))
   const images = [
     "https://t3.ftcdn.net/jpg/00/81/26/82/360_F_81268225_eVHynMTlVQf3wVdYOoUEz8d8KolhVZm0.jpg",
     "https://burst.shopifycdn.com/photos/macbook-air-on-desk.jpg?width=1200&format=pjpg&exif=1&iptc=1",
@@ -19,6 +20,13 @@ const Home = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
+
+    if(logged){
+      setTimeout(() => {
+        navigate('/feed')
+        
+      }, 1000);
+    }
     const intervalId = setInterval(() => {
       if (currentIndex === images.length - 1) {
         setCurrentIndex(0);

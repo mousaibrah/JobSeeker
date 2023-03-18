@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Style.css";
 import FirstName from "./inputComponent/FirstName";
 import LastName from "./inputComponent/LastName";
@@ -15,7 +15,18 @@ import Role from "./inputComponent/Role";
 import SubmitBtn from "./SubmitBtn";
 import RegisterNav from "./RegisterNav";
 import Google from "./inputComponent/Google";
+import { useNavigate } from "react-router-dom";
 const Register = () => {
+  const navigate = useNavigate();
+  const logged = JSON.parse(localStorage.getItem("logged"));
+  useEffect(() => {
+    if (logged) {
+      setTimeout(() => {
+        navigate("/feed");
+      }, 1000);
+    }
+  }, []);
+
   return (
     <>
       <RegisterNav />

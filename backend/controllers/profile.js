@@ -13,12 +13,12 @@ const getProfileByUserId = async (req, res) => {
 };
 const createProfile = async (req, res) => {
   const userId = req.params.id;
-  const {  about, expertise, skills, education } = req.body;
+  const { about, expertise, skills, education } = req.body;
 
   try {
     const data = await userSchema.findById({ _id: userId });
     const newProfile = new profileSchema({
-      userImg:data.img,
+      userImg: data.img,
       UserName: `${data.firstName} ${data.lastName}`,
       about,
       email: `${data.email}`,
@@ -51,11 +51,11 @@ const updateProfile = async (req, res) => {
 };
 const addSkillToProfile = async (req, res) => {
   const userId = req.params.id;
-  const { skill } = req.body;
+  const { skills } = req.body;
   try {
     const addSkills = await profileSchema.findOneAndUpdate(
       { userId },
-      { $addToSet: { skills: { $each: skill } } },
+      { skills },
       { new: true }
     );
     res.json(addSkills);

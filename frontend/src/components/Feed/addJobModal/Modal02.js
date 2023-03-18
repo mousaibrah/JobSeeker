@@ -9,7 +9,6 @@ const Modal02 = () => {
     useContext(AddJobContext);
   const [convertedText, setConvertedText] = useState("");
 
-
   useEffect(() => {
     setNewPost({ ...newPost, description: convertedText });
   }, [convertedText]);
@@ -27,7 +26,6 @@ const Modal02 = () => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          
           <ReactQuill
             value={convertedText}
             onChange={setConvertedText}

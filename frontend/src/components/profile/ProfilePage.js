@@ -73,7 +73,7 @@ const ProfilePage = () => {
     try {
       const skillAdded = await axios.put(
         `http://localhost:5000/profile/${JSON.parse(userId)}/skills`,
-        { skill: skills }
+        { skills }
       );
       setProfileData(skillAdded.data);
     } catch (error) {
@@ -100,7 +100,7 @@ const ProfilePage = () => {
         <UploadImg />
         <Container className="Profile">
           <div className="Profile-Col">
-            <Box gb={"30px"} className='user-profile-box'>
+            <Box gb={"30px"} className="user-profile-box">
               <div className="top-box">
                 <BsPencilSquare
                   className="edit-img-btn icon"
