@@ -22,7 +22,7 @@ const Modal02 = () => {
       >
         <Modal.Header closeButton>
           <Modal.Title className="text-dark">
-            Create Job opportunity02
+            Add Description
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>

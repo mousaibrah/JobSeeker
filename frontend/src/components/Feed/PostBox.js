@@ -9,6 +9,8 @@ import { Box } from "../styled/Box.Styled";
 const PostBox = ({ postsData }) => {
   const { posts, setPosts } = useContext(AppContext);
   const navigate = useNavigate();
+  const userId = JSON.parse(localStorage.getItem("userId"));
+  const Role = JSON.parse(localStorage.getItem("role"));
 
   const { posts: dashBoardPosts } = postsData;
   const deletePost = async (id) => {
@@ -20,7 +22,7 @@ const PostBox = ({ postsData }) => {
     }
   };
   if (!dashBoardPosts?.length) {
-    return <h2>Sorry There Must Be Something Wrong Please Come Back Later</h2>;
+    return;
   }
   let Post = [];
   for (let index = 0; index < dashBoardPosts?.length; index++) {
@@ -48,9 +50,14 @@ const PostBox = ({ postsData }) => {
             <div className="postTopCenter">
               <span className="postDate">{element?.location}</span>
             </div>
-            {/* <div className="postTopRight" >
-              Delete Post
-            </div> */}
+            {(userId === element.userId || Role === "ADMIN") && (
+              <div
+                className="postTopRight"
+                onClick={() => deletePost(element._id)}
+              >
+                Delete Post
+              </div>
+            )}
           </div>
           <div className="postCenter">
             <h5>{element?.jobTitle}</h5>

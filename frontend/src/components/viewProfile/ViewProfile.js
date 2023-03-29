@@ -52,7 +52,7 @@ const ViewProfile = () => {
                 src={userImg}
                 id="user-profile-image"
                 className="rounded-circle"
-                style={{ width: "150px" }}
+                style={{ width: "150px", height: "150px" }}
                 fluid
               />
             </div>

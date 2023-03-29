@@ -19,7 +19,7 @@ const Modal01 = () => {
       >
         <Modal.Header closeButton>
           <Modal.Title className="text-dark">
-            Create Job opportunity01
+            Create Job opportunity
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>

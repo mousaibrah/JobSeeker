@@ -76,7 +76,10 @@
   font-weight: 500;
   margin: 0 10px;
 }
-
+.postUsername:hover {
+  transition: 0.6s;
+  transform: scale(1.1);
+}
 .postDate {
   font-size: 12px;
 }
